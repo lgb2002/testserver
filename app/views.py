@@ -21,7 +21,7 @@ def message(request):
 	#user_name
 	#type_name = received_json['type']
 	#type_name
-	if content_name == "hello":
+	if content_name == 'hello':
 		return JsonResponse(
 			{
 			'message' : {
@@ -33,7 +33,7 @@ def message(request):
 				}
 			}
 		)
-	elif content_name == "world":
+	elif content_name == 'world':
 		return JsonResponse(
 			{
 				'message' : {
@@ -45,7 +45,7 @@ def message(request):
 				}
 			}
 		)
-	elif content_name == "lgb":
+	elif content_name == 'lgb':
 		return JsonResponse(
 			{
 				'message' : {
