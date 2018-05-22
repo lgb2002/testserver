@@ -13,23 +13,14 @@ def keyboard(request):
 
 @csrf_exempt
 def message(request):
-	#button = ['hello', 'world', 'lgb']
 	json_str = (request.body).decode('utf-8')
 	received_json = json.loads(json_str) #JSON File Decoding
 	content_name = received_json['content']	
-	#user_name = received_json['user_key']
-	#user_name
-	#type_name = received_json['type']
-	#type_name
 	if content_name == 'hello':
 		return JsonResponse(
 			{
-			'message' : {
-				'text' : 'You say hello'
-			},
-			'keyboard' : {
-				'type' : 'buttons',
-				'buttons' : ['hello', 'world', 'lgb']
+				'message' : {
+					'text' : 'You say hello'
 				}
 			}
 		)
@@ -38,10 +29,6 @@ def message(request):
 			{
 				'message' : {
 					'text' : 'We are the world'
-				},
-				'keyboard' : {
-					'type' : 'buttons',
-					'buttons' : ['hello', 'world', 'lgb']
 				}
 			}
 		)
@@ -50,10 +37,6 @@ def message(request):
 			{
 				'message' : {
 					'text' : 'Your id is lgb'
-				},
-				'keyboard' : {
-					'type' : 'buttons',
-					'buttons' : ['hello', 'world', 'lgb']
 				}
 			}
 		)
