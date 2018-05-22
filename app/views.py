@@ -14,7 +14,7 @@ def keyboard(request):
 @csrf_exempt
 def message(request):
 	#button = ['hello', 'world', 'lgb']
-	json_str = (request.body).decode('utf-8')
+	json_str = (request.body)#.decode('utf-8')
 	received_json = json.loads(json_str) #JSON File Decoding
 	content_name = received_json['content']	
 	#user_name = received_json['user_key']
