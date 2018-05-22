@@ -8,6 +8,11 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
 import os
+import sys
+ 
+sys.path.append('/home/ubuntu/Django')
+#sys.path.append('/home/ubuntu/Django/bot')
+sys.path.append('/home/ubuntu/Django/myvenv/lib/python3.6/site-packages')
 
 from django.core.wsgi import get_wsgi_application
 
