@@ -11,8 +11,7 @@ def keyboard(request):
 
 @csrf_exempt
 def message(request):
-        #message = ((request.body).decode('utf-8')) 
-        return_json_str = json.loads(request.body)
+        return_json_str = json.loads((request.body).decode('utf-8')) 
         return_str = return_json_str['content']
  
         return JsonResponse({
