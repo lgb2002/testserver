@@ -10,13 +10,10 @@ def keyboard(request):
                 })
 
 @csrf_exempt
-def message(request):
+def answer(request):
         message = ((request.body).decode('utf-8')) 
-        return message
         return_json_str = json.loads(message)
-        return return_json_str
         return_str = return_json_str['content']
-        return return_str
 
         return JsonResponse({
                 'message': {
