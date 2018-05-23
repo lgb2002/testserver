@@ -13,11 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from app import views
+from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^keyboard/',views.keyboard),
-    url(r'^message',views.answer),
+    url(r'',include('app.urls')),
 ]
-
