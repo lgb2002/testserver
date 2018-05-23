@@ -23,13 +23,14 @@ soup = BeautifulSoup(html, 'html.parser')
 test = soup.find('<div class="Schoolmeal_Cont_Cont_Cont">')
 
 
+
+
+@csrf_exempt
 def keyboard(request):
 	return JsonResponse({
             'type' : 'buttons',
             'buttons' : ['today','tommorow']
             })
-
-@csrf_exempt
 def answer(request):
 	    message = ((request.body).decode('utf-8')) 
 	    return_json_str = json.loads(message)
