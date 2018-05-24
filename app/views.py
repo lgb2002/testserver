@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from beautifulsoup import beautifulsoup
+#from bs4 import BeautifulSoup
 import requests
 from urllib.request import urlopen
 from datetime import datetime
@@ -13,27 +13,27 @@ day=datetime.today().day
 
 imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(year)+"&domain.month="+str(month)+"&domain.day="+str(day)
 html = urlopen(imsi)
-soup = BeautifulSoup(html.read(), "html.parser")
-test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
-print (test)
+#soup = BeautifulSoup(html.read(), "html.parser")
+#test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
+#print (test)
 
-def keyboard(request1):
+def keyboard(request):
 	return JsonResponse({
             'type' : 'buttons',
             'buttons' : ['today','tommorow']
             })
 
 @csrf_exempt
-def answer(request1):
+def answer(request):
 	    message = ((request1.body).decode('utf-8')) 
 	    return_json_str = json.loads(message)
 	    return_str = return_json_str['content']
 
 	    return JsonResponse({
-	        'message': {
-	            'text': "you choose!"+return_str+" : "+test
+	        'message' : {
+	            'text' : "you choose!"+return_str+" : "#+test
 	            },
-	            'keyboard': {
+	        'keyboard' : {
 	            'type': 'buttons',
 	           	'buttons' : ['today','tommorow']
 	            }
