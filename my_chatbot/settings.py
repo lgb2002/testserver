@@ -25,7 +25,7 @@ SECRET_KEY = '&(-tsj+=7%4^a^_25j0(%+5da8l$wtd$un52*u7vp79%a$8l3a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'kakaotalkbot.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'kakao.pythonanywhere.com']
 
 
 # Application definition
