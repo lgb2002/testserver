@@ -31,7 +31,7 @@ def get_menu(day) :
 	test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
 	test = test.get_text()
 	test = re.sub(" ?\d ?[.]*"," ",test)
-	test = re.sub(" +","\n",m)
+	test = re.sub(" +","\n",test)
 	return test
 
 def keyboard(request) :
