@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from bs4 import BeautifulSoup
-#from urllib.request import urlopen
+from urllib.request import urlopen
 from datetime import datetime
 import re
 
