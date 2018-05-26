@@ -17,13 +17,15 @@ r = datetime.today().weekday()
 #print(t[r]) //test
 
 def get_m(r) :
+	global m
 	if t[r] == '토' or t[r] == '일' :
 		m = 0
 	else :
 		m = 1
-	print("m:" + m)
 
 def get_day(return_str) :
+	global day
+	global r
 	if return_str == 'yesterday' :
 		day = real_day - 1
 		r = r - 1
@@ -32,11 +34,11 @@ def get_day(return_str) :
 	elif return_str == 'tommorow' :
 		day = real_day + 1
 		r = r + 1
-	print("day:" + day)
-	print("r:" + r)
 	get_m(r)
 
 def get_menu(return_str) :
+	global imsi
+	global test
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 	html = urlopen(imsi)
 	soup = BeautifulSoup(html.read(), "html.parser")
@@ -44,7 +46,6 @@ def get_menu(return_str) :
 	test = test.get_text()
 	test = re.sub(" ?\d ?[.]*"," ",test)
 	test = re.sub(" +","\n",m)
-	print(test)
 	return test
 
 def keyboard(request) :
@@ -55,22 +56,23 @@ def keyboard(request) :
 
 @csrf_exempt
 def answer(request) :
-	    message = ((request.body).decode('utf-8')) 
-	    return_json_str = json.loads(message)
-	    return_str = return_json_str['content']
-	    get_day(return_str)
-	    print("m:" + m)
-	    if m :
-	    	imsi_text = t[r] + ' Menu ' + get_menu(return_str) 
-	    else :
-	    	imsi_text = t[r] + ' is no schoolmeal'
+	global imsi_text
+	message = ((request.body).decode('utf-8')) 
+	return_json_str = json.loads(message)
+	return_str = return_json_str['content']
+	get_day(return_str)
+	if m :
+	    imsi_text = t[r] + ' Menu ' + get_menu(return_str) 
+	else :
+	    imsi_text = t[r] + ' is no schoolmeal'
+	print("imsi_text : " + imsi_text)
 
-	    return JsonResponse({
-	    	'message' : {
-	    		'text' : imsi_text
-	    	},
-	        'keyboard' : {
-	            'type': 'buttons',
-            	'buttons' : ['yesterday','today','tommorow']
-	            }
-	        })
+	return JsonResponse({
+	    'message' : {
+	    	'text' : imsi_text
+	    },
+	    'keyboard' : {
+	        'type': 'buttons',
+            'buttons' : ['yesterday','today','tommorow']
+	        }
+	    })
