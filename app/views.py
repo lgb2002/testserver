@@ -12,12 +12,12 @@ month=datetime.today().month
 day=datetime.today().day
 
 imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(year)+"&domain.month="+str(month)+"&domain.day="+str(day)
-#html = urlopen(imsi)
-#soup = BeautifulSoup(html.read(), "html.parser")
-#test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
-#test2 = test.get_text()
-#m = re.sub(" ?\d ?[.]*"," ",test2)
-#m = re.sub(" +","\n",m)
+html = urlopen(imsi)
+soup = BeautifulSoup(html.read(), "html.parser")
+test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
+test2 = test.get_text()
+m = re.sub(" ?\d ?[.]*"," ",test2)
+m = re.sub(" +","\n",m)
 #print(m)
  
 
