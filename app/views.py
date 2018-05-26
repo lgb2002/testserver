@@ -22,6 +22,7 @@ def get_m(r) :
 		m = 0
 	else :
 		m = 1
+	return m
 
 def get_menu(day) :
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
