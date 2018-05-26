@@ -35,7 +35,7 @@ def answer(request):
 
 	    return JsonResponse({
 	        'message' : {
-	            'text' : "you choose!"+return_str+" : "#+test
+	            'text' : "you choose!"+return_str+" : "+m
 	            },
 	        'keyboard' : {
 	            'type': 'buttons',
