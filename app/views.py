@@ -1,3 +1,4 @@
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
@@ -35,29 +36,29 @@ def get_menu(day) :
 def keyboard(request) :
 	return JsonResponse({
             'type' : 'buttons',
-            'buttons' : ['yesterday','today','tommorow']
+            'buttons' : ['어제','오늘','내일']
             })
 
 @csrf_exempt
 def answer(request) :
-	message = ((request.body).decode('utf-8')) 
+	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
 
 	r = datetime.today().weekday()
-	if return_str == 'yesterday' :
+	if return_str == '어제' :
 		day = real_day - 1
 		r = r - 1
-	elif return_str == 'today' :
+	elif return_str == '오늘' :
 		day = real_day
-	elif return_str == 'tommorow' :
+	elif return_str == '내일' :
 		day = real_day + 1
 		r = r + 1
 	m=get_m(r)
 	if m :
-	    imsi_text = t[r] + ' Menu ' + get_menu(day) 
+	    imsi_text = t[r] + ' 메뉴: \n\n ' + get_menu(day) 
 	else :
-	    imsi_text = t[r] + ' is no schoolmeal'
+	    imsi_text = t[r] + '은 급식이 제공되지 않습니다.'
 
 	return JsonResponse({
 	    'message' : {
@@ -65,6 +66,6 @@ def answer(request) :
 	    },
 	    'keyboard' : {
 	        'type': 'buttons',
-            'buttons' : ['yesterday','today','tommorow']
+            'buttons' : ['어제','오늘','내일']
 	        }
 	    })
