@@ -1,44 +1,76 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import json
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from datetime import datetime
-import re
+import json, re
 
+#Basic Settings on date
 datetime.today()
-year=datetime.today().year
-month=datetime.today().month
-day=datetime.today().day
+real_year=datetime.today().year
+real_month=datetime.today().month
+real_day=datetime.today().day
+t = ['월', '화', '수', '목', '금', '토', '일']
+r = datetime.today().weekday()
+#print(t) //test
+#print(r) //test
+#print(t[r]) //test
 
-imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(year)+"&domain.month="+str(month)+"&domain.day="+str(day)
-html = urlopen(imsi)
-soup = BeautifulSoup(html.read(), "html.parser")
-test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
-test2 = test.get_text()
-m = re.sub(" ?\d ?[.]*"," ",test2)
-m = re.sub(" +","\n",m)
-#print(m)
- 
+def get_m(r) :
+	if t[r] == '토' or t[r] == '일' :
+		m = 0
+	else :
+		m = 1
+	print("m:" + m)
 
-def keyboard(request):
+def get_day(return_str) :
+	if return_str == 'yesterday' :
+		day = real_day - 1
+		r = r - 1
+	elif return_str == 'today' :
+		day = real_day
+	elif return_str == 'tommorow' :
+		day = real_day + 1
+		r = r + 1
+	print("day:" + day)
+	print("r:" + r)
+	get_m(r)
+
+def get_menu(return_str) :
+	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+	html = urlopen(imsi)
+	soup = BeautifulSoup(html.read(), "html.parser")
+	test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
+	test = test.get_text()
+	test = re.sub(" ?\d ?[.]*"," ",test)
+	test = re.sub(" +","\n",m)
+	print(test)
+	return test
+
+def keyboard(request) :
 	return JsonResponse({
             'type' : 'buttons',
-            'buttons' : ['today','tommorow']
+            'buttons' : ['yesterday','today','tommorow']
             })
 
 @csrf_exempt
-def answer(request):
+def answer(request) :
 	    message = ((request.body).decode('utf-8')) 
 	    return_json_str = json.loads(message)
 	    return_str = return_json_str['content']
+	    get_day(return_str)
+	    print("m:" + m)
+	    if m :
+	    	imsi_text = t[r] + ' Menu ' + get_menu(return_str) 
+	    else :
+	    	imsi_text = t[r] + ' is no schoolmeal'
 
 	    return JsonResponse({
-	        'message' : {
-	            'text' : "you choose!"+return_str+" : "+m
-	            },
+	    	'message' : {
+	    		'text' : imsi_text
+	    	},
 	        'keyboard' : {
 	            'type': 'buttons',
-	           	'buttons' : ['today','tommorow']
+            	'buttons' : ['yesterday','today','tommorow']
 	            }
 	        })
