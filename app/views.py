@@ -18,7 +18,7 @@ real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
 
 def get_m(r) :
-	if t[r] == '토' or t[r] == '일' :
+	if r == 5 or r == 6 :
 		m = 0
 	else :
 		m = 1
