@@ -5,17 +5,16 @@ from urllib.request import urlopen
 from datetime import datetime
 import json, re
 
+#print(t) //test
+#print(r) //test
+#print(t[r]) //test
+
 #Basic Settings on date
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
-r = datetime.today().weekday()
-#print(t) //test
-#print(r) //test
-#print(t[r]) //test
-
 
 def get_m(r) :
 	if t[r] == '토' or t[r] == '일' :
@@ -44,6 +43,8 @@ def answer(request) :
 	message = ((request.body).decode('utf-8')) 
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
+
+	r = datetime.today().weekday()
 	if return_str == 'yesterday' :
 		day = real_day - 1
 		r = r - 1
