@@ -55,9 +55,9 @@ def answer(request) :
 		day = real_day + 1
 		if r == 6 :
 			r = 0
-		else
+		else :
 			r = r + 1
-	
+
 	m=get_m(r)
 	if m :
 	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day) 
