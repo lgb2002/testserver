@@ -16,29 +16,14 @@ r = datetime.today().weekday()
 #print(r) //test
 #print(t[r]) //test
 
+
 def get_m(r) :
-	global m
 	if t[r] == '토' or t[r] == '일' :
 		m = 0
 	else :
 		m = 1
 
-def get_day(return_str) :
-	global day
-	global r
-	if return_str == 'yesterday' :
-		day = real_day - 1
-		r = r - 1
-	elif return_str == 'today' :
-		day = real_day
-	elif return_str == 'tommorow' :
-		day = real_day + 1
-		r = r + 1
-	get_m(r)
-
-def get_menu(return_str) :
-	global imsi
-	global test
+def get_menu(day) :
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 	html = urlopen(imsi)
 	soup = BeautifulSoup(html.read(), "html.parser")
@@ -56,13 +41,20 @@ def keyboard(request) :
 
 @csrf_exempt
 def answer(request) :
-	global imsi_text
 	message = ((request.body).decode('utf-8')) 
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
-	get_day(return_str)
+	if return_str == 'yesterday' :
+		day = real_day - 1
+		r = r - 1
+	elif return_str == 'today' :
+		day = real_day
+	elif return_str == 'tommorow' :
+		day = real_day + 1
+		r = r + 1
+	m=get_m(r)
 	if m :
-	    imsi_text = t[r] + ' Menu ' + get_menu(return_str) 
+	    imsi_text = t[r] + ' Menu ' + get_menu(day) 
 	else :
 	    imsi_text = t[r] + ' is no schoolmeal'
 	print("imsi_text : " + imsi_text)
