@@ -57,7 +57,6 @@ def answer(request) :
 	    imsi_text = t[r] + ' Menu ' + get_menu(day) 
 	else :
 	    imsi_text = t[r] + ' is no schoolmeal'
-	print("imsi_text : " + imsi_text)
 
 	return JsonResponse({
 	    'message' : {
