@@ -23,12 +23,9 @@ def get_m(r) :
 
 def get_menu(day) :
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
-	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
-	print("today day : " + real_year +"/"+real_month+"/"+day)
-	print("imsi : "+imsi)
-	print("test : "+test)
+	
 	html = urlopen(imsi)
-	print("html : "+html.status)
+	#print("html : "+html.status)
 	soup = BeautifulSoup(html.read(), "html.parser")
 	test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
 	test = test.get_text()
@@ -58,10 +55,14 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
-
+	test1=get_menu(day)
+	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
+	print("today day : " + real_year +"/"+real_month+"/"+day)
+	print("imsi : "+imsi)
+	print("test : "+test1)
 	m=get_m(r)
 	if m :
-	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day) 
+	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + test1 
 	else :
 	    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
 
