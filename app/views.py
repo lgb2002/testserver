@@ -23,16 +23,17 @@ def get_m(r) :
 
 def get_menu(day) :
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
+	print("today day : " + real_year +"/"+real_month+"/"+day)
+	print("imsi : "+imsi)
+	print("test : "+test)
 	html = urlopen(imsi)
+	print("html : "+html)
 	soup = BeautifulSoup(html.read(), "html.parser")
 	test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
 	test = test.get_text()
 	test = re.sub(" ?\d ?[.]*"," ",test)
 	test = re.sub(" +","\n",test)
-	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
-	print("today day : " + real_year +"/"+real_month+"/"+day)
-	print("imsi : "+imsi)
-	print("test : "+test)
 	return test
 
 def keyboard(request) :
