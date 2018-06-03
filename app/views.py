@@ -29,8 +29,11 @@ def get_menu(day) :
 	soup = BeautifulSoup(html.read(), "html.parser")
 	test = soup.find(class_="Schoolmeal_Cont_Cont_Cont")
 	test = test.get_text()
+	print("test : "+test)
 	test = re.sub(" ?\d ?[.]*"," ",test)
+	print("test : "+test)
 	test = re.sub(" +","\n",test)
+	print("test : "+test)
 	return test
 
 def keyboard(request) :
@@ -55,7 +58,7 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
-	#test1=get_menu(day)
+	test1=get_menu(day)
 	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
 	print("today day : " + str(real_year) +"/"+str(real_month)+"/"+str(day))
 	#print("test : "+test1)
