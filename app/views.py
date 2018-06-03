@@ -32,6 +32,7 @@ def get_menu(day) :
 	test = re.sub(" ?\d ?[.]*"," ",test)
 	#print("test : "+test)
 	test = re.sub(" +","\n",test)
+	test = re.sub("[a-zA-Z]","",test)
 	#print("test : "+test)
 	return test
 
