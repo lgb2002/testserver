@@ -56,9 +56,8 @@ def answer(request) :
 		else :
 			r = r + 1
 	test1=get_menu(day)
-	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
-	print("today day : " + real_year +"/"+real_month+"/"+day)
-	print("imsi : "+imsi)
+	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day)
+	print("today day : " + str(real_year) +"/"+str(real_month)+"/"+str(day))
 	print("test : "+test1)
 	m=get_m(r)
 	if m :
