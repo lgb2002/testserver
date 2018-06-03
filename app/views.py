@@ -29,6 +29,10 @@ def get_menu(day) :
 	test = test.get_text()
 	test = re.sub(" ?\d ?[.]*"," ",test)
 	test = re.sub(" +","\n",test)
+	print("today real_day : " + real_year +"/"+real_month+"/"+real_day)
+	print("today day : " + real_year +"/"+real_month+"/"+day)
+	print("imsi : "+imsi)
+	print("test : "+test)
 	return test
 
 def keyboard(request) :
@@ -60,6 +64,7 @@ def answer(request) :
 	else :
 	    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
 
+	print("No error!")
 	return JsonResponse({
 	    'message' : {
 	    	'text' : imsi_text
