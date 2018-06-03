@@ -61,12 +61,11 @@ def answer(request) :
 	test1=get_menu(day)
 	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
 	print("today day : " + str(real_year) +"/"+str(real_month)+"/"+str(day))
-	#print("test : "+test1)
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 	print("imsi : "+imsi)
 	m=get_m(r)
 	if m :
-	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' #+ test1 
+	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + test1 
 	else :
 	    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
 
