@@ -66,7 +66,7 @@ def answer(request) :
 	'''
 	m=get_m(r)
 	if m :
-	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + test1
+	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
 	else :
 	    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
 
