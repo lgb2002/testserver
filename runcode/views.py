@@ -29,7 +29,7 @@ def run(request):
 			'IsLive' : 'False'}
 	res = requests.post(url, data=data)
 	print(res.text)
-	print(r.json)
+	print(res.json)
 
 	return JsonResponse({
 	    'runcode/run' : {
