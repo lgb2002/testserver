@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import requests,json
+import requests,json, os
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
@@ -15,7 +15,6 @@ def run(request):
 	data ={'LanguageChoiceWrapper' : '38' ,
 			'EditorChoiceWrapper' : '1' ,
 			'LayoutChoiceWrapper' : '1' ,
-			'Program' : '#!/bin/bash # GNU bash, version 4.3.46 echo "Hello, world!";' ,
 			'Input' : '' ,
 			'Privacy' : '' ,
 			'PrivacyUsers' : '' ,
@@ -26,14 +25,38 @@ def run(request):
 			'StatsToSave' : '' ,
 			'CodeGuid' : '' ,
 			'IsInEditMode' : 'False' ,
-			'IsLive' : 'False'}
+			'IsLive' : 'False' ,
+			'Program' : '#!/bin/bash # GNU bash, version 4.3.46 echo "Hello, world!";' }
 	res = requests.post(url, data=data)
+	j = res.json()
+	'''print(data)'''
+	jsonString = json.dumps(j, indent=4)
+	print(jsonString)
+	dict = json.loads(jsonString)
+	warnings = str(dict['Warnings'])
+	errors = str(dict['Errors']) 
+	result = dict['Result']
+	stats = dict['Stats']
+	'''
 	print(res.text)
-	print(res.json)
-
+	print("result :"+result)
+	print("warnings :"+warnings)
+	print("errors : "+errors)
+	print("stats : "+stats)
+	'''
+	'''
 	return JsonResponse({
 	    'runcode/run' : {
-	    	'text' : res.text
+	    	'warnings' : warnings,
+	    	'errors' : errors,
+	    	'result' : result,
+	    	'stats' : stats
 	    	}
 	    })
-	
+	  '''
+	return render(request, 'runcode/index.html', {
+	    	'warnings' : warnings,
+	    	'errors' : errors,
+	    	'result' : result,
+	    	'stats' : stats
+	    	})

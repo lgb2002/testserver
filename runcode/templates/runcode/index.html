@@ -15,8 +15,8 @@
 	 			 }
 			});*/
 		</script>
-
-		<form action="http://rextester.com/rundotnet/Run" method="post">
+		-->
+		<form action="http://localhost:8000/runcode/run" method="post">
 			<div class="wrap">
 				<label for="Program">code:</label>
 				<textarea id="Program" name="Program">#!/bin/bash
@@ -24,6 +24,7 @@
 
 echo "Hello, world!";
 				</textarea>
+				<!--
 				<input type="hidden" name="LanguageChoiceWrapper" value="38">
 				<input type="hidden" name="EditorChoiceWrapper" value="1">
 				<input type="hidden" name="LayoutChoiceWrapper" value="1">
@@ -38,16 +39,31 @@ echo "Hello, world!";
 				<input type="hidden" name="CodeGuid" value="">
 				<input type="hidden" name="IsInEditMode" value="False">
 				<input type="hidden" name="IsLive" value="False">
+			-->
 			</div>
 
 			<div class="button">
-				<button type="submit" onclick="window.open('http://localhost:8000/runcode/')">Compile</button>
+				<button type="submit">Compile</button>
 			</div>
 		</form>
 		-->
 		<div class="reuslt">
+			<li>
 			result :
-			
+			{{ result }}
+			</li>
+			<li>
+			stats :
+			{{ stats }}
+			</li>
+			<li>
+			warnings :
+			{{ warnings }}
+			</li>
+			<li>
+			errors :
+			{{ errors }}
+			</li>
 		</div>
 	
 	<!--
