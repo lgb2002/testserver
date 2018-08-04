@@ -1,10 +1,23 @@
 <html>
 	<head>
 		hello, test
-	</head>>
+	</head>
 	<body>
+		<!--
+		<script type="text/javascript">
+			/*
+			getJSON("http://rextester.com/rundotnet/Run", function(err, data) {
+	  			if (err != null) {
+	  				alert('Something went wrong: ' + err);
+				} else {
+	  			  	alert('Your Json result is:  ' + data.result);
+	   			 	result.innerText = data.result;
+	 			 }
+			});*/
+		</script>
+
 		<form action="http://rextester.com/rundotnet/Run" method="post">
-			<div>
+			<div class="wrap">
 				<label for="Program">code:</label>
 				<textarea id="Program" name="Program">#!/bin/bash
 # GNU bash, version 4.3.46
@@ -28,8 +41,54 @@ echo "Hello, world!";
 			</div>
 
 			<div class="button">
-				<button type="submit">Compile</button>
+				<button type="submit" onclick="window.open('http://localhost:8000/runcode/')">Compile</button>
 			</div>
 		</form>
+		-->
+		<div class="reuslt">
+			result :
+			
+		</div>
+	
+	<!--
+	<script type="text/javascript">
+		// the request:
+		// POST a new email address to my GitHub account
+		var formData = new ForData();
+		formData.append("LanguageChoiceWrapper","38");
+		formData.append("EditorChoiceWrapper","1");
+		formData.append("LayoutChoiceWrapper","1");
+		formData.append("Input","");
+		formData.append("Privacy","");
+		formData.append("PrivacyUsers","");
+		formData.append("Title","");
+		formData.append("SavedOutput","");
+		formData.append("WholeError","");
+		formData.append("WholeWarning","");
+		formData.append("StatsToSave","");
+		formData.append("CodeGuid","");
+		formData.append("IsInEditMode","False");
+		formData.append("IsLive","False");
+		var request = new XMLHttpRequest();
+		request.open("POST", "http://rextester.com/rundotnet/Run");
+		request.send(formData);
+		/*
+		fetch('http://rextester.com/rundotnet/Run', { // the URI
+  		method: 'POST', // the method
+  		body: 'formData',
+		})
+  		.then(response => {
+  		// we received the response and print the status code
+  	 	alert(response.status)
+ 		// return response body as JSON
+		return response.json()
+		})
+  		.then(json => {
+    	// print the JSON
+    	alert(json)
+  		})
+		*/
+	-->
+	</script>
 	</body>
 </html>
