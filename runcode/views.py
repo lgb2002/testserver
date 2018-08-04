@@ -28,7 +28,12 @@ def run(request):
 			'IsInEditMode' : 'False' ,
 			'IsLive' : 'False'}
 	res = requests.post(url, data=data)
-	print(res.request)
+	print(res.text)
+	print(r.json)
 
-	return render(request, 'runcode/index.html', {})
+	return JsonResponse({
+	    'runcode/run' : {
+	    	'text' : res.text
+	    	}
+	    })
 	
