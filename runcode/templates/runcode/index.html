@@ -5,7 +5,7 @@
 </head>
 <body>
 	<form action="run" method="post">
-		{% crsf_token %}
+		{{ crsf_token }}
 		<div class="wrap">
 			<select name="LanguageChoiceWrapper">
 				<option value="39">Ada</option>
