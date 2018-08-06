@@ -1,102 +1,105 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		Code_Runner
-	</head>
-	<body>
-		<form action="run" method="post">
-			{{ crsf_token }}
-			<div class="wrap">
-				<select name="LanguageChoiceWrapper">
-					<option value="39">Ada</option>
-					<option value="15">Assembly</option>
-					<option value="38">Bash</option>
-					<option value="1">C#</option>
-					<option value="7">C++ (gcc)</option>
-					<option value="27">C++ (clang)</option>
-					<option value="28">C++ (vc++)</option>
-					<option value="6">C (gcc)</option>
-					<option value="26">C (clang)</option>
-					<option value="29">C (vc)</option>
-					<option value="36">Client Side</option>
-					<option value="18">Common Lisp</option>
-					<option value="30">D</option>
-					<option value="41">Elixir</option>
-					<option value="40">Erlang</option>
-					<option value="3">F#</option>
-					<option value="45">Fortran</option>
-					<option value="20">Go</option>
-					<option value="11">Haskell</option>
-					<option value="4">Java</option>
-					<option value="17">Javascript</option>
-					<option value="43">Kotlin</option>
-					<option value="14">Lua</option>
-					<option value="33">MySql</option>
-					<option value="23">Node.js</option>
-					<option value="42">Ocaml</option>
-					<option value="25">Octave</option>
-					<option value="10">Objective-C</option>
-					<option value="35">Oracle</option>
-					<option value="9">Pascal</option>
-					<option value="13">Perl</option>
-					<option value="8">Php</option>
-					<option value="34">PostgreSQL</option>
-					<option value="19">Prolog</option>
-					<option value="5">Python</option>
-					<option value="24">Python 3</option>
-					<option value="31">R</option>
-					<option value="12">Ruby</option>
-					<option value="21">Scala</option>
-					<option value="22">Scheme</option>
-					<option value="16">Sql Server</option>
-					<option value="37">Swift</option>
-					<option value="32">Tcl</option>
-					<option value="2">Visual Basic</option>
-				</select>
-					<input type="hidden" name="EditorChoiceWrapper" value="1">
-					<input type="hidden" name="LayoutChoiceWrapper" value="1">
-					<input type="hidden" name="Input" value="">
-					<input type="hidden" name="Privacy" value="">
-					<input type="hidden" name="PrivacyUsers" value="">
-					<input type="hidden" name="Title" value="">
-					<input type="hidden" name="SavedOutput" value="">
-					<input type="hidden" name="WholeError" value="">
-					<input type="hidden" name="WholeWarning" value="">
-					<input type="hidden" name="StatsToSave" value="">
-					<input type="hidden" name="CodeGuid" value="">
-					<input type="hidden" name="IsInEditMode" value="False">
-					<input type="hidden" name="IsLive" value="False">
-				<label for="Program">code:</label>
-				<textarea id="Program" name="Program">#!/bin/bash
+<head>
+	Code_Runner
+</head>
+<body>
+	<form action="run" method="post">
+		{% crsf_token %}
+		<div class="wrap">
+			<select name="LanguageChoiceWrapper">
+				<option value="39">Ada</option>
+				<option value="15">Assembly</option>
+				<option value="38">Bash</option>
+				<option value="1">C#</option>
+				<option value="7">C++ (gcc)</option>
+				<option value="27">C++ (clang)</option>
+				<option value="28">C++ (vc++)</option>
+				<option value="6">C (gcc)</option>
+				<option value="26">C (clang)</option>
+				<option value="29">C (vc)</option>
+				<option value="36">Client Side</option>
+				<option value="18">Common Lisp</option>
+				<option value="30">D</option>
+				<option value="41">Elixir</option>
+				<option value="40">Erlang</option>
+				<option value="3">F#</option>
+				<option value="45">Fortran</option>
+				<option value="20">Go</option>
+				<option value="11">Haskell</option>
+				<option value="4">Java</option>
+				<option value="17">Javascript</option>
+				<option value="43">Kotlin</option>
+				<option value="14">Lua</option>
+				<option value="33">MySql</option>
+				<option value="23">Node.js</option>
+				<option value="42">Ocaml</option>
+				<option value="25">Octave</option>
+				<option value="10">Objective-C</option>
+				<option value="35">Oracle</option>
+				<option value="9">Pascal</option>
+				<option value="13">Perl</option>
+				<option value="8">Php</option>
+				<option value="34">PostgreSQL</option>
+				<option value="19">Prolog</option>
+				<option value="5">Python</option>
+				<option value="24">Python 3</option>
+				<option value="31">R</option>
+				<option value="12">Ruby</option>
+				<option value="21">Scala</option>
+				<option value="22">Scheme</option>
+				<option value="16">Sql Server</option>
+				<option value="37">Swift</option>
+				<option value="32">Tcl</option>
+				<option value="2">Visual Basic</option>
+			</select>
+
+			<input type="hidden" name="EditorChoiceWrapper" value="1">
+			<input type="hidden" name="LayoutChoiceWrapper" value="1">
+			<input type="hidden" name="Input" value="">
+			<input type="hidden" name="Privacy" value="">
+			<input type="hidden" name="PrivacyUsers" value="">
+			<input type="hidden" name="Title" value="">
+			<input type="hidden" name="SavedOutput" value="">
+			<input type="hidden" name="WholeError" value="">
+			<input type="hidden" name="WholeWarning" value="">
+			<input type="hidden" name="StatsToSave" value="">
+			<input type="hidden" name="CodeGuid" value="">
+			<input type="hidden" name="IsInEditMode" value="False">
+			<input type="hidden" name="IsLive" value="False">
+
+			<label for="Program">code:</label>
+			<textarea id="Program" name="Program">#!/bin/bash
 # GNU bash, version 4.3.46
 
 echo "Hello, world!";
-				</textarea>
-			</div>
-
-			<div class="button">
-				<button type="submit">Compile</button>
-			</div>
-		</form>
-		-->
-		<div class="reuslt">
-			<li>
-			result :
-			{{ result }}
-			</li>
-			<li>
-			stats :
-			{{ stats }}
-			</li>
-			<li>
-			warnings :
-			{{ warnings }}
-			</li>
-			<li>
-			errors :
-			{{ errors }}
-			</li>
+			</textarea>
 		</div>
+
+
+		<div class="button">
+			<input type="submit" name="submit" value="Compile" />
+		</div>
+	</form>
 	
-	</script>
-	</body>
+	<div class="reuslt">
+		<li>
+		result :
+		{{ result }}
+		</li>
+		<li>
+		stats :
+		{{ stats }}
+		</li>
+		<li>
+		warnings :
+		{{ warnings }}
+		</li>
+		<li>
+		errors :
+		{{ errors }}
+		</li>
+	</div>
+	
+</body>
 </html>
