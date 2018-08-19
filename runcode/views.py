@@ -3,9 +3,9 @@ import requests, json, os, urllib
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from urllib.parse import urlencode
-from .models import Post
 from django.utils import timezone
-
+from runcode.models import *
+from datetime import datetime
 
 def index(request):
 	login = 0
@@ -13,13 +13,95 @@ def index(request):
 		print("login : " + login)
 		return render(request, 'runcode/index.html', {})
 	else:
-		return render(request, 'runcode/login.html', {})
+		return render(request, 'runcode/login.html', {
+			'error' : 'error'
+			})
 		'''return HttpResponse("Login Error")'''
 
 
+@csrf_exempt
+def register(request):
+	if request.method == "POST":
+		
+		register_id = request.POST.get('userid')
+		register_pwd = request.POST.get('userpwd')
+		register_name = request.POST.get('username')
+
+		print("userid : "+register_id+" userpwd : "+register_pwd+" username : "+register_name)
+
+		try:
+			register_user = UserInfo.objects.get(user_name = register_name)
+			try:
+				register_user = UserInfo.objects.get(user_id = register_id)
+				print("id exist")
+				return render(request, 'runcode/register.html', {
+					'result' : 'id exist'
+				})
+			except UserInfo.DoesNotExist:
+				print("name exist")
+				return render(request, 'runcode/register.html', {
+					'result' : 'name exist'
+				})
+		except UserInfo.DoesNotExist:
+			print("success")
+			register = UserInfo(
+				user_id = register_id,
+				user_pwd = register_pwd,
+				user_name = register_name,
+				created_date = datetime.now()
+			)
+			register.save()
+			return render(request, 'runcode/register.html', {
+				'user_id' : register_id,
+				'user_pwd' : register_pwd,
+				'user_name' : register_name,
+				'result' : 'success'
+			})
+	else:
+		return render(request, 'runcode/register.html',{})
+
+
+
+
+@csrf_exempt
 def login(request):
-	posts = Post.objects.filter(published_data__lte=timezone.now()).order_by('published_data')
-	return render(request, 'runcode/login.html', {'posts':posts})
+	if request.method == "POST":
+		
+		get_id = request.POST.get('userid')
+		get_pwd = request.POST.get('userpwd')
+
+		try:
+			imsi_user = UserInfo.objects.get(user_id = get_id, user_pwd = get_pwd)
+			user_id = imsi_user.user_id
+			user_pwd = imsi_user.user_pwd
+			return render(request, 'runcode/login.html', {'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
+
+		except UserInfo.DoesNotExist:
+			print(" Error! No Match UserInformation! ")
+			login = Login(login_id = get_id, login_pwd = get_pwd, login_date = datetime.now(), login_error = "No Match")
+			login.save()
+			imsi_login = Login.objects.filter(login_id = get_id, login_pwd = get_pwd).order_by('login_date').last()
+			error = imsi_login.login_error
+			return render(request, 'runcode/login.html', {'user_id' : "No id", 'user_pwd' : "No pwd", 'error' : error})
+
+	'''
+		message = json.loads(message)
+		userid = dict[userid]
+		userpwd = dict[userpwd]
+	'''
+
+	'''
+	else : 
+		return render(request, 'runcode/login.html', {
+		    'userid' : "None",
+		    'userpwd' : "None"
+		    }) 
+	print("login : "+message)
+	return render(request, 'runcode/login.html', {
+		'userid' : 'userid',
+		'userpwd' : 'userpwd'
+		}) 
+	'''
 
 
 @csrf_exempt
