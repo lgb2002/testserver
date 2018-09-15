@@ -74,10 +74,14 @@ def answer(request) :
 			'type' : 'buttons',
 			'buttons' : ['급식알림','코드실행기','챗봇']
 			})
-
+	elif return_str == '뒤로가기' :
+		return JsonResponse({
+			'type' : 'buttons',
+			'buttons' : ['급식알림','코드실행기','챗봇']
+			})
 
 	r = datetime.today().weekday()
-	if return_str == '오늘' :
+	elif return_str == '오늘' :
 		day = real_day
 	elif return_str == '내일' :
 		day = real_day + 1
@@ -85,11 +89,8 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
-	elif return_str == '뒤로가기' :
-		return JsonResponse({
-			'type' : 'buttons',
-			'buttons' : ['급식알림','코드실행기','챗봇']
-			})
+
+	print("return_str : "+return_str)
 	'''
 	test1=get_menu(day)
 	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
