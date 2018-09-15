@@ -87,29 +87,29 @@ def answer(request) :
 				}
 			})
 		else :
-		r = datetime.today().weekday()
-		if return_str == '오늘' :
-			day = real_day
-		elif return_str == '내일' :
-			day = real_day + 1
-			if r == 6 :
-				r = 0
+			r = datetime.today().weekday()
+			if return_str == '오늘' :
+				day = real_day
+			elif return_str == '내일' :
+				day = real_day + 1
+				if r == 6 :
+					r = 0
+				else :
+					r = r + 1
+			print("return_str : "+return_str)
+			m=get_m(r)
+			if m :
+				imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
 			else :
-				r = r + 1
-		print("return_str : "+return_str)
-		m=get_m(r)
-		if m :
-			imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
-		else :
-			imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
+				imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
 
-		print("No error!")
-		return JsonResponse({
-			'message' : {
-			    'text' : imsi_text
-			},
-			'keyboard' : {
-			    'type': 'buttons',
-		        'buttons' : ['오늘','내일','뒤로가기']
-			    }
-			})
+			print("No error!")
+			return JsonResponse({
+				'message' : {
+				    'text' : imsi_text
+				},
+				'keyboard' : {
+				    'type': 'buttons',
+			        'buttons' : ['오늘','내일','뒤로가기']
+				    }
+				})
