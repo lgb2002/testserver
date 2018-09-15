@@ -50,9 +50,26 @@ def answer(request) :
 
 	if return_str == '급식알림' :
 		return JsonResponse({
-            		'type' : 'buttons',
-            		'buttons' : ['오늘','내일']
-            	})
+		    'message' : {
+		    	'text' : 'test'
+		    },
+		    'keyboard' : {
+		        'type': 'buttons',
+	            'buttons' : ['오늘','내일']
+		    }
+	    })
+	elif return_str == '코드실행기' :
+		return JsonResponse({
+		    'message' : {
+		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요.'
+		    }
+	    })
+	elif return_str == '챗봇' :
+		return JsonResponse({
+		    'message' : {
+		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
+			}
+		})
 
 
 	r = datetime.today().weekday()
