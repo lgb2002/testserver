@@ -55,7 +55,7 @@ def answer(request) :
 		    },
 		    'keyboard' : {
 		        'type': 'buttons',
-	            'buttons' : ['오늘','내일',"뒤로가기"]
+	            'buttons' : ['오늘','내일','뒤로가기']
 		    }
 	    })
 	elif return_str == '코드실행기' :
@@ -85,6 +85,16 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
+	elif return_str == '뒤로가기' :
+		return JsonResponse({
+		    'message' : {
+		    	'text' : 'welcome'
+			},
+			'keyboard' : {
+				'type' : 'buttons',
+				'buttons' : ['급식알림','코드실행기','챗봇']
+			}
+		})
 	'''
 	test1=get_menu(day)
 	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
@@ -105,6 +115,6 @@ def answer(request) :
 	    },
 	    'keyboard' : {
 	        'type': 'buttons',
-            'buttons' : ['오늘','내일']
+            'buttons' : ['오늘','내일','뒤로가기']
 	        }
 	    })
