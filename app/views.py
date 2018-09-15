@@ -37,9 +37,9 @@ def get_menu(day) :
 
 def keyboard(request) :
 	return JsonResponse({
-            'type' : 'buttons',
-            'buttons' : ['급식알림','코드실행기','챗봇']
-            })
+        'type' : 'buttons',
+        'buttons' : ['급식알림','코드실행기','챗봇']
+        })
 
 @csrf_exempt
 def answer(request) :
@@ -50,11 +50,9 @@ def answer(request) :
 
 	if return_str == '급식알림' :
 		return JsonResponse({
-		    'keyboard' : {
-		        'type': 'buttons',
-	            'buttons' : ['오늘','내일','뒤로가기']
-		    }
-	    })
+		    'type': 'buttons',
+	        'buttons' : ['오늘','내일','뒤로가기']
+	    	})
 	elif return_str == '코드실행기' :
 		return JsonResponse({
 		    'message' : {
@@ -84,11 +82,9 @@ def answer(request) :
 			r = r + 1
 	elif return_str == '뒤로가기' || return_str == '--home' :
 		return JsonResponse({
-			'keyboard' : {
-				'type' : 'buttons',
-				'buttons' : ['급식알림','코드실행기','챗봇']
-			}
-		})
+			'type' : 'buttons',
+			'buttons' : ['급식알림','코드실행기','챗봇']
+			})
 	'''
 	test1=get_menu(day)
 	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
