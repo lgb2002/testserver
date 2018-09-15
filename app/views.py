@@ -49,17 +49,20 @@ def answer(request) :
 	print("test, is this error?")
 
 	if return_str == '급식알림' :
+		choice = 1
 		return JsonResponse({
 		    'type': 'buttons',
 	        'buttons' : ['오늘','내일','뒤로가기']
 	    	})
 	elif return_str == '코드실행기' :
+		choice = 2
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.'
 		    }
 	    })
 	elif return_str == '챗봇' :
+		choice = 3
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
@@ -69,26 +72,23 @@ def answer(request) :
 				'buttons' : ['뒤로가기']
 			}
 		})
-	elif return_str == '--home' :
-		return JsonResponse({
-			'type' : 'buttons',
-			'buttons' : ['급식알림','코드실행기','챗봇']
-			})
-	elif return_str == '뒤로가기' :
-		return JsonResponse({
-			'type' : 'buttons',
-			'buttons' : ['급식알림','코드실행기','챗봇']
-			})
-
-	r = datetime.today().weekday()
-	elif return_str == '오늘' :
-		day = real_day
-	elif return_str == '내일' :
-		day = real_day + 1
-		if r == 6 :
-			r = 0
-		else :
-			r = r + 1
+	
+	if choice == 1 or choice == 2 :
+		if return_str == '--home' or return_str == '뒤로가기' :
+			return JsonResponse({
+				'type' : 'buttons',
+				'buttons' : ['급식알림','코드실행기','챗봇']
+				})
+	elif choice == 3 :
+		r = datetime.today().weekday()
+		if return_str == '오늘' :
+			day = real_day
+		elif return_str == '내일' :
+			day = real_day + 1
+			if r == 6 :
+				r = 0
+			else :
+				r = r + 1
 
 	print("return_str : "+return_str)
 	'''
