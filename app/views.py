@@ -51,9 +51,14 @@ def answer(request) :
 	if return_str == '급식알림' :
 		choice = 1
 		return JsonResponse({
-		    'type': 'buttons',
-	        'buttons' : ['오늘','내일','뒤로가기']
-	    	})
+		    'message' : {
+		    	'text' : ''
+		    },
+		    'keyboard' : {
+			    'type': 'buttons',
+		        'buttons' : ['오늘','내일','뒤로가기']
+	    	}
+	    })
 	elif return_str == '코드실행기' :
 		choice = 2
 		return JsonResponse({
@@ -76,9 +81,14 @@ def answer(request) :
 	if choice == 1 or choice == 2 :
 		if return_str == '--home' or return_str == '뒤로가기' :
 			return JsonResponse({
-				'type' : 'buttons',
-				'buttons' : ['급식알림','코드실행기','챗봇']
-				})
+			    'message' : {
+			    	'text' : ''
+			    },
+				'keyboard' : {
+					'type' : 'buttons',
+					'buttons' : ['급식알림','코드실행기','챗봇']
+				}
+			})
 	elif choice == 3 :
 		r = datetime.today().weekday()
 		if return_str == '오늘' :
