@@ -78,49 +78,42 @@ def answer(request) :
 			}
 		})
 	
-	if choice == 1 or choice == 2 :
-		if return_str == '--home' or return_str == '뒤로가기' :
+	else :
+		if choice == 2 or choice == 3 :
+			if return_str == '--home' or return_str == '뒤로가기' :
+				return JsonResponse({
+				    'message' : {
+				    	'text' : 'test2'
+				    },
+					'keyboard' : {
+						'type' : 'buttons',
+						'buttons' : ['급식알림','코드실행기','챗봇']
+					}
+				})
+		elif choice == 1 :
+			r = datetime.today().weekday()
+			if return_str == '오늘' :
+				day = real_day
+			elif return_str == '내일' :
+				day = real_day + 1
+				if r == 6 :
+					r = 0
+				else :
+					r = r + 1
+			print("return_str : "+return_str)
+			m=get_m(r)
+			if m :
+			    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
+			else :
+			    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
+
+			print("No error!")
 			return JsonResponse({
 			    'message' : {
-			    	'text' : 'test2'
+			    	'text' : imsi_text
 			    },
-				'keyboard' : {
-					'type' : 'buttons',
-					'buttons' : ['급식알림','코드실행기','챗봇']
-				}
-			})
-	elif choice == 3 :
-		r = datetime.today().weekday()
-		if return_str == '오늘' :
-			day = real_day
-		elif return_str == '내일' :
-			day = real_day + 1
-			if r == 6 :
-				r = 0
-			else :
-				r = r + 1
-
-	print("return_str : "+return_str)
-	'''
-	test1=get_menu(day)
-	print("today real_day : " + str(real_year) +"/"+str(real_month)+"/"+str(real_day))
-	print("today day : " + str(real_year) +"/"+str(real_month)+"/"+str(day))
-	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
-	print("imsi : "+imsi)
-	'''
-	m=get_m(r)
-	if m :
-	    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
-	else :
-	    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
-
-	print("No error!")
-	return JsonResponse({
-	    'message' : {
-	    	'text' : imsi_text
-	    },
-	    'keyboard' : {
-	        'type': 'buttons',
-            'buttons' : ['오늘','내일','뒤로가기']
-	        }
-	    })
+			    'keyboard' : {
+			        'type': 'buttons',
+		            'buttons' : ['오늘','내일','뒤로가기']
+			        }
+			    })
