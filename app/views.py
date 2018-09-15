@@ -38,7 +38,7 @@ def get_menu(day) :
 def keyboard(request) :
 	return JsonResponse({
             'type' : 'buttons',
-            'buttons' : ['오늘','내일']
+            'buttons' : ['급식알림','코드실행기','챗봇']
             })
 
 @csrf_exempt
@@ -47,6 +47,13 @@ def answer(request) :
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
 	print("test, is this error?")
+
+	if return_str == '급식알림' :
+		return JsonResponse({
+            		'type' : 'buttons',
+            		'buttons' : ['오늘','내일']
+            	})
+
 
 	r = datetime.today().weekday()
 	if return_str == '오늘' :
