@@ -8,6 +8,7 @@ import json, re
 
 #Basic Settings on date
 
+choice = 0
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
@@ -49,6 +50,7 @@ def answer(request) :
 	print("test, is this error?")
 
 	if return_str == '급식알림' :
+		global choice
 		choice = 1
 		return JsonResponse({
 		    'message' : {
@@ -60,6 +62,7 @@ def answer(request) :
 	    	}
 	    })
 	elif return_str == '코드실행기' :
+		global choice
 		choice = 2
 		return JsonResponse({
 		    'message' : {
@@ -67,6 +70,7 @@ def answer(request) :
 		    }
 	    })
 	elif return_str == '챗봇' :
+		global choice
 		choice = 3
 		return JsonResponse({
 		    'message' : {
