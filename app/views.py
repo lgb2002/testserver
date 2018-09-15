@@ -49,8 +49,6 @@ def answer(request) :
 	print("test, is this error?")
 
 	if return_str == '급식알림' :
-		global choice
-		choice = 1
 		return JsonResponse({
 		    'message' : {
 		    	'text' : 'test1'
@@ -61,16 +59,12 @@ def answer(request) :
 	    	}
 	    })
 	elif return_str == '코드실행기' :
-		global choice
-		choice = 2
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.'
 		    }
 	    })
 	elif return_str == '챗봇' :
-		global choice
-		choice = 3
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
@@ -82,41 +76,40 @@ def answer(request) :
 		})
 	
 	else :
-		if choice == 2 or choice == 3 :
-			if return_str == '--home' or return_str == '뒤로가기' :
-				return JsonResponse({
-				    'message' : {
-				    	'text' : 'test2'
-				    },
-					'keyboard' : {
-						'type' : 'buttons',
-						'buttons' : ['급식알림','코드실행기','챗봇']
-					}
-				})
-		elif choice == 1 :
-			r = datetime.today().weekday()
-			if return_str == '오늘' :
-				day = real_day
-			elif return_str == '내일' :
-				day = real_day + 1
-				if r == 6 :
-					r = 0
-				else :
-					r = r + 1
-			print("return_str : "+return_str)
-			m=get_m(r)
-			if m :
-			    imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
-			else :
-			    imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
-
-			print("No error!")
+		if return_str == '--home' or return_str == '뒤로가기' :
 			return JsonResponse({
-			    'message' : {
-			    	'text' : imsi_text
+				'message' : {
+				   	'text' : 'test2'
 			    },
-			    'keyboard' : {
-			        'type': 'buttons',
-		            'buttons' : ['오늘','내일','뒤로가기']
-			        }
-			    })
+				'keyboard' : {
+					'type' : 'buttons',
+					'buttons' : ['급식알림','코드실행기','챗봇']
+				}
+			})
+		else :
+		r = datetime.today().weekday()
+		if return_str == '오늘' :
+			day = real_day
+		elif return_str == '내일' :
+			day = real_day + 1
+			if r == 6 :
+				r = 0
+			else :
+				r = r + 1
+		print("return_str : "+return_str)
+		m=get_m(r)
+		if m :
+			imsi_text = t[r] + '요일의 메뉴는?!! \n\n\n ' + get_menu(day)
+		else :
+			imsi_text = t[r] + '요일은 급식이 제공되지 않습니다.'
+
+		print("No error!")
+		return JsonResponse({
+			'message' : {
+			    'text' : imsi_text
+			},
+			'keyboard' : {
+			    'type': 'buttons',
+		        'buttons' : ['오늘','내일','뒤로가기']
+			    }
+			})
