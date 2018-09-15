@@ -50,9 +50,6 @@ def answer(request) :
 
 	if return_str == '급식알림' :
 		return JsonResponse({
-		    'message' : {
-		    	'text' : 'test'
-		    },
 		    'keyboard' : {
 		        'type': 'buttons',
 	            'buttons' : ['오늘','내일','뒤로가기']
@@ -85,11 +82,8 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
-	elif return_str == '뒤로가기' :
+	elif return_str == '뒤로가기' || return_str == '--home' :
 		return JsonResponse({
-		    'message' : {
-		    	'text' : 'welcome'
-			},
 			'keyboard' : {
 				'type' : 'buttons',
 				'buttons' : ['급식알림','코드실행기','챗봇']
