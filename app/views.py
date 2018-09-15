@@ -52,7 +52,7 @@ def answer(request) :
 		choice = 1
 		return JsonResponse({
 		    'message' : {
-		    	'text' : ''
+		    	'text' : 'test1'
 		    },
 		    'keyboard' : {
 			    'type': 'buttons',
@@ -82,7 +82,7 @@ def answer(request) :
 		if return_str == '--home' or return_str == '뒤로가기' :
 			return JsonResponse({
 			    'message' : {
-			    	'text' : ''
+			    	'text' : 'test2'
 			    },
 				'keyboard' : {
 					'type' : 'buttons',
