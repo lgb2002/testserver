@@ -69,6 +69,11 @@ def answer(request) :
 				'buttons' : ['뒤로가기']
 			}
 		})
+	elif return_str == '--home' :
+		return JsonResponse({
+			'type' : 'buttons',
+			'buttons' : ['급식알림','코드실행기','챗봇']
+			})
 
 
 	r = datetime.today().weekday()
@@ -80,7 +85,7 @@ def answer(request) :
 			r = 0
 		else :
 			r = r + 1
-	elif return_str == '뒤로가기' || return_str == '--home' :
+	elif return_str == '뒤로가기' :
 		return JsonResponse({
 			'type' : 'buttons',
 			'buttons' : ['급식알림','코드실행기','챗봇']
