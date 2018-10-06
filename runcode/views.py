@@ -84,38 +84,28 @@ def login(request):
 			error = imsi_login.login_error
 			return render(request, 'runcode/login.html', {'user_id' : "No id", 'user_pwd' : "No pwd", 'error' : error})
 
-	'''
-		message = json.loads(message)
-		userid = dict[userid]
-		userpwd = dict[userpwd]
-	'''
 
-	'''
-	else : 
-		return render(request, 'runcode/login.html', {
-		    'userid' : "None",
-		    'userpwd' : "None"
-		    }) 
-	print("login : "+message)
-	return render(request, 'runcode/login.html', {
-		'userid' : 'userid',
-		'userpwd' : 'userpwd'
-		}) 
-	'''
+
+
+
 
 
 @csrf_exempt
 def run(request):
 
 	if request.method == "POST":
-		message = str(request.body, encoding='utf-8')
-	else : 
+		#if request.url == :
+			message = str(request.body, encoding='utf-8')
+		#elif request.url == :
+
+	else :
 		return render(request, 'runcode/index.html', {
 	    	'warnings' : "None",
 	    	'errors' : "None",
 	    	'result' : "None",
 	    	'stats' : "None"
 	    	})
+
 	print("test message:" + message)
 
 	url = "http://rextester.com/rundotnet/Run"

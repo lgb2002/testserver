@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from datetime import datetime
+from runcode.views import *
 import json, re
 
 #Basic Settings on date
@@ -49,9 +50,11 @@ def answer(request) :
 	print("test, is this error?")
 
 	if return_str == '급식알림' :
+		choice = 1
 		return JsonResponse({
-		    'message' : {
-		    	'text' : 'test1'
+			'message' : {
+		    	'text' : 'test1',
+		    	'choice' : '1'
 		    },
 		    'keyboard' : {
 			    'type': 'buttons',
@@ -61,13 +64,15 @@ def answer(request) :
 	elif return_str == '코드실행기' :
 		return JsonResponse({
 		    'message' : {
-		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.'
+		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.',
+		    	'choice' : '2'
 		    }
 	    })
 	elif return_str == '챗봇' :
 		return JsonResponse({
 		    'message' : {
-		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
+		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!',
+		    	'choice' : '3'
 			},
 			'keyboard' : {
 				'type' : 'buttons',
@@ -79,14 +84,15 @@ def answer(request) :
 		if return_str == '--home' or return_str == '뒤로가기' :
 			return JsonResponse({
 				'message' : {
-				   	'text' : 'test2'
+				   	'text' : 'test2',
+				   	'choice' : choice
 			    },
 				'keyboard' : {
 					'type' : 'buttons',
 					'buttons' : ['급식알림','코드실행기','챗봇']
 				}
 			})
-		else :
+		elif choice == 1:
 			r = datetime.today().weekday()
 			if return_str == '오늘' :
 				day = real_day
@@ -111,5 +117,12 @@ def answer(request) :
 				'keyboard' : {
 				    'type': 'buttons',
 			        'buttons' : ['오늘','내일','뒤로가기']
-				    }
-				})
+				}
+			})
+		elif choice == 2:
+			message = return_str
+			url = "http://kakao.pythonanywhere/runcode/run"
+			headers = {'Accept': 'text/plain, */*; q=0.01', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Referer':
+		'http://rextester.com/l/bash_online_compiler', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36',
+		'X-Requested-With': 'XMLHttpRequest'}
+			res = requests.post(url, headers=headers , data=message)
