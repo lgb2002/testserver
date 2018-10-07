@@ -149,7 +149,7 @@ def run(request):
 		    	'result' : result,
 		    	'stats' : stats
 		    	})
-	else
+	else:
 		return render(request, 'runcode/index.html', {
 		    	'warnings' : warnings,
 		    	'errors' : errors,
