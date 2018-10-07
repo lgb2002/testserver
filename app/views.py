@@ -124,7 +124,7 @@ def answer(request) :
 			        'buttons' : ['오늘','내일','뒤로가기']
 				}
 			})
-		elif choice == 2:
+		elif choice == 2 or choice == 0:
 			message = return_str
 			'''
 			print("message : "+message)
