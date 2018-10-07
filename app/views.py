@@ -46,10 +46,10 @@ def keyboard(request) :
 @csrf_exempt
 def answer(request) :
 	global choice
+	print("choice: "+choice)
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
-	print("test, is this error?")
 
 	if return_str == '급식알림' :
 		choice = 1
