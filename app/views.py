@@ -157,6 +157,7 @@ def answer(request) :
 			#print("jsonString:" +jsonString)
 
 			dict = json.loads(jsonString)
+			print("dict:"+dict)
 			warnings = str(dict['Warnings'])
 			errors = str(dict['Errors']) 
 			result = str(dict['Result'])
@@ -165,7 +166,7 @@ def answer(request) :
 
 			return JsonResponse({
 				'message' : {
-				    'text' : result
+				    'text' : 'result'
 				}
 			})
  			
