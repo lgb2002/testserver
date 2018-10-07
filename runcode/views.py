@@ -92,7 +92,7 @@ def login(request):
 
 @csrf_exempt
 def run(request):
-	choice = request.POST.get('choice')
+	choice = request.POST.get('choice','')
 	print("choice:"+choice)
 
 	if request.method == "POST":
