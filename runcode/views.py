@@ -92,11 +92,12 @@ def login(request):
 
 @csrf_exempt
 def run(request):
+	choice = request.POST.get('choice')
 
 	if request.method == "POST":
-		if request.POST.get('choice') == 4:
+		if choice == 4:
 			message = str(request.body, encoding='utf-8')
-		elif request.POST.get('choice') != 4:
+		elif choice != 4:
 			message = str(request.body, encoding='utf-8')
 
 	else :
@@ -140,7 +141,15 @@ def run(request):
 	    	}
 	    })
 	'''
-	if request.POST.get('choice') == 4:
+	print("choice : "+choice)
+	if choice == 4:
+		return render(request, 'runcode/index.html', {
+		    	'warnings' : warnings,
+		    	'errors' : errors,
+		    	'result' : result,
+		    	'stats' : stats
+		    	})
+	else
 		return render(request, 'runcode/index.html', {
 		    	'warnings' : warnings,
 		    	'errors' : errors,
