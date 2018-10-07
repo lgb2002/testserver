@@ -124,9 +124,8 @@ def answer(request) :
 			message = return_str
 			print("message : "+message)
 			url = "http://kakao.pythonanywhere/runcode/run"
-			headers = {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
-'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer': 'http://kakao.pythonanywhere.com/runcode/run', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'}
-			res = requests.post(url, headers=headers , data=message)
+			headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+			res = requests.post(url, data=message)
 			j = json.loads(res.text)
 			jsonString = json.dumps(j, indent=4)
 			dict = json.loads(jsonString)
