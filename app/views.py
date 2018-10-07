@@ -139,6 +139,7 @@ def answer(request) :
 			errors = str(dict['Errors']) 
 			result = str(dict['Result'])
 			stats = str(dict['Stats'])
+			print("result :"+result+" & stats :"+stats)
 
 			return JsonResponse({
 				'message' : {
