@@ -46,7 +46,7 @@ def keyboard(request) :
 @csrf_exempt
 def answer(request) :
 	global choice
-	print("choice: "+choice)
+	print("choice: "+str(choice))
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
