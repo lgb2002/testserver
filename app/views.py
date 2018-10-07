@@ -9,7 +9,6 @@ import json, re
 
 #Basic Settings on date
 
-global choice
 choice = 0
 datetime.today()
 real_year=datetime.today().year
@@ -46,6 +45,7 @@ def keyboard(request) :
 
 @csrf_exempt
 def answer(request) :
+	global choice
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
