@@ -9,6 +9,8 @@ import json, re
 
 #Basic Settings on date
 
+global choice
+choice = 0
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
@@ -50,6 +52,7 @@ def answer(request) :
 	print("test, is this error?")
 
 	if return_str == '급식알림' :
+		choice = 1
 		return JsonResponse({
 			'message' : {
 		    	'text' : 'test1',
@@ -61,6 +64,7 @@ def answer(request) :
 	    	}
 	    })
 	elif return_str == '코드실행기' :
+		choice = 2
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.',
@@ -68,6 +72,7 @@ def answer(request) :
 		    }
 	    })
 	elif return_str == '챗봇' :
+		choice = 3
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!',
@@ -81,6 +86,7 @@ def answer(request) :
 	
 	else :
 		if return_str == '--home' or return_str == '뒤로가기' :
+			choice = 0
 			return JsonResponse({
 				'message' : {
 				   	'text' : 'test2',
