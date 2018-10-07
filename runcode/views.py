@@ -94,9 +94,10 @@ def login(request):
 def run(request):
 
 	if request.method == "POST":
-		#if request.url == :
+		if request.POST.get('choice') == 4:
 			message = str(request.body, encoding='utf-8')
-		#elif request.url == :
+		elif request.POST.get('choice') != 4:
+			message = str(request.body, encoding='utf-8')
 
 	else :
 		return render(request, 'runcode/index.html', {
@@ -139,9 +140,11 @@ def run(request):
 	    	}
 	    })
 	'''
-	return render(request, 'runcode/index.html', {
-	    	'warnings' : warnings,
-	    	'errors' : errors,
-	    	'result' : result,
-	    	'stats' : stats
-	    	})
+	if request.POST.get('choice') == 4:
+		return render(request, 'runcode/index.html', {
+		    	'warnings' : warnings,
+		    	'errors' : errors,
+		    	'result' : result,
+		    	'stats' : stats
+		    	})
+	#elif request.POST.get('choice') != 4:
