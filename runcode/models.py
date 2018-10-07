@@ -24,3 +24,5 @@ class Run(models.Model):
     run_language = models.TextField(max_length = 20, blank="True")
     run_date = models.DateTimeField(auto_now = True)
     code = models.TextField(max_length = 2000, blank="True")
+    def __str__(self):
+        return " user :"+self.run_user+" language: "+self.run_language+" code :"+self.code+" date :"+str(self.run_date)

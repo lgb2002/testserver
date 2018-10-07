@@ -5,16 +5,19 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from datetime import datetime
 from runcode.views import *
+from runcode.models import *
 import json, re
 
 #Basic Settings on date
 
-choice = 0
+
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
+
+choice = 0
 
 def get_m(r) :
 	if r == 5 or r == 6 :
@@ -50,6 +53,7 @@ def answer(request) :
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
+	user_key = return_json_str['user_key']
 
 	if return_str == '급식알림' :
 		choice = 1
@@ -157,16 +161,25 @@ def answer(request) :
 			#print("jsonString:" +jsonString)
 
 			dict = json.loads(jsonString)
-			print("dict:"+str(dict))
+			#print("dict:"+str(dict))
 			warnings = str(dict['Warnings'])
 			errors = str(dict['Errors']) 
 			result = str(dict['Result'])
 			stats = str(dict['Stats'])
 
+			print("chatbot run code")
+			'''register = UserInfo(
+				run_user = user_key,
+				run_language = register_pwd,
+				user_name = register_name,
+				created_date = datetime.now()
+			)
+
+			register.save()'''
 
 			return JsonResponse({
 				'message' : {
-				    'text' : str(dict)
+				    'text' : result
 				}
 			})
  			
