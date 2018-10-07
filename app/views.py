@@ -9,7 +9,7 @@ import json, re
 
 #Basic Settings on date
 
-choice = 0
+global choice
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
