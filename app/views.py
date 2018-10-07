@@ -55,8 +55,7 @@ def answer(request) :
 		choice = 1
 		return JsonResponse({
 			'message' : {
-		    	'text' : 'test1',
-		    	'choice' : '1'
+		    	'text' : 'test1'
 		    },
 		    'keyboard' : {
 			    'type': 'buttons',
@@ -67,16 +66,14 @@ def answer(request) :
 		choice = 2
 		return JsonResponse({
 		    'message' : {
-		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.',
-		    	'choice' : '2'
+		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.'
 		    }
 	    })
 	elif return_str == '챗봇' :
 		choice = 3
 		return JsonResponse({
 		    'message' : {
-		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!',
-		    	'choice' : '3'
+		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
 			},
 			'keyboard' : {
 				'type' : 'buttons',
@@ -89,8 +86,7 @@ def answer(request) :
 			choice = 0
 			return JsonResponse({
 				'message' : {
-				   	'text' : 'test2',
-				   	'choice' : choice
+				   	'text' : 'test2'
 			    },
 				'keyboard' : {
 					'type' : 'buttons',
