@@ -29,10 +29,10 @@
 				readTextFile(url);
 				break;
 		}
-		return true;
+		return url;
 	}
 	//select option click change textarea value
-</script>>
+</script>
 <body>
 	<form action="run" method="post">
 		{{ crsf_token }}
@@ -99,7 +99,7 @@
 			<input type="hidden" name="IsLive" value="False">
 
 			<label for="Program">code:</label>
-			<textarea id="Program" name="Program"></textarea> 
+			<textarea id="Program" name="Program"> {{ url }} </textarea> 
 		</div>
 
 
