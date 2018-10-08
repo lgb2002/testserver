@@ -2,11 +2,11 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
-from urllib.request import urlopen
+#from urllib.request import urlopen
 from runcode.views import *
 from runcode.models import *
 from datetime import datetime
-import json, re
+import json, re, urllib
 
 #Basic Settings on date
 
