@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 from runcode.views import *
 from runcode.models import *
 from datetime import datetime
-import json, re,
+import json, re
 
 #Basic Settings on date
 
