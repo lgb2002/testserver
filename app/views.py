@@ -177,9 +177,7 @@ def answer(request) :
 
 		elif choice == 6 or choice == 0:
 			code = return_str
-			code = urllib.parse.urlencode(code)
-			print("code: "+code)
-			plus = 'LanguageChoiceWrapper='+num+'&Program'+code
+			plus = 'LanguageChoiceWrapper='+num+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
 			message = '&EditorChoiceWrapper=1&LayoutChoiceWrapper=1&Input=&Privacy=&PrivacyUsers=&Title=&SavedOutput=&WholeError=&WholeWarning=&StatsToSave=&CodeGuid=&IsInEditMode=False&IsLive=False'
 			message = plus+message
