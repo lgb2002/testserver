@@ -1,0 +1,31 @@
+<!--This code runs in your browser. If you want to see errors, examine them in your browser's developer console (usually invoked with F12)-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, world!</title>
+	<meta charset="utf-8" />
+    <style type = "text/css" >
+        body { font - family: Arial; }
+        pre { font - family: "Consolas",monospace; font - size: 14px; white - space: pre - wrap; word - wrap: break-word; width: 99 %; }
+    </style>
+    <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type = "text/javascript">
+        $(document).ready(function() {
+            printSentence("result", "Hello, world!");
+        });
+        function printSentence(id, sentence) {
+            for (var i = 0; i < sentence.length; i++)
+            {
+                (function(index) {
+                    setTimeout(function() {
+                        document.getElementById(id).innerHTML += sentence[index];
+                    }, 50 * i);
+                })(i);
+            }
+        }
+    </script>
+</head>
+<body>
+    <pre id = "result" ></pre>
+</body>
+</html>

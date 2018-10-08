@@ -1,0 +1,6 @@
+--Oracle 11g Express Edition
+--please drop objects you've created at the end of the script 
+--or check for their existance before creating
+--'\\' is a delimiter
+
+select banner as "oracle version" from v$version

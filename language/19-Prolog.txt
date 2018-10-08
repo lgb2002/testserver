@@ -1,0 +1,6 @@
+%commands to the interpreter are submitted from stdin input ('show input' box below)
+%'halt.' will be automatically appended to stdin input.
+%swi-prolog 7.2.3
+
+program :- write('Hello, world!').
+:- program.

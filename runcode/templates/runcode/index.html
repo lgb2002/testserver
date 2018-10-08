@@ -3,11 +3,41 @@
 <head>
 	Code_Runner
 </head>
+<script type="text/javascript">
+	function readTextFile(file){
+		var rawFile = new XMLHttpRequest(); rawFile.open("GET", file, false);
+		rawFile.onreadystatechange = function (){
+			if(rawFile.readyState === 4){
+				if(rawFile.status === 200 || rawFile.status == 0){
+					var allText = rawFile.responseText; alert(allText);
+				}
+			}
+		};
+		rawFile.send(null);
+	} 
+	//read local file by javascript
+	function langDisplay(frm){
+		var lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
+		var langNum = frm.LanguageChoiceWrapper.selectedIndex;
+
+		switch(langNum){
+			case 0:
+				frm.Program.value = 'write your code';
+				break;
+			default:
+				url = "./language/"+str(langNum)+lang[langNum]+".txt"
+				readTextFile(url);
+				break;
+		}
+		return true;
+	}
+	//select option click change textarea value
+</script>>
 <body>
 	<form action="run" method="post">
 		{{ crsf_token }}
 		<div class="wrap">
-			<select name="LanguageChoiceWrapper">
+			<select name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
 				<option value="39">Ada</option>
 				<option value="15">Assembly</option>
 				<option value="38">Bash</option>
@@ -69,11 +99,7 @@
 			<input type="hidden" name="IsLive" value="False">
 
 			<label for="Program">code:</label>
-			<textarea id="Program" name="Program">#!/bin/bash
-# GNU bash, version 4.3.46
-
-echo "Hello, world!";
-			</textarea>
+			<textarea id="Program" name="Program"></textarea> 
 		</div>
 
 

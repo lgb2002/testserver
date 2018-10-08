@@ -17,6 +17,7 @@ real_year=datetime.today().year
 real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
+Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
 
 num = "0"
 choice = 0
@@ -143,34 +144,14 @@ def answer(request) :
 				},
 				'keyboard' : {
 				    'type': 'buttons',
-			        'buttons' : ['1.Assembly', '2.Bash', '3.C#', '4.C++ ', '5.C', '6.Java', '7.Javascript', '8.Lua', '9.MySql', '10.Node.js', '11.Oracle', '12.Pascal', '13.Php', '14.Python', '15.R', '16.Ruby', '17.Sql Server', '18.Swift', '19.Visual Basic']
+			        'buttons' : ['Assembly', 'Bash', 'C#', 'C++ ', 'C', 'Java', 'Javascript', 'Lua', 'MySql', 'Node.js', 'Oracle', 'Pascal', 'Php', 'Python', 'R', 'Ruby', 'Sql Server', 'Swift', 'Visual Basic']
 				} 
 			})
 		elif choice == 5 :
 			choice = 6
 			language = return_str
-			n = language[0:1]
-			print("language_number : "+n)
-			if n == "1" : num = "15"
-			elif n == "2" : num = "38"
-			elif n == "3" : num = "1"
-			elif n == "4" : num = "7"
-			elif n == "5" : num = "6"
-			elif n == "6" : num = "4"
-			elif n == "7" : num = "17"
-			elif n == "8" : num = "14"
-			elif n == "9" : num = "33"
-			elif n == "10" : num = "23"
-			elif n == "11" : num = "35"
-			elif n == "12" : num = "9"
-			elif n == "13" : num = "8"
-			elif n == "14" : num = "5"
-			elif n == "15" : num = "31"
-			elif n == "16" : num = "12"
-			elif n == "17" : num = "16"
-			elif n == "18" : num = "37"
-			elif n == "19" : num = "2"
-			#else:
+			num = Lang.index(return_str)
+			print("language_index : "+num)
 			return JsonResponse({
 				'message' : {
 				    'text' : language + " 언어를 이용해 코드를 작성해주세요. "
