@@ -92,7 +92,6 @@ def login(request):
 
 @csrf_exempt
 def run(request):
-
 	if request.method == "POST":
 		message = str(request.body, encoding='utf-8')
 	else : 

@@ -17,7 +17,9 @@ real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
 
+num = 0
 choice = 0
+language = ""
 
 def get_m(r) :
 	if r == 5 or r == 6 :
@@ -48,12 +50,14 @@ def keyboard(request) :
 
 @csrf_exempt
 def answer(request) :
+	global language
 	global choice
 	print("choice: "+str(choice))
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
 	user_key = return_json_str['user_key']
+	message_type = return_json_str['type']
 
 	if return_str == '급식알림' :
 		choice = 1
@@ -72,7 +76,7 @@ def answer(request) :
 		print("choice: "+str(choice))
 		return JsonResponse({
 		    'message' : {
-		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요.'
+		    	'text' : '사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요. code 실행을 원하시면 --lang을 입력하세요.'
 		    }
 	    })
 	elif return_str == '챗봇' :
@@ -87,7 +91,7 @@ def answer(request) :
 				'buttons' : ['뒤로가기']
 			}
 		})
-	
+
 	else :
 		if return_str == '--home' or return_str == '뒤로가기' :
 			choice = 0
@@ -128,8 +132,57 @@ def answer(request) :
 			        'buttons' : ['오늘','내일','뒤로가기']
 				}
 			})
-		elif choice == 2 or choice == 0:
-			message = return_str
+		elif return_str == '--lang':
+			choice = 5
+			return JsonResponse({
+				'message' : {
+				    'text' : '다음의 언어 중 사용하실 언어를 입력해주세요.',
+				},
+				'keyboard' : {
+				    'type': 'buttons',
+			        'buttons' : ['1.Assembly', '2.Bash', '3.C#', '4.C++ ', '5.C', '6.Java', '7.Javascript', '8.Lua', '9.MySql', '10.Node.js', '11.Oracle', '12.Pascal', '13.Php', '14.Python', '15.R', '16.Ruby', '17.Sql Server', '18.Swift', '19.Visual Basic']
+				} 
+			})
+		elif choice == 5 :
+			choice = 6
+			language = return_str
+			n = language[0:1]
+			print("language_number : "+n)
+			if n == "1" : num = "15"
+			elif n == "2" : num = "38"
+			elif n == "3" : num = "1"
+			elif n == "4" : num = "7"
+			elif n == "5" : num = "6"
+			elif n == "6" : num = "4"
+			elif n == "7" : num = "17"
+			elif n == "8" : num = "14"
+			elif n == "9" : num = "33"
+			elif n == "10" : num = "23"
+			elif n == "11" : num = "35"
+			elif n == "12" : num = "9"
+			elif n == "13" : num = "8"
+			elif n == "14" : num = "5"
+			elif n == "15" : num = "31"
+			elif n == "16" : num = "12"
+			elif n == "17" : num = "16"
+			elif n == "18" : num = "37"
+			elif n == "19" : num = "2"
+			#else:
+			return JsonResponse({
+				'message' : {
+				    'text' : language + " 언어를 이용해 코드를 작성해주세요. "
+				}
+			})
+
+		elif choice == 6 or choice == 0:
+			code = return_str
+			code = urllib.urlencode(code)
+			print("code: "+code)
+			plus = 'LanguageChoiceWrapper='+num+'&Program'+code
+			print("plus: "+plus)
+			message = '&EditorChoiceWrapper=1&LayoutChoiceWrapper=1&Input=&Privacy=&PrivacyUsers=&Title=&SavedOutput=&WholeError=&WholeWarning=&StatsToSave=&CodeGuid=&IsInEditMode=False&IsLive=False'
+			message = plus+message
+			print("after message : "+message)
 			'''
 			print("message : "+message)
 			url = "http://kakao.pythonanywhere/runcode/run"
@@ -168,19 +221,19 @@ def answer(request) :
 			stats = str(dict['Stats'])
 
 			print("chatbot run code")
-			'''register = UserInfo(
-				run_user = user_key,
-				run_language = register_pwd,
-				user_name = register_name,
-				created_date = datetime.now()
-			)
 
-			register.save()'''
+			run = Run(
+				run_user = user_key,
+				run_language = language,
+				code = code,
+				run_date = datetime.now()
+			)
+			run.save()
 
 			return JsonResponse({
 				'message' : {
 				    'text' : result
 				}
 			})
- 			
+
 
