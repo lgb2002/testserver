@@ -53,6 +53,7 @@ def keyboard(request) :
 def answer(request) :
 	global language
 	global choice
+	global num
 	print("choice: "+str(choice))
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
