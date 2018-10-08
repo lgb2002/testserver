@@ -25,11 +25,11 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "./language/"+str(langNum)+lang[langNum]+".txt"
+				url = "/home/kakao/testserver/language/"+str(langNum)+lang[langNum]+".txt"
 				readTextFile(url);
 				break;
 		}
-		return url;
+		return true;
 	}
 	//select option click change textarea value
 </script>
@@ -99,7 +99,7 @@
 			<input type="hidden" name="IsLive" value="False">
 
 			<label for="Program">code:</label>
-			<textarea id="Program" name="Program"> {{ url }} </textarea> 
+			<textarea id="Program" name="Program"> </textarea> 
 		</div>
 
 
