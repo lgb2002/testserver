@@ -171,7 +171,6 @@ def answer(request) :
 			elif n == "18" : num = "37"
 			elif n == "19" : num = "2"
 			#else:
-			print("num: "+type(num))
 			return JsonResponse({
 				'message' : {
 				    'text' : language + " 언어를 이용해 코드를 작성해주세요. "
