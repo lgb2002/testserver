@@ -2,11 +2,12 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
-#from urllib.request import urlopen
+from urllib.request import urlopen
+from urllib.parse import urlencode
 from runcode.views import *
 from runcode.models import *
 from datetime import datetime
-import json, re, urllib
+import json, re,
 
 #Basic Settings on date
 
@@ -176,7 +177,7 @@ def answer(request) :
 
 		elif choice == 6 or choice == 0:
 			code = return_str
-			code = urllib.urlencode(code)
+			code = urllib.parse.urlencode(code)
 			print("code: "+code)
 			plus = 'LanguageChoiceWrapper='+num+'&Program'+code
 			print("plus: "+plus)
