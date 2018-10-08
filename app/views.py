@@ -18,7 +18,7 @@ real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
 
-num = 0
+num = "0"
 choice = 0
 language = ""
 
@@ -170,6 +170,7 @@ def answer(request) :
 			elif n == "18" : num = "37"
 			elif n == "19" : num = "2"
 			#else:
+			print("num: "+type(num))
 			return JsonResponse({
 				'message' : {
 				    'text' : language + " 언어를 이용해 코드를 작성해주세요. "
