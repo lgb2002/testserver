@@ -134,8 +134,9 @@ def answer(request) :
 			        'buttons' : ['오늘','내일','뒤로가기']
 				}
 			})
-		elif return_str == '--lang':
+		elif return_str == '--lang' and choice == 2:
 			choice = 5
+			print("choice: "+str(choice))
 			return JsonResponse({
 				'message' : {
 				    'text' : '다음의 언어 중 사용하실 언어를 입력해주세요.',
