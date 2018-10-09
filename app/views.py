@@ -154,7 +154,7 @@ def answer(request) :
 			#print("language_index : "+num)
 			url = "http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt"
 			print("url : "+url)
-			file = urllib.urlopen(url)
+			file = urlopen(url)
 			#text = file.read()
 			#print("text : "+text)
 			return JsonResponse({
