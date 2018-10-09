@@ -183,7 +183,7 @@ def answer(request) :
 
 		elif choice == 6 and type(return_str) == str:
 			code = return_str
-			plus = 'LanguageChoiceWrapper='+num+'&'+urllib.parse.urlencode({'Program' : code})
+			plus = 'LanguageChoiceWrapper='+str(num)+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
 			message = '&EditorChoiceWrapper=1&LayoutChoiceWrapper=1&Input=&Privacy=&PrivacyUsers=&Title=&SavedOutput=&WholeError=&WholeWarning=&StatsToSave=&CodeGuid=&IsInEditMode=False&IsLive=False'
 			message = plus+message
