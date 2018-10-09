@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	function readTextFile(file){
 		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", "http://"+file+".txt", false); //+".txt" error
+		rawFile.open("GET", "http://"+file, false); //+".txt" error
 		rawFile.onreadystatechange = function (){
 			if(rawFile.readyState === 4){
 				if(rawFile.status === 200 || rawFile.status == 0){
@@ -29,7 +29,7 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
+				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+String(lang[langNum])+".txt"
 				frm.Program.value = readTextFile(url);
 				break;
 		}
