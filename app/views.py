@@ -240,5 +240,9 @@ def answer(request) :
 				    'text' : result
 				}
 			})
-
-
+		else:
+			return JsonResponse({
+				'message' : {
+				    'text' : '에러괴물이 나타났어요! 도망가요!'
+				}
+			})

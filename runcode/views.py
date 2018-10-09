@@ -78,7 +78,12 @@ def login(request):
 
 		except UserInfo.DoesNotExist:
 			print(" Error! No Match UserInformation! ")
-			login = Login(login_id = get_id, login_pwd = get_pwd, login_date = datetime.now(), login_error = "No Match")
+			login = Login(
+				login_id = get_id,
+				login_pwd = get_pwd, 
+				login_date = datetime.now(),
+				login_error = "No Match"
+				)
 			login.save()
 			imsi_login = Login.objects.filter(login_id = get_id, login_pwd = get_pwd).order_by('login_date').last()
 			error = imsi_login.login_error
@@ -126,10 +131,14 @@ def run(request):
 	result = str(dict['Result'])
 	stats = str(dict['Stats'])
 
-	'''print("text : "+res.text)
+	'''
+	print("text : "+res.text)
 	print("headers : "+str(res.headers))
 	print("raise_for_status : "+str(res.raise_for_status))
-	print("url : "+res.url)'''
+	print("url : "+res.url)
+	'''
+
+
 
 	'''
 	return JsonResponse({
