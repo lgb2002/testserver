@@ -9,11 +9,12 @@
 		rawFile.onreadystatechange = function (){
 			if(rawFile.readyState === 4){
 				if(rawFile.status === 200 || rawFile.status == 0){
-					var allText = rawFile.responseText; alert(allText);
+					var allText = rawFile.responseText;
 				}
 			}
 		};
-		rawFile.send(null);
+		//rawFile.send(null);
+		return allText
 	} 
 	//read local file by javascript
 	function langDisplay(frm){
@@ -26,7 +27,7 @@
 				break;
 			default:
 				url = "/static/"+String(langNum)+"-"+lang[langNum]+".txt"
-				readTextFile(url);
+				from.Program.value = readTextFile(url);
 				break;
 		}
 		return true;
