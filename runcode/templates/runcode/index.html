@@ -14,7 +14,7 @@
 				break;
 			default:
 				url1 = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
-				url2 = encodeURIComponent(url)
+				url2 = encodeURIComponent(url1)
 				var xhr=new XMLHttpRequest();
 				xhr.onload=function(){
 					console.log(xhr.responseText);
