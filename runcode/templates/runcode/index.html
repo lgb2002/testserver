@@ -21,7 +21,9 @@
 				}
 				xhr.open("GET",url);
 				xhr.send();
-				frm.Program.value = xhr.responseText
+				xhr.onload=function(){
+					frm.Program.value = xhr.responseText;
+				}
 				break;
 		}
 		return true;
