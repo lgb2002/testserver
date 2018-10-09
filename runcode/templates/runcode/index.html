@@ -4,22 +4,6 @@
 	Code_Runner
 </head>
 <script type="text/javascript">
-	function readTextFile(file){
-		var allText
-		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", "http://"+file, false); //+".txt" error
-		rawFile.onreadystatechange = function (){
-			if(rawFile.readyState === 4){
-				if(rawFile.status === 200 || rawFile.status == 0){
-					allText = rawFile.responseText;
-				}
-			}
-		};
-		rawFile.send(null);
-		return (allText);
-
-	} 
-	//read local file by javascript
 	function langDisplay(frm){
 		var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran']
 		var langNum = frm.LanguageChoiceWrapper.selectedIndex;
@@ -30,7 +14,9 @@
 				break;
 			default:
 				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
-				frm.Program.value = readTextFile(url);
+				jQuery.get(url, function(data) {
+					alert(data);
+				});
 				break;
 		}
 		return true;
