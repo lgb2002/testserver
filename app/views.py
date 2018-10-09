@@ -181,7 +181,7 @@ def answer(request) :
 				}
 			})
 
-		elif choice == 6 or choice == 0:
+		elif choice == 6 :
 			code = return_str
 			plus = 'LanguageChoiceWrapper='+num+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
