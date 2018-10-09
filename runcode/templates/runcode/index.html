@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	function readTextFile(file){
 		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", "http://"+file, false);
+		rawFile.open("GET", "http://"+file+".txt", false); //+".txt" error
 		rawFile.onreadystatechange = function (){
 			if(rawFile.readyState === 4){
 				if(rawFile.status === 200 || rawFile.status == 0){
