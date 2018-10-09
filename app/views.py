@@ -154,12 +154,12 @@ def answer(request) :
 			#print("language_index : "+num)
 			url = "http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt"
 			print("url : "+url)
-			file = open(url, 'r', encoding = 'utf-8')
-			text = file.read()
-			print("text : "+text)
+			#file = urllib.urlopen(url)
+			#text = file.read()
+			#print("text : "+text)
 			return JsonResponse({
 				'message' : {
-				    'text' :  + text + " 언어의 기본 형식입니다. 위 내용을 복사한 뒤 코드를 작성해 함께 전송하면 올바른 결과값이 출력됩니다. --why를 입력하시면 자세한 설명을 볼 수 있습니다."
+				    'text' :  + url + " 언어의 기본 형식입니다. 위 내용을 복사한 뒤 코드를 작성해 함께 전송하면 올바른 결과값이 출력됩니다. --why를 입력하시면 자세한 설명을 볼 수 있습니다."
 				}
 			})
 
