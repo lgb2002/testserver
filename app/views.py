@@ -154,7 +154,14 @@ def answer(request) :
 			print("language_index : "+num)
 			return JsonResponse({
 				'message' : {
-				    'text' : language + " 언어를 이용해 코드를 작성해주세요. "
+				    'text' : language + " 언어의 기본 형식입니다. 위 내용을 복사한 뒤 코드를 작성해 함께 전송하면 올바른 결과값이 출력됩니다. --why를 입력하시면 자세한 설명을 볼 수 있습니다."
+				}
+			})
+
+		elif choice == 6 and return_str == "--why"
+			return JsonResponse({
+				'message' : {
+				    'text' : language + "주석과 시스템 관련 코드는 기본적으로 공식 약속입니다. 또한  hello world 는 모든 프로그래밍 언어의 전통입니다. 따라서 복사 붙여넣기를 하지 않고 코드만 전송하실 경우 error 가 발생합니다."
 				}
 			})
 
