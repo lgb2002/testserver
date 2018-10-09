@@ -5,17 +5,18 @@
 </head>
 <script type="text/javascript">
 	function readTextFile(file){
+		var allText
 		var rawFile = new XMLHttpRequest();
 		rawFile.open("GET", "http://"+file, false); //+".txt" error
 		rawFile.onreadystatechange = function (){
 			if(rawFile.readyState === 4){
 				if(rawFile.status === 200 || rawFile.status == 0){
-					var allText = rawFile.responseText;
-					return (allText);
+					allText = rawFile.responseText;
 				}
 			}
 		};
 		rawFile.send(null);
+		return (allText);
 
 	} 
 	//read local file by javascript
