@@ -6,7 +6,9 @@
 <script type="text/javascript">
 	function langDisplay(frm){
 		var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran']
-		var langNum = frm.LanguageChoiceWrapper.selectedIndex;
+		var imsi = document.getElementByName(frm.LanguageChoiceWrapper)
+		//frm.LanguageChoiceWrapper.selectedIndex;
+		var langNum = imsi.options[imsi.selectedIndex].value
 
 		switch(langNum){
 			case 0:
@@ -16,9 +18,6 @@
 				url = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
 				url = url.replace('#','%23')
 				var xhr=new XMLHttpRequest();
-				xhr.onload=function(){
-					console.log(xhr.responseText);
-				}
 				xhr.open("GET",url);
 				xhr.send();
 				xhr.onload=function(){
