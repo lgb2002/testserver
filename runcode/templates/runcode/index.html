@@ -14,9 +14,12 @@
 				break;
 			default:
 				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
-				jQuery.get(url, function(data) {
-					alert(data);
-				});
+				var xhr=new XMLHttpRequest();
+				xhr.onload=function(){
+					console.log(xhr.responseText);
+				}
+				xhr.open("GET",url);
+				xhr.send();
 				break;
 		}
 		return true;
