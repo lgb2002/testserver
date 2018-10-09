@@ -28,9 +28,8 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]".txt"
+				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
 				frm.Program.value = readTextFile(url);
-				console.log("frm.Program.value:"+ frm.Program.value)
 				break;
 		}
 		return true;
