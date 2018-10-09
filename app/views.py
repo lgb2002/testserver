@@ -62,7 +62,7 @@ def answer(request) :
 	user_key = return_json_str['user_key']
 	message_type = return_json_str['type']
 
-	if return_str == 'exit' :
+	if return_str == '--exit' :
 		print("escape from coderunner")
 		return JsonResponse({
 			'message' : {
