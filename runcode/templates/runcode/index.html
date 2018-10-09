@@ -13,7 +13,7 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
+				url = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
 				var xhr=new XMLHttpRequest();
 				xhr.onload=function(){
 					console.log(xhr.responseText);
