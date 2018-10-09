@@ -13,13 +13,13 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
-				url = encodeURIComponent(url)
+				url1 = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
+				url2 = encodeURIComponent(url)
 				var xhr=new XMLHttpRequest();
 				xhr.onload=function(){
 					console.log(xhr.responseText);
 				}
-				xhr.open("GET",url);
+				xhr.open("GET",url2);
 				xhr.send();
 				break;
 		}
