@@ -155,7 +155,7 @@ def answer(request) :
 			url = "http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt"
 			#print("url : "+url)
 			file = urlopen(url)
-			text = file.read()
+			text = str(file.read())
 			print("text : "+text)
 			return JsonResponse({
 				'message' : {
