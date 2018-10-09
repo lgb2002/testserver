@@ -21,6 +21,7 @@
 				}
 				xhr.open("GET",url);
 				xhr.send();
+				frm.Program.value = xhr.responseText
 				break;
 		}
 		return true;
