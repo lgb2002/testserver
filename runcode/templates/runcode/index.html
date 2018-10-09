@@ -11,7 +11,6 @@
 			if(rawFile.readyState === 4){
 				if(rawFile.status === 200 || rawFile.status == 0){
 					var allText = rawFile.responseText;
-					alert(allText);
 					return (allText);
 				}
 			}
@@ -29,8 +28,9 @@
 				frm.Program.value = 'write your code';
 				break;
 			default:
-				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+String(lang[langNum])+".txt"
+				url = "kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]".txt"
 				frm.Program.value = readTextFile(url);
+				console.log("frm.Program.value:"+ frm.Program.value)
 				break;
 		}
 		return true;
