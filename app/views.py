@@ -152,7 +152,9 @@ def answer(request) :
 			language = return_str
 			num = Lang.index(return_str)
 			#print("language_index : "+num)
-			file = open("http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt", 'r', encoding = 'utf-8')
+			url = "http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt"
+			print("url : "+url)
+			file = open(url, 'r', encoding = 'utf-8')
 			text = file.read()
 			print("text : "+text)
 			return JsonResponse({
