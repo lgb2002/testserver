@@ -7,6 +7,18 @@ from django.utils import timezone
 from runcode.models import *
 from datetime import datetime
 
+def services(request):
+	return render(request, 'runcode/services.html', {})
+
+def quiz(request):
+	return render(request, 'runcode/quiz.html', {})
+
+def home(request):
+	return render(request, 'runcode/home.html', {})
+
+def mypage(request):
+	return render(request, 'runcode/mypage.html', {})
+
 def index(request):
 	login = 0
 	if login:
@@ -88,6 +100,8 @@ def login(request):
 			imsi_login = Login.objects.filter(login_id = get_id, login_pwd = get_pwd).order_by('login_date').last()
 			error = imsi_login.login_error
 			return render(request, 'runcode/login.html', {'user_id' : "No id", 'user_pwd' : "No pwd", 'error' : error})
+	else:
+		return render(request, 'runcode/login.html',)
 
 
 
