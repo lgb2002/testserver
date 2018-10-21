@@ -406,7 +406,7 @@ $(document).ready(function(){
 	Modernizr.load([
 	{
 		test: Modernizr.placeholder,
-		nope: '{% static "/placeholder.js" %}', 
+		//nope: '{% static "/placeholder.js" %}', 
 		complete : function() {
 				if (!Modernizr.placeholder) {
 						Placeholders.init({
@@ -419,6 +419,7 @@ $(document).ready(function(){
 		}
 	}
 	]);
+	alert()
 	
 	// Preload the page with jPreLoader
 	$('body').jpreLoader({
