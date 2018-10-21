@@ -1,3 +1,4 @@
+{% load staticfiles %}
 jQuery(function($){
 
 var BRUSHED = window.BRUSHED || {};
@@ -407,6 +408,7 @@ $(document).ready(function(){
 		test: Modernizr.placeholder,
 		nope: '{% static "/js/placeholder.js" %}', 
 		complete : function() {
+			
 				if (!Modernizr.placeholder) {
 						Placeholders.init({
 						live: true,
