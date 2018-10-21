@@ -504,7 +504,7 @@ header #logo {
 }
 
 header #logo a {
-	background: url('{% static "img/logo1.png" %}') no-repeat;
+	background: url({% static 'img/logo1.png' %}) no-repeat;
 	width: 96px;
 	height: 30px;
 	text-indent: -9999px;
