@@ -409,7 +409,7 @@ $(document).ready(function(){
 		//nope: '{% static "/placeholder.js" %}', 
 		complete : function() {
 				if (!Modernizr.placeholder) {
-						Placeholders.init({
+						placeholders.init({
 						live: true,
 						hideOnFocus: false,
 						className: "yourClass",
