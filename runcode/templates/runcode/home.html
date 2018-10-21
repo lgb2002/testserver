@@ -97,14 +97,37 @@
     <div class="overlay"></div>
 
     <div class="slider-text">
-    	<div id="slidecaption"></div>
+    	<div id="slidecaption">
+            <div class="slide-content">Do Coding</div>   
+        </div>
     </div>   
 	
 	<div class="control-nav">
-        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
-        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
-        <ul id="slide-list"></ul>
-        
+        <a id="prevslide" class="load-item" style="display: inline-block; opacity: 1;">
+            <i class="font-icon-arrow-simple-left">
+                ::before
+            </i>
+        </a>
+        <a id="nextslide" class="load-item" style="display: inline-block; opacity: 1;">
+            <i class="font-icon-arrow-simple-right">
+                ::before
+            </i>
+        </a>
+        <ul id="slide-list" style="margin-left: -42px;">
+            <li class="slide-link-0 current-slide">
+                <a></a>
+            </li>
+            <li class="slide-link-1">
+                <a></a>
+            </li>
+            <li class="slide-link-2">
+                <a></a>
+            </li>
+            <li class="slide-link-3">
+                <a></a>
+            </li>
+        </ul>
+
         <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
     </div>
 </div>
