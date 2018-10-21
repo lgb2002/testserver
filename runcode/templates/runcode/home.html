@@ -176,7 +176,8 @@
                         {% for post in posts %}
                     	<ul id="thumbs">
                         <script type="text/javascript">
-                            alert("home/lgb/testserver/runcode/static/img/{{ post.image }}");
+                            //alert("home/lgb/testserver/runcode/static/img/{{ post.image }}");
+                            alert('{% static "js/placeholder.js" %}');
                         </script>
 							<!-- Item Project and Filter Name -->
                         	<li class="item-thumbs span3 {{ post.code_language }}">
