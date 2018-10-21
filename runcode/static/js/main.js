@@ -1,4 +1,3 @@
-{% load staticfiles %}
 jQuery(function($){
 
 var BRUSHED = window.BRUSHED || {};
