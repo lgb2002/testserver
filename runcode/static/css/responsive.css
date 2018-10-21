@@ -1,4 +1,3 @@
-{% load staticfiles %}
 @media (min-width: 768px) and (max-width: 979px) {
 	#menu {
 		display: none;	
@@ -397,17 +396,17 @@
   	only screen and (min-resolution: 2dppx) {
 		
 		header #logo a {
-			background-image: url('{% static "/img/logo_@2x.png" %}');
+			background-image: url(../img/logo_@2x.png);
 			background-size: 96px 30px;
 		}
 		
 		.menu-nav {
-			background-image: url('{% static "/img/menu-mobile_@2x.png" %}');
+			background-image: url(../img/menu-mobile_@2x.png);
 			background-size: 16px 32px;
 		}
 		
 		.type-work {
-			background-image: url('{% static "/img/filter-icon_@2x.png" %}');
+			background-image: url(../img/filter-icon_@2x.png);
 			background-size: 16px 16px;
 		}
 	}
