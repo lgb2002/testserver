@@ -10,7 +10,7 @@
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Brushed | Responsive One Page Template</title>   
+<title>코딩 쉽게 배우기!</title>   
 
 <meta name="description" content="Insert Your Site Description" /> 
 
@@ -116,17 +116,17 @@
     	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
         
         <div id="logo">
-        	<a id="goUp" href="#home-slider" title="Brushed | Responsive One Page Template">Brushed Template</a>
+        	<a id="goUp" href="#home-slider" title="CodeRunner">코딩을 배워보자!</a>
         </div>
         
         <nav id="menu">
         	<ul id="menu-nav">
-            	<li class="current"><a href="#home-slider">Home</a></li>
-                <li><a href="home.html">Learning</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="runcode/run">CodeRunner</a></li>
-                <li><a href="mypage.html">MyPage</a></li>
-				<li><a href="services.html" class="external">Services</a></li>
+            	<li class="current"><a href="#home-slider">홈</a></li><!--Home-->
+                <li><a href="#home">배우기</a></li><!--Learning-->
+                <li><a href="quiz.html" class="external">퀴즈</a></li><!--Quiz-->
+                <li><a href="runcode/run" class="external">코드실행기</a></li><!--CodeRunner-->
+                <li><a href="mypage.html" class="external">MY</a></li><!--MyPage-->
+				<li><a href="services.html" class="external">서비스</a></li><!--Services-->
             </ul>
         </nav>
         
@@ -135,14 +135,14 @@
 <!-- End Header -->
 
 <!-- Our Work Section -->
-<div id="work" class="page">
+<div id="home" class="page">
 	<div class="container">
     	<!-- Title Page -->
         <div class="row">
             <div class="span12">
                 <div class="title-page">
-                    <h2 class="title">Our Work</h2>
-                    <h3 class="title-description">Check Out Our Projects on <a href="#">Dribbble</a>.</h3>
+                    <h2 class="title">배우기!</h2<!--Our Work-->>
+                    <h3 class="title-description"><a href="#">두코딩에서</a> 다양한 강좌들을 둘러보세요!</h3>
                 </div>
             </div>
         </div>
@@ -154,11 +154,15 @@
             	<!-- Filter -->
                 <nav id="options" class="work-nav">
                     <ul id="filters" class="option-set" data-option-key="filter">
-                    	<li class="type-work">Type of Work</li>
-                        <li><a href="#filter" data-option-value="*" class="selected">All Projects</a></li>
-                        <li><a href="#filter" data-option-value=".design">Design</a></li>
-                        <li><a href="#filter" data-option-value=".photography">Photography</a></li>
-                        <li><a href="#filter" data-option-value=".video">Video</a></li>
+                    	<li class="type-work">언어별 강좌</li>
+                        <li><a href="#filter" data-option-value="*" class="selected">모든 강좌</a></li>
+                        <li><a href="#filter" data-option-value=".c">C</a></li>
+                        <li><a href="#filter" data-option-value=".java">Java</a></li>
+                        <li><a href="#filter" data-option-value=".python">Python</a></li>
+                        <li><a href="#filter" data-option-value=".javascript">Javascript</a></li>
+                        <li><a href="#filter" data-option-value=".php">Php</a></li>
+                        <li><a href="#filter" data-option-value=".ruby">Ruby</a></li>
+                        <li><a href="#filter" data-option-value=".lua">Lua</a></li>
                     </ul>
                 </nav>
                 <!-- End Filter -->
@@ -167,116 +171,24 @@
             <div class="span9">
             	<div class="row">
                 	<section id="projects">
+                        {% for post in posts %}
                     	<ul id="thumbs">
-                        
+                        <script type="text/javascript">
+                            alert("home/lgb/testserver/runcode/static/img/{{ post.image }}");
+                        </script>
 							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 design">
+                        	<li class="item-thumbs span3 {{ post.code_language }}">
                             	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The City" href='{% static "_include/img/work/full/image-01-full.jpg" %}'>
+                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title='{{ post.title }}' href="home/lgb/testserver/runcode/static/img/{{ post.image }}">
                                 	<span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-01.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 design">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Office" href='{% static "_include/img/work/full/image-02-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-02.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 photography">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href='{% static "_include/img/work/full/image-03-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-03.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 video">
-                            	<!-- Fancybox Media - Gallery Enabled - Title - Link to Video -->
-                            	<a class="hover-wrap fancybox-media" data-fancybox-group="video" title="Video Content From Vimeo" href="http://vimeo.com/51460511" >
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-08.jpg" %}' alt="Video">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 photography">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Sea" href='{% static "_include/img/work/full/image-04-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-04.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 photography">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Clouds" href='{% static "_include/img/work/full/image-05-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-05.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 video">
-                            	<!-- Fancybox Media - Gallery Enabled - Title - Link to Video -->
-                            	<a class="hover-wrap fancybox-media" data-fancybox-group="video" title="Video Content From Vimeo" href="http://vimeo.com/50834315" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-09.jpg" %}' alt="Video">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 design">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Dark" href='{% static "_include/img/work/full/image-06-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-06.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                        	<!-- End Item Project -->
-                            
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 design">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Beach" href='{% static "_include/img/work/full/image-07-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src='{% static "_include/img/work/thumbs/image-07.jpg" %}' alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                <img src='{{ post.image }}' alt='{{ post.context }}'>
                             </li>
                         	<!-- End Item Project -->
                         </ul>
+                        {% endfor %}
                     </section>
                     
             	</div>
@@ -294,8 +206,8 @@
     <div class="row">
         <div class="span12">
             <div class="title-page">
-                <h2 class="title">About Us</h2>
-                <h3 class="title-description">Learn About our Team &amp; Culture.</h3>
+                <h2 class="title">개발자</h2>
+                <h3 class="title-description">고등학교 1학년을 재학중인 학생 개발자다.</h3>
             </div>
         </div>
     </div>
@@ -309,14 +221,12 @@
         	<div class="image-wrap">
                 <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">CTO/Founder</span>
+                    <span class="overlay-text-thumb">CEO</span>
                 </div>
                 <img src='{% static "_include/img/profile/profile-01.jpg" %}' alt="John Doe">
             </div>
-            <h3 class="profile-name">John Doe</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
+            <h3 class="profile-name">이기백</h3>
+            <p class="profile-description">주로 파이썬, HTML, 자바스크립트를 사용하지만 실력은 많이 부족하다.<a href="#"></p>
             <div class="social">
             	<ul class="social-icons">
                 	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
@@ -326,41 +236,6 @@
             </div>
         </div>
         <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Creative Director</span>
-                </div>
-                <img src='{% static "_include/img/profile/profile-02.jpg" %}' alt="Jane Helf">
-            </div>
-            <h3 class="profile-name">Jane Helf</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-email"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Lead Designer</span>
-                </div>
-                <img src='{% static "_include/img/profile/profile-03.jpg" %}' alt="Joshua Insanus">
-            </div>
-            <h3 class="profile-name">Joshua Insanus</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
             	
             <div class="social">
             	<ul class="social-icons">
@@ -387,8 +262,8 @@
     <div class="row">
         <div class="span12">
             <div class="title-page">
-                <h2 class="title">Get in Touch</h2>
-                <h3 class="title-description">We’re currently accepting new client projects. We look forward to serving you.</h3>
+                <h2 class="title">문의하세요</h2>
+                <h3 class="title-description">우리는 언제나 새로운 사용자를 환영합니다. 서비스에 대해 궁금하신 점이 있으시면 문의하세요.</h3>
             </div>
         </div>
     </div>
@@ -409,7 +284,7 @@
                 	<textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
                 </p>
                 <p class="contact-submit">
-                	<a id="contact-submit" class="submit" href="#">Send Your Email</a>
+                	<a id="contact-submit" class="submit" href="#">이메일 전송</a>
                 </p>
                 
                 <div id="response">
@@ -421,16 +296,14 @@
         
         <div class="span3">
         	<div class="contact-details">
-        		<h3>Contact Details</h3>
+        		<h3>세부 정보</h3>
                 <ul>
-                    <li><a href="#">hello@brushed.com</a></li>
-                    <li>(916) 375-2525</li>
+                    <li><a href="#">asteria021130@gmail.com</a></li>
                     <li>
-                        Brushed Studio
+                        Team WE
                         <br>
-                        5240 Vanish Island. 105
-                        <br>
-                        Unknow
+                        Korea Seoul
+			<br>
                     </li>
                 </ul>
             </div>
@@ -484,7 +357,7 @@
 
 <!-- Footer -->
 <footer>
-	<p class="credits">&copy;2013 Brushed. <a href="http://themes.alessioatzeni.com/html/brushed/" title="Brushed | Responsive One Page Template">Brushed Template</a> by <a href="http://www.alessioatzeni.com/" title="Alessio Atzeni | Web Designer &amp; Front-end Developer">Alessio Atzeni</a></p>
+	<p class="credits">&copy;2018 두코딩 <a href="http://kakao.pythonanywhere.com/runcode" title="두코딩 by href="http://kakao.pythonanywhere.com/runcode" title="lgb">이기백</a></p>
 </footer>
 <!-- End Footer -->
 

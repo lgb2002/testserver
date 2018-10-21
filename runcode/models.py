@@ -8,7 +8,6 @@ class UserInfo(models.Model):
     user_name = models.TextField(max_length = 20, blank="True")
     created_date = models.DateTimeField(auto_now_add = True)
     def __str__(self):
-    	return self.user_id
     	return " id :"+self.user_id+" pwd: "+self.user_pwd+" name :"+self.user_name+" date :"+str(self.created_date)
 
 class Login(models.Model):
@@ -26,3 +25,13 @@ class Run(models.Model):
     code = models.TextField(max_length = 2000, blank="True")
     def __str__(self):
         return " user :"+self.run_user+" language: "+self.run_language+" code :"+self.code+" date :"+str(self.run_date)
+
+class Learning(models.Model):
+    created_date = models.DateTimeField(auto_now_add = True)
+    code_language = models.TextField(max_length = 30)
+    context = models.TextField(max_length = 5000)
+    image = models.ImageField()
+    title = models.TextField(max_length = 20)
+    number = models.TextField(max_length = 1000)
+    def __str__(self):
+        return " created_date :"+str(self.created_date)+" code_language: "+self.code_language+" title :"+self.title+" number :"+self.number
