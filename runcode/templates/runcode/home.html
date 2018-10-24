@@ -10,7 +10,7 @@
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Do Coding! | 코딩 쉽게 배우기!</title>   
+<title>Do Coding! | 코딩 쉽게 배우기!</title>
 
 <meta name="description" content="Insert Your Site Description" /> 
 
@@ -87,20 +87,20 @@
 <!-- This section is for Splash Screen -->
 <div class="ole">
 <section id="jSplash">
-	<div id="circle"></div>
+    <div id="circle"></div>
 </section>
 </div>
 <!-- End of Splash Screen -->
 
 <!-- Homepage Slider -->
-<div id="home-slider">	
+<div id="home-slider">  
     <div class="overlay"></div>
 
     <div class="slider-text">
-    	<div id="slidecaption"></div>
+        <div id="slidecaption"></div>
     </div>   
-	
-	<div class="control-nav">
+    
+    <div class="control-nav">
         <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
         <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
         <ul id="slide-list"></ul>
@@ -113,20 +113,21 @@
 <!-- Header -->
 <header>
     <div class="sticky-nav">
-    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
         
         <div id="logo">
-        	<a id="goUp" href="#home-slider">Do Coding</a>
+            <a id="goUp" href="#home-slider">Do Coding</a>
         </div>
         
         <nav id="menu">
-        	<ul id="menu-nav">
-            	<li class="current"><a href="#home-slider">홈</a></li>
+            <ul id="menu-nav">
+                <li><a href="manual.html" class="external"><span class="font-icon-gift"></span></a></li>
+                <li class="current"><a href="#home-slider">홈</a></li>
                 <li><a href="#learn">배우기</a></li>
                 <li><a href="#coderun">코드실행기</a></li>
                 <li><a href="#quiz">퀴즈</a></li>
                 <li><a href="#my">MY</a></li>
-				<li><a href="shortcodes.html" class="external">서비스</a></li>
+                <li><a href="services.html" class="external">서비스</a></li>
             </ul>
         </nav>
         
@@ -136,8 +137,8 @@
 
 <!-- Our Work Section -->
 <div id="learn" class="page">
-	<div class="container">
-    	<!-- Title Page -->
+    <div class="container">
+        <!-- Title Page -->
         <div class="row">
             <div class="span12">
                 <div class="title-page">
@@ -169,27 +170,27 @@
             </div>
             
             <div class="span9">
-            	<div class="row">
-                	<section id="projects">
+                <div class="row">
+                    <section id="projects">
                         {% for post in posts %}
-                    	<ul id="thumbs">
+                        <ul id="thumbs">
                         
-							<!-- Item Project and Filter Name -->
-                        	<li class="item-thumbs span3 {{ post.code_language }}">
-                            	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox" data-fancybox-group="gallery"  title="{{ post.title }}" href='{% static "_include/img/work/full/image-01-full.jpg" %}'>
-                                	<span class="overlay-img"></span>
+                            <!-- Item Project and Filter Name -->
+                            <li class="item-thumbs span3 {{ post.code_language }}">
+                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery"  title="{{ post.title }}" href='{% static "_include/img/work/full/image-01-full.jpg" %}'>
+                                    <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
                                 <img src="../assets/_include/img/{{ post.image }}" alt="{{ post.context }}">
                             </li>
-                        	<!-- End Item Project -->
+                            <!-- End Item Project -->
                         </ul>
                         {% endfor %}
                     </section>
                     
-            	</div>
+                </div>
             </div>
         </div>
         <!-- End Portfolio Projects -->
@@ -213,10 +214,10 @@
     
     <!-- People -->
     <div class="row">
-    	
+        
         <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
+        <div class="span4 profile">
+            <div class="image-wrap">
                 <div class="hover-wrap">
                     <span class="overlay-img"></span>
                     <span class="overlay-text-thumb">CEO/Founder</span>
@@ -225,10 +226,10 @@
             </div>
             <h3 class="profile-name">이기백</h3>
             <p class="profile-description">주로 파이썬, HTML, 자바스크립트를 사용하지만 실력은 많이 부족하다. 이번 프로젝트에서는 벡엔드 개발과 프론트엔드 개발을 겸했다.</p>
-            	
+                
             <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
                     <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
                     <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
                 </ul>
@@ -243,10 +244,11 @@
 <!-- End About Section -->
 
 
-<!-- Contact Section -->
-<div id="contact" class="page">
+<!-- Coderun Section -->
+<div id="coderun" class="page">
 <div class="container">
     <!-- Title Page -->
+    <!--
     <div class="row">
         <div class="span12">
             <div class="title-page">
@@ -255,35 +257,138 @@
             </div>
         </div>
     </div>
+-->
+    <div class="row">
+        <div class="span12">
+            <div class="title-page">
+                <h2 class="title">코드실행기</h2>
+                <h3 class="title-description">창의적인 코드를 짜보세요. 오로지 당신만의 공간입니다.</h3>
+            </div>
+        </div>
+    </div>
     <!-- End Title Page -->
     
     <!-- Contact Form -->
     <div class="row">
-    	<div class="span9">
-        
-        	<form id="contact-form" class="contact-form" action="#">
-            	<p class="contact-name">
-            		<input id="contact_name" type="text" placeholder="Full Name" value="" name="name" />
-                </p>
-                <p class="contact-email">
-                	<input id="contact_email" type="text" placeholder="Email Address" value="" name="email" />
-                </p>
-                <p class="contact-message">
-                	<textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40"></textarea>
-                </p>
-                <p class="contact-submit">
-                	<a id="contact-submit" class="submit" href="#">이메일 전송</a>
-                </p>
-                
-                <div id="response">
-                
+        <div class="span9">
+            <script type="text/javascript">
+                function langDisplay(frm){
+                    var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran']
+                    var imsi = frm.LanguageChoiceWrapper
+                    //frm.LanguageChoiceWrapper.selectedIndex;
+                    var langNum = imsi.options[imsi.selectedIndex].value
+
+                    switch(langNum){
+                        case 0:
+                            frm.Program.value = 'write your code';
+                            break;
+                            default:
+                            url = "http://kakao.pythonanywhere.com/assets/language/"+String(langNum)+"-"+lang[langNum]+".txt"
+                            url = url.replace('#','%23')
+                            var xhr=new XMLHttpRequest();
+                            xhr.open("GET",url);
+                            xhr.send();
+                            xhr.onload=function(){
+                                frm.Program.value = xhr.responseText;
+                            }
+                            break;
+                    }
+                    return true;
+                }
+                //select option click change textarea value
+            </script>
+            <form action="run" method="post" id="contact-form">
+                {{ crsf_token }}
+                <div class="wrap">
+                    <select name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
+                        <option value="0" selected>select language</option>
+                        <option value="39">Ada</option>
+                        <option value="15">Assembly</option>
+                        <option value="38">Bash</option>
+                        <option value="1">C#</option>
+                        <option value="7">C++ (gcc)</option>
+                        <option value="27">C++ (clang)</option>
+                        <option value="28">C++ (vc++)</option>
+                        <option value="6">C (gcc)</option>
+                        <option value="26">C (clang)</option>
+                        <option value="29">C (vc)</option>
+                        <option value="36">Client Side</option>
+                        <option value="18">Common Lisp</option>
+                        <option value="30">D</option>
+                        <option value="41">Elixir</option>
+                        <option value="40">Erlang</option>
+                        <option value="3">F#</option>
+                        <option value="45">Fortran</option>
+                        <option value="20">Go</option>
+                        <option value="11">Haskell</option>
+                        <option value="4">Java</option>
+                        <option value="17">Javascript</option>
+                        <option value="43">Kotlin</option>
+                        <option value="14">Lua</option>
+                        <option value="33">MySql</option>
+                        <option value="23">Node.js</option>
+                        <option value="42">Ocaml</option>
+                        <option value="25">Octave</option>
+                        <option value="10">Objective-C</option>
+                        <option value="35">Oracle</option>
+                        <option value="9">Pascal</option>
+                        <option value="13">Perl</option>
+                        <option value="8">Php</option>
+                        <option value="34">PostgreSQL</option>
+                        <option value="19">Prolog</option>
+                        <option value="5">Python</option>
+                        <option value="24">Python 3</option>
+                        <option value="31">R</option>
+                        <option value="12">Ruby</option>
+                        <option value="21">Scala</option>
+                        <option value="22">Scheme</option>
+                        <option value="16">Sql Server</option>
+                        <option value="37">Swift</option>
+                        <option value="32">Tcl</option>
+                        <option value="2">Visual Basic</option>
+                    </select>
+
+                    <input type="hidden" name="EditorChoiceWrapper" value="1">
+                    <input type="hidden" name="LayoutChoiceWrapper" value="1">
+                    <input type="hidden" name="Input" value="">
+                    <input type="hidden" name="Privacy" value="">
+                    <input type="hidden" name="PrivacyUsers" value="">
+                    <input type="hidden" name="Title" value="">
+                    <input type="hidden" name="SavedOutput" value="">
+                    <input type="hidden" name="WholeError" value="">
+                    <input type="hidden" name="WholeWarning" value="">
+                    <input type="hidden" name="StatsToSave" value="">
+                    <input type="hidden" name="CodeGuid" value="">
+                    <input type="hidden" name="IsInEditMode" value="False">
+                    <input type="hidden" name="IsLive" value="False">
+
+                    <label for="Program">code:</label>
+                    <textarea id="Program" placeholder="Your Code" name="Program" rows="15" cols="40"> </textarea> 
+                </div>
+
+                <div class="button">
+                    <a type="submit">Run</a>
+                </div>
+
+                <div class="result">
+                    <li>
+                        result : {{ result }}
+                    </li>
+                    <li>
+                        stats : {{ stats }}
+                    </li>
+                    <li>
+                        warnings : {{ warnings }}
+                    </li>
+                    <li>
+                        errors : {{ errors }}
+                    </li>
                 </div>
             </form>
-         
         </div>
         
         <div class="span3">
-        	<div class="contact-details">
+            <div class="contact-details">
                 <h3>세부 정보</h3>
                 <ul>
                     <li><a href="#">asteria021130@gmail.com</a></li>
@@ -305,8 +410,8 @@
 <!-- 소셜 네트워크 태그는 현재 주석처리하여 고려중
 //Twitter Feed
 <div id="twitter-feed" class="page-alternate">
-	<div class="container">
-    	<div class="row">
+    <div class="container">
+        <div class="row">
             <div class="span12">
                 <div class="follow">
                     <a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><i class="font-icon-social-twitter"></i></a>
@@ -322,8 +427,8 @@
 
 // Socialize 
 <div id="social-area" class="page">
-	<div class="container">
-    	<div class="row">
+    <div class="container">
+        <div class="row">
             <div class="span12">
                 <nav id="social">
                     <ul>
@@ -353,7 +458,7 @@
 
 <!-- Back To Top -->
 <a id="back-to-top" href="#">
-	<i class="font-icon-arrow-simple-up"></i>
+    <i class="font-icon-arrow-simple-up"></i>
 </a>
 <!-- End Back to Top -->
 

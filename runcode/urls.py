@@ -12,5 +12,6 @@ urlpatterns = [
 	url(r'^mypage',views.mypage, name='mypage'),
 	url(r'^quiz', views.quiz, name='quiz'),
 	url(r'^services',views.services, name='services'),
+	url(r'^manual',views.manual, name='manual'),
 
 ]

@@ -923,6 +923,7 @@ nav#menu #menu-nav li a:hover {
 	margin-bottom: 1px;	
 }
 
+#contact-form button,
 #contact-form input,
 #contact-form textarea {
     border: none;

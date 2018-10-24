@@ -7,6 +7,9 @@ from django.utils import timezone
 from runcode.models import *
 from datetime import datetime
 
+def manual(request):
+	return render(request, 'runcode/manual.html', {})
+
 def services(request):
 	return render(request, 'runcode/services.html', {})
 
@@ -116,7 +119,7 @@ def run(request):
 	if request.method == "POST":
 		message = str(request.body, encoding='utf-8')
 	else : 
-		return render(request, 'runcode/index.html', {
+		return render(request, 'runcode/home.html', {
 	    	'warnings' : "None",
 	    	'errors' : "None",
 	    	'result' : "None",
@@ -165,7 +168,7 @@ def run(request):
 	    	}
 	    })
 	'''
-	return render(request, 'runcode/index.html', {
+	return render(request, 'runcode/home.html', {
 	    	'warnings' : warnings,
 	    	'errors' : errors,
 	    	'result' : result,
