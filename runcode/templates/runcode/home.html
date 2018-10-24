@@ -178,12 +178,20 @@
                             <!-- Item Project and Filter Name -->
                             <li class="item-thumbs span3 {{ post.code_language }}">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery"  title="{{ post.title }}" href='{% static "_include/img/work/full/image-01-full.jpg" %}'>
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery"  title="{{ post.title }}">
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img src="../assets/_include/img/{{ post.image }}" alt="{{ post.context }}">
+                                <img alt="{{ post.title }}">
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery">
+                                    <p>
+                                        {{ post.code }}
+                                    </p>
+                                    <p>
+                                        {{ post.context }}
+                                    </p>
+                                </a>
                             </li>
                             <!-- End Item Project -->
                         </ul>
