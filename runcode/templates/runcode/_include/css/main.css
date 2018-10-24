@@ -989,6 +989,37 @@ nav#menu #menu-nav li a:hover {
 	color: #FFFFFF;
 }
 
+/*
+my css
+*/
+
+.img {
+	background-image: url(../img/logo3.jpg);
+	height: 15vh;
+	background-size: cover;
+}
+
+.img-cover {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+	z-index: 1;
+}
+
+.img .content {
+	position: absolute;
+	font-size: 1rem;
+	font-family: "Times New Roman", Times, fantasy;
+	font-weight: bold;
+	color: white;
+	z-index: 2;
+	text-align: left;
+	line-height: 1.6
+}
+
+.img .content .title {
+	font-size: 1.5rem;
+}
 
 /* ==================================================
    Twitter Feed

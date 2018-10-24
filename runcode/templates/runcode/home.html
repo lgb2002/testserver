@@ -178,20 +178,23 @@
                             <!-- Item Project and Filter Name -->
                             <li class="item-thumbs span3 {{ post.code_language }}">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery"  title="{{ post.title }}">
+                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ post.title }}" href='{% static "_include/img/logo3.jpg"%}'>
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img alt="{{ post.title }}">
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery">
-                                    <p>
-                                        {{ post.code }}
-                                    </p>
-                                    <p>
-                                        {{ post.context }}
-                                    </p>
-                                </a>
+                                <!-- <img src='{% static "_include/img/logo3.jpg"%}' alt="{{ post.code }}"> -->
+                                <div class="img">
+                                    <div class="content">
+                                        <div class="title">
+                                            <strong>{{ post.title }}</strong>
+                                        </div>
+                                        <div class="context">
+                                            <p>{{ post.context }}</p>
+                                        </div>
+                                    </div>
+                                    <div  class="img-cover"></div>
+                                </div>
                             </li>
                             <!-- End Item Project -->
                         </ul>
