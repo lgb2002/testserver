@@ -30,7 +30,7 @@ class Learning(models.Model):
     created_date = models.DateTimeField(auto_now_add = True)
     code_language = models.TextField(max_length = 30)
     context = models.TextField(max_length = 5000)
-    image = models.ImageField()
+    image = models.ImageField(blank="True")
     title = models.TextField(max_length = 20)
     number = models.TextField(max_length = 1000)
     def __str__(self):

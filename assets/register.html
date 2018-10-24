@@ -1,0 +1,117 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>
+	Login page
+	</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Code_Runner</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href='{% static "vendor/bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href='{% static "css/simple-sidebar.css" %}' rel="stylesheet">
+	<script type="text/javascript">
+		var result = "{{ result }}"
+		if(result == "success"){
+			alert("Register Success! You need to login now.");
+			location.href='/index';
+		}
+		else if(result == "id exist"){
+			alert("Id Already Exist");
+		}
+		else if(result == "name exist"){
+			alert("Name Already Exist");
+		}
+	</script>
+</head>
+<body>
+
+</script>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Coding
+                    </a>
+                </li>
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a href="home.html">Learning</a>
+                </li>
+                <li>
+                    <a href="quiz.html">Quiz</a>
+                </li>
+                <li>
+                    <a href="run">CodeRunner</a>
+                </li>
+                <li>
+                    <a href="mypage.html">MyPage</a>
+                </li>
+                <li>
+                    <a href="services.html">Services</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <h1>Simple Sidebar</h1>
+                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>
+	<h1 style="font-family:Comic Sans Ms;text-align="center";font-size:20pt;color:#00FF00;>
+		Simple Register Page
+		<li>id : {{ user_id }}</li>
+		<li>pwd : {{ user_pwd }}</li>
+	</h1>
+
+	<form name="register" action="register" method="post">
+		{{ crsf_token }}
+		
+		<li>Name<input type="text" name="username" maxlength="20" required/></li>
+		<li>Id<input type="text" name="userid" maxlength="20" required/></li>
+		<li>Password<input type="password" name="userpwd" maxlength="20" required"/></li>
+
+		<input type="submit" name="submit" value="Register"/>
+	</form>
+	<a href="login">login page</a>>
+
+	</code>.</p>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src='{% static "vendor/jquery/jquery.min.js" %}'></script>
+    <script src='{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}'></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+</html>
+
