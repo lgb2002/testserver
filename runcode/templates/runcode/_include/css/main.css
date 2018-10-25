@@ -222,7 +222,8 @@ h3{
 }
 
 h4{
-	font-size:20px;
+	color: black;
+	font-size:40px;
 }
 
 h5{
@@ -993,11 +994,13 @@ nav#menu #menu-nav li a:hover {
 my css
 */
 
+/*
 .img {
 	background-image: url(../img/logo3.jpg);
 	height: 15vh;
 	background-size: cover;
 }
+
 
 .img-cover {
 	height: 100%;
@@ -1019,7 +1022,7 @@ my css
 
 .img .content .title {
 	font-size: 1.5rem;
-}
+}*/
 
 /* ==================================================
    Twitter Feed

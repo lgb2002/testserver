@@ -239,7 +239,9 @@
 
 .fancybox-title {
 	visibility: hidden;
-	position: relative;
+	position: absolute;
+	top: 0px;
+	flood-color: red;
 	text-shadow: none;
 	z-index: 8050;
 }
