@@ -33,4 +33,4 @@ class Learning(models.Model):
     context = models.TextField(max_length = 4000, blank="True")
     title = models.TextField(max_length = 20, blank="True")
     def __str__(self):
-        return "id: "+str(self.id) + "created_date :"+str(self.created_date)+" code_language: "+self.code_language+" title :"+self.title
+        return "id: "+str(self.id) + " code_language: "+self.code_language+" title :"+self.title

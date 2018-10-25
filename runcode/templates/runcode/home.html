@@ -176,7 +176,7 @@
                         <ul id="thumbs">
                             <li class="item-thumbs span3 {{ post.code_language }}">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" id='{{ post.created_data }}' data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}'> <!--{% static "_include/img/logo3.jpg"%}-->
+                                <a class="hover-wrap fancybox" id='{{ post.id }}' data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}'> <!--{% static "_include/img/logo3.jpg"%}-->
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
@@ -191,7 +191,7 @@
                             </li>
                             <!-- End Item Project -->
                         <script type="text/javascript">
-                            var test = document.getElementById('{{ post.created_date }}');
+                            var test = document.getElementById('{{ post.id }}');
 
                             /*
                             for(var i = 0; i < tests.length; i++){
@@ -200,7 +200,7 @@
                             }
                             */
 
-                            test.title = "<div>{{ post.title }}</div><li>code: {{ post.code }}</li><li>context: {{ post.context }}</li><div class='button'><a type='submit'>Run</a></div>";
+                            test.title = "<div>{{ post.title }}</div><li>code: {{ post.code }}</li><li>context: {{ post.context }}</li><div class='button'><a type='submit' href='#coderun'>Run</a></div>";
                         </script>
                         </ul>
                         {% endfor %}
@@ -213,15 +213,15 @@
 </div>
 <!-- End Our Work Section -->
 
-<!-- About Section -->
-<div id="about" class="page-alternate">
+<!-- Quiz Section -->
+<div id="quiz" class="page-alternate">
 <div class="container">
     <!-- Title Page -->
     <div class="row">
         <div class="span12">
             <div class="title-page">
-                <h2 class="title">개발자</h2>
-                <h3 class="title-description">프로젝트에 참여한 개발자에 대한 설명이다.</h3>
+                <h2 class="title">퀴즈</h2>
+                <h3 class="title-description">배운 내용으로 간단한 퀴즈를 풀 수 있습니다.</h3>
             </div>
         </div>
     </div>
