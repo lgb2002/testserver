@@ -28,9 +28,9 @@ class Run(models.Model):
 
 class Learning(models.Model):
     created_date = models.DateTimeField(auto_now_add = True)
-    code_language = models.TextField(max_length = 30)
-    code = models.TextField(max_length = 2000)
-    context = models.TextField(max_length = 4000)
-    title = models.TextField(max_length = 20)
+    code_language = models.TextField(max_length = 30, blank="True")
+    code = models.TextField(max_length = 2000, blank="True")
+    context = models.TextField(max_length = 4000, blank="True")
+    title = models.TextField(max_length = 20, blank="True")
     def __str__(self):
-        return " created_date :"+str(self.created_date)+" code_language: "+self.code_language+" title :"+self.title
+        return "id: "+self.id + "created_date :"+str(self.created_date)+" code_language: "+self.code_language+" title :"+self.title
