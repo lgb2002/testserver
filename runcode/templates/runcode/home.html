@@ -215,22 +215,29 @@
 
 <script type="text/javascript">                         
     function go(id){
-        console.log(id);
         var tag_a = document.getElementById(id);
         var tag_language = tag_a.getAttribute("test1");
-        console.log(tag_language);
         var tag_code = tag_a.getAttribute("test2");
         var lang = ['none1','c#', 'visual basic', 'f#', 'java', 'python', 'c (gcc)', 'c++ (gcc)', 'php', 'pascal', 'objective-C', 'haskell', 'ruby', 'perl', 'lua', 'assembly', 'sql server', 'javascript', 'common Lisp', 'prolog', 'go', 'scala', 'scheme', 'node.js', 'python 3', 'cctave', 'c (clang)', 'c++ (clang)', 'c++ (vc++)', 'c (vc)', 'd', 'r', 'tcl', 'mySql', 'postgresql', 'oracle', 'client side', 'swift', 'bash', 'ada', 'Eerlang', 'elixir', 'ocaml', 'kotlin', 'none2', 'fortran'];
         //var language = lang.indexOf['{{ post.code_language }}'];
         var select_language = document.getElementById('Language');
-        console.log(select_language);
         var language = lang.indexOf(tag_language);
-        console.log(language);
-        var option = select_language.options[select_language.selectedIndex];
-        console.log(option);
-        option.setAttribute('value',language);
+        for (var i = 0; i <= 44; i++) {
+            var value = select_language.options[i].value;
+            if(value == language){
+                var option = select_language.options[i];
+                option.selected = true;
+            }
+        }
         var code = document.getElementById('Program');
         code.value = tag_code;
+        var x = document.getElementsByClassName("fancybox-item fancybox-close");
+        /*
+        for(var j = 0; j<= x.length; j++)
+            console.log("x[j] : check"+j);
+        */
+        document.getElementsByClassName("fancybox-item fancybox-close")[0].click(); // 0
+        
     }
 </script>
 
