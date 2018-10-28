@@ -17,7 +17,7 @@ def quiz(request):
 	return render(request, 'runcode/quiz.html', {})
 
 def home(request):
-	posts = Learning.objects.all().order_by('created_date')
+	posts = Learning.objects.all().order_by('id')
 	return render(request, 'runcode/home.html', {'posts':posts})
 
 def mypage(request):

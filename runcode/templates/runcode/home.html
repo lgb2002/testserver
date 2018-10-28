@@ -176,45 +176,28 @@
                         <ul id="thumbs">
                             <li class="item-thumbs span3 {{ post.code_language }}">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" id='{{ post.id }}' data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}'> <!--{% static "_include/img/logo3.jpg"%}-->
+                                <a class="hover-wrap fancybox" id='{{ post.id }}' test1="{{ post.code_language }}" test2="{{ post.code }}" data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}' > <!--{% static "_include/img/logo3.jpg"%}-->
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
                                 <img src='{% static "_include/img/logo3.jpg"%}' alt=''>
+                                <div class="{{ post.code_language }}">
+                                    
+                                </div>
                                 <div class="title">
-                                    <strong>title :{{ post.title }} date: {{ post.created_date }}</strong>
+                                    <strong>title :{{ post.title }}</strong><!-- date: {{ post.created_date }}-->
                                 </div>
                                 <!--
-                                <div class="context">
-                                    <p>{{ post.code }}</p>
+                                <div class="code">
+                                    <p>code: {{ post.code }}</p>
                                 </div>
                             -->
                             </li>
                             <!-- End Item Project -->
                         <script type="text/javascript">
-                            /*
-                            function go(){
-                                var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran'];
-                                //form.action = "post"
-                                //form.value = 
-                                var language = lang.indexOf['{{ post.code_language }}'];
-                                var select_language = document.getElementByName('LanguageChoiceWrapper');
-                                select_language.value = language;
-                                var code = document.getElementById('Program');
-                                code.value = '{{ post.code }}';
-
-                            }*/
-
                             var test = document.getElementById('{{ post.id }}');
-
-                            /*
-                            for(var i = 0; i < tests.length; i++){
-                                var test = tests.item(i);
-                                test.title="<div>{{ post.title }}</div><li>code: {{ post.code }}</li><li>context: {{ post.context }}</li><div class='button'><a type='submit'>Run</a></div>";
-                            }
-                            */
-                            str = "<div>{{ post.title }}</div><p>code: {{ post.code }} </p><p>context: {{ post.context }}</p><div class='button'><a type='submit' href='#coderun' onclick='go();' />Run</a></div>";
+                            str = "<div>{{ post.title }}</div><p>code: {{ post.code }} </p><p>context: {{ post.context }}</p><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
                             str = str.replace('..','<br>');
 
                             test.title = str;
@@ -229,6 +212,27 @@
     </div>
 </div>
 <!-- End Our Work Section -->
+
+<script type="text/javascript">                         
+    function go(id){
+        console.log(id);
+        var tag_a = document.getElementById(id);
+        var tag_language = tag_a.getAttribute("test1");
+        console.log(tag_language);
+        var tag_code = tag_a.getAttribute("test2");
+        var lang = ['none1','c#', 'visual basic', 'f#', 'java', 'python', 'c (gcc)', 'c++ (gcc)', 'php', 'pascal', 'objective-C', 'haskell', 'ruby', 'perl', 'lua', 'assembly', 'sql server', 'javascript', 'common Lisp', 'prolog', 'go', 'scala', 'scheme', 'node.js', 'python 3', 'cctave', 'c (clang)', 'c++ (clang)', 'c++ (vc++)', 'c (vc)', 'd', 'r', 'tcl', 'mySql', 'postgresql', 'oracle', 'client side', 'swift', 'bash', 'ada', 'Eerlang', 'elixir', 'ocaml', 'kotlin', 'none2', 'fortran'];
+        //var language = lang.indexOf['{{ post.code_language }}'];
+        var select_language = document.getElementById('Language');
+        console.log(select_language);
+        var language = lang.indexOf(tag_language);
+        console.log(language);
+        var option = select_language.options[select_language.selectedIndex];
+        console.log(option);
+        option.setAttribute('value',language);
+        var code = document.getElementById('Program');
+        code.value = tag_code;
+    }
+</script>
 
 <!-- Quiz Section -->
 <div id="quiz" class="page-alternate">
@@ -332,7 +336,7 @@
             <form action="run" method="post" id="contact-form">
                 {{ crsf_token }}
                 <div class="wrap">
-                    <select name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
+                    <select id="Language" name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
                         <option value="0" selected>select language</option>
                         <option value="39">Ada</option>
                         <option value="15">Assembly</option>
