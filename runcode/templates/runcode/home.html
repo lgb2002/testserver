@@ -196,10 +196,12 @@
                             </li>
                             <!-- End Item Project -->
                         <script type="text/javascript">
+                            function replaceAll(str, searchStr, replaceStr) {
+                                return str.split(searchStr).join(replaceStr);
+                            }
                             var test = document.getElementById('{{ post.id }}');
                             str = "<div>{{ post.title }}</div><p>code: {{ post.code }} </p><p>context: {{ post.context }}</p><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
-                            str = str.replace(/../gi,'<br>');
-
+                            str = replaceAll(str,"..","<br>");
                             test.title = str;
                         </script>
                         </ul>
