@@ -156,21 +156,21 @@ def run(request):
 	print("url : "+res.url)
 	'''
 
-
-
-	'''
-	return JsonResponse({
-	    'runcode/run' : {
+	if errors == "None" and warnings == "None":
+		return render(request, 'runcode/home.html', {
 	    	'warnings' : warnings,
 	    	'errors' : errors,
 	    	'result' : result,
-	    	'stats' : stats
-	    	}
-	    })
-	'''
-	return render(request, 'runcode/home.html', {
-	    	'warnings' : warnings,
-	    	'errors' : errors,
-	    	'result' : result,
-	    	'stats' : stats
+	    	'stats' : stats ,
+	    	'alert' : 'success'
 	    	})
+
+
+
+
+	return render(request, 'runcode/home.html', {
+		'warnings' : warnings,
+		'errors' : errors,
+		'result' : result,
+		'stats' : stats
+		})
