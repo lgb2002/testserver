@@ -208,8 +208,8 @@
                                 return str;
                             }
                             var test = document.getElementById('{{ post.id }}');
-                            code = "{{ post.code }}"
-                            context= "{{ post.context }}"
+                            code = "{{ post.code }}";
+                            context= "{{ post.context }}";
                             code = replaceAll(code,"\n","\\n");
                             code = replaceAll(code,"..","\n");
                             code = ConvertSystemSourcetoHtml(code);
@@ -272,33 +272,6 @@
     </div>
     <!-- End Title Page -->
     
-    <!-- People -->
-    <div class="row">
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">CEO/Founder</span>
-                </div>
-                <img src='{% static "_include/img/profile/profile-01.jpg" %}' alt="이기백">
-            </div>
-            <h3 class="profile-name">이기백</h3>
-            <p class="profile-description">주로 파이썬, HTML, 자바스크립트를 사용하지만 실력은 많이 부족하다. 이번 프로젝트에서는 벡엔드 개발과 프론트엔드 개발을 겸했다.</p>
-                
-            <div class="social">
-                <ul class="social-icons">
-                    <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-    </div>
-    <!-- End People -->
 </div>
 </div>
 <!-- End About Section -->
