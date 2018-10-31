@@ -201,7 +201,7 @@
                             }
                             var test = document.getElementById('{{ post.id }}');
                             str = "<div>{{ post.title }}</div><pre>code: {{ post.code }} </pre><pre>context: {{ post.context }} </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
-                            str = replaceAll(str,"..","<br>");
+                            //str = replaceAll(str,"..","<br>");
                             test.title = str;
                         </script>
                         </ul>
