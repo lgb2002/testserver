@@ -34,3 +34,10 @@ class Learning(models.Model):
     title = models.TextField(max_length = 20, blank="True")
     def __str__(self):
         return "id: "+str(self.id) + " code_language: "+self.code_language+" title :"+self.title
+
+class Quiz(models.Model):
+    code_language = models.TextField(max_length = 30, blank="True")
+    context = models.TextField(max_length = 4000, blank="True")
+    title = models.TextField(max_length = 20, blank="True")
+    def __str__(self):
+        return "id: "+str(self.id) + " code_language: "+self.code_language+" title :"+self.title
