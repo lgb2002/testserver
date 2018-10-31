@@ -199,9 +199,22 @@
                             function replaceAll(str, searchStr, replaceStr) {
                                 return str.split(searchStr).join(replaceStr);
                             }
+                            function ConvertSystemSourcetoHtml(str){
+                                str = str.replace(/</g,"&lt;");
+                                str = str.replace(/>/g,"&gt;");
+                                str = str.replace(/\"/g,"&quot;");
+                                str = str.replace(/\'/g,"&#39;");
+                                str = str.replace(/\n/g,"<br />");
+                                return str;
+                            }
                             var test = document.getElementById('{{ post.id }}');
-                            str = "<div>{{ post.title }}</div><pre>code: {{ post.code }} </pre><pre>context: {{ post.context }} </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
-                            str = replaceAll(str,"..","\n");
+                            code = "{{ post.code }}"
+                            context= "{{ post.context }}"
+                            code = replaceAll(code,"..","\n");
+                            code = ConvertSystemSourcetoHtml(code);
+                            context = replaceAll(context,"..","\n");
+                            context = ConvertSystemSourcetoHtml(context);
+                            str = "<div>{{ post.title }}</div><pre>code: "+code+" </pre><pre>context: "+context+" </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
                             test.title = str;
                         </script>
                         </ul>
