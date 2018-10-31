@@ -176,46 +176,47 @@
                         <ul id="thumbs">
                             <li class="item-thumbs span3 {{ post.code_language }}">
                                 <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" id='{{ post.id }}' data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}'> <!--{% static "_include/img/logo3.jpg"%}-->
+                                <a class="hover-wrap fancybox" id='{{ post.id }}' test1="{{ post.code_language }}" test2="{{ post.code }}" data-fancybox-group="gallery" title='' href='{% static "_include/img/logo3.jpg"%}' > <!--{% static "_include/img/logo3.jpg"%}-->
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
                                 <img src='{% static "_include/img/logo3.jpg"%}' alt=''>
+                                <div class="{{ post.code_language }}">
+                                    
+                                </div>
                                 <div class="title">
-                                    <strong>title :{{ post.title }} date: {{ post.created_date }}</strong>
+                                    <strong>title :{{ post.title }}</strong><!-- date: {{ post.created_date }}-->
                                 </div>
                                 <!--
-                                <div class="context">
-                                    <p>{{ post.code }}</p>
+                                <div class="code">
+                                    <p>code: {{ post.code }}</p>
                                 </div>
                             -->
                             </li>
                             <!-- End Item Project -->
                         <script type="text/javascript">
-                            function go(){
-                                var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran'];
-                                //form.action = "post"
-                                //form.value = 
-                                var language = lang.indexOf['{{ post.code_language }}'];
-                                var select_language = document.getElementByName('LanguageChoiceWrapper');
-                                select_language.value = language;
-                                var code = document.getElementById('Program');
-                                code.value = '{{ post.code }}';
-
+                            function replaceAll(str, searchStr, replaceStr) {
+                                return str.split(searchStr).join(replaceStr);
                             }
-
+                            function ConvertSystemSourcetoHtml(str){
+                                str = str.replace(/</g,"&lt;");
+                                str = str.replace(/>/g,"&gt;");
+                                str = str.replace(/\"/g,"&quot;");
+                                str = str.replace(/\'/g,"&#39;");
+                                str = str.replace(/\n/g,"<br />");
+                                return str;
+                            }
                             var test = document.getElementById('{{ post.id }}');
-
-                            /*
-                            for(var i = 0; i < tests.length; i++){
-                                var test = tests.item(i);
-                                test.title="<div>{{ post.title }}</div><li>code: {{ post.code }}</li><li>context: {{ post.context }}</li><div class='button'><a type='submit'>Run</a></div>";
-                            }
-                            */
-                            str = "<div>{{ post.title }}</div><p>code: {{ post.code }} </p><p>context: {{ post.context }}</p><div class='button'><a type='submit' href='#coderun' onclick='go();' />Run</a></div>";
-                            str = str.replace('..','<br>');
-
+                            code = "{{ post.code }}";
+                            context= "{{ post.context }}";
+                            code = replaceAll(code,"\n","\\n");
+                            code = replaceAll(code,"..","\n");
+                            code = ConvertSystemSourcetoHtml(code);
+                            context = replaceAll(context,"\n","\\n");
+                            context = replaceAll(context,"..","\n");
+                            context = ConvertSystemSourcetoHtml(context);
+                            str = "<div>{{ post.title }}</div><pre>code: "+code+" </pre><pre>context: "+context+" </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
                             test.title = str;
                         </script>
                         </ul>
@@ -228,6 +229,34 @@
     </div>
 </div>
 <!-- End Our Work Section -->
+
+<script type="text/javascript">                         
+    function go(id){
+        var tag_a = document.getElementById(id);
+        var tag_language = tag_a.getAttribute("test1");
+        var tag_code = tag_a.getAttribute("test2");
+        var lang = ['none1','c#', 'visual basic', 'f#', 'java', 'python', 'c (gcc)', 'c++ (gcc)', 'php', 'pascal', 'objective-C', 'haskell', 'ruby', 'perl', 'lua', 'assembly', 'sql server', 'javascript', 'common Lisp', 'prolog', 'go', 'scala', 'scheme', 'node.js', 'python 3', 'cctave', 'c (clang)', 'c++ (clang)', 'c++ (vc++)', 'c (vc)', 'd', 'r', 'tcl', 'mySql', 'postgresql', 'oracle', 'client side', 'swift', 'bash', 'ada', 'Eerlang', 'elixir', 'ocaml', 'kotlin', 'none2', 'fortran'];
+        //var language = lang.indexOf['{{ post.code_language }}'];
+        var select_language = document.getElementById('Language');
+        var language = lang.indexOf(tag_language);
+        for (var i = 0; i <= 44; i++) {
+            var value = select_language.options[i].value;
+            if(value == language){
+                var option = select_language.options[i];
+                option.selected = true;
+            }
+        }
+        var code = document.getElementById('Program');
+        code.value = tag_code;
+        var x = document.getElementsByClassName("fancybox-item fancybox-close");
+        /*
+        for(var j = 0; j<= x.length; j++)
+            console.log("x[j] : check"+j);
+        */
+        document.getElementsByClassName("fancybox-item fancybox-close")[0].click(); // 0
+        
+    }
+</script>
 
 <!-- Quiz Section -->
 <div id="quiz" class="page-alternate">
@@ -243,33 +272,6 @@
     </div>
     <!-- End Title Page -->
     
-    <!-- People -->
-    <div class="row">
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">CEO/Founder</span>
-                </div>
-                <img src='{% static "_include/img/profile/profile-01.jpg" %}' alt="이기백">
-            </div>
-            <h3 class="profile-name">이기백</h3>
-            <p class="profile-description">주로 파이썬, HTML, 자바스크립트를 사용하지만 실력은 많이 부족하다. 이번 프로젝트에서는 벡엔드 개발과 프론트엔드 개발을 겸했다.</p>
-                
-            <div class="social">
-                <ul class="social-icons">
-                    <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-    </div>
-    <!-- End People -->
 </div>
 </div>
 <!-- End About Section -->
@@ -331,7 +333,7 @@
             <form action="run" method="post" id="contact-form">
                 {{ crsf_token }}
                 <div class="wrap">
-                    <select name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
+                    <select id="Language" name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
                         <option value="0" selected>select language</option>
                         <option value="39">Ada</option>
                         <option value="15">Assembly</option>
@@ -414,6 +416,17 @@
                     <li>
                         errors : {{ errors }}
                     </li>
+                    <script type="text/javascript">
+                        if ({{ alert }} == "success"){
+                            var str = '<div class="alert alert-success fade in"><a class="close" data-dismiss="alert" href="#">×</a><strong>Well done!</strong> You successfully read this important alert message.</div>';
+                            var js = document.getElementById('js');
+                            js.value = str;
+                            alert("success");
+                        }
+                    </script>
+                </div>
+                <div id ="js">
+                    <li>hello</li>
                 </div>
             </form>
         </div>
