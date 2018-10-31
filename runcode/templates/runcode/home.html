@@ -200,7 +200,7 @@
                                 return str.split(searchStr).join(replaceStr);
                             }
                             var test = document.getElementById('{{ post.id }}');
-                            str = "<div>{{ post.title }}</div><p><pre>code: {{ post.code }} </pre></p><p><pre>context: {{ post.context }}</pre></p><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
+                            str = "<div>{{ post.title }}</div><pre>code: {{ post.code }} </pre><pre>context: {{ post.context }} </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
                             str = replaceAll(str,"..","<br>");
                             test.title = str;
                         </script>
