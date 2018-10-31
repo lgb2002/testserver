@@ -210,8 +210,10 @@
                             var test = document.getElementById('{{ post.id }}');
                             code = "{{ post.code }}"
                             context= "{{ post.context }}"
+                            code = replaceAll(code,"\n","\\n");
                             code = replaceAll(code,"..","\n");
                             code = ConvertSystemSourcetoHtml(code);
+                            context = replaceAll(context,"\n","\\n");
                             context = replaceAll(context,"..","\n");
                             context = ConvertSystemSourcetoHtml(context);
                             str = "<div>{{ post.title }}</div><pre>code: "+code+" </pre><pre>context: "+context+" </pre><div class='button'><a type='submit' href='#coderun' onclick='go({{post.id}})'>Run</a></div>";
