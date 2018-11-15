@@ -183,17 +183,19 @@
               //]]>
             </script>
 
-            <div>
-                <a id="naver-login-btn" type="button">
-                    <img src="https://static.nid.naver.com/oauth/big_g.PNG" width=240>
-                </a>
-            </div>
+            <!--
+
+            <a id="naver-login-btn" type="button" src="https://static.nid.naver.com/oauth/big_g.PNG" width=240></a>
+                <img src="https://static.nid.naver.com/oauth/big_g.PNG" width=240>
+           
+           -->
             <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
             <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 
     <!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+    <!--
     <script>
         var naverLogin = new naver.LoginWithNaverId(
             {
@@ -209,6 +211,7 @@
                 /* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
             }
         );
+
 
         /* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
         naverLogin.init();
@@ -235,7 +238,7 @@
         });
     </script>
 
-            <!-- 네이버아디디로로그인 초기화 Script -->
+            네이버아디디로로그인 초기화 Script 
             <script type="text/javascript">
                 var naverLogin = new naver.LoginWithNaverId(
                     {
@@ -256,6 +259,7 @@
                 naverLogin.init();
                 
             </script>
+            -->
             <!--
             <div id="kakaoidLogin">
                 <a id="kakao-login-btn" type="button" href="loginWithKakao();"></a>
