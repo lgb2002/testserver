@@ -138,22 +138,6 @@
                 <li><a href="mypage.html" class="external">MY</a></li>
                 <li><a href="services.html" class="external">서비스</a></li>
 
-                <script type="text/javascript">
-
-                    alert("hello");
-                </script>
-                <script type="text/javascript">
-                    alert(window.loaction.href);
-
-                    alert(window.loaction.href);
-                    var oldUrl = 'http://localhost:8000/runcode/run'
-                    var changeUrl = 'http://localhost:8000/runcode/home.html'
-                    var urlString = location.href;
-                    alert(window.loaction.href);
-
-                   // location.href = changeUrl;
-                    alert("hello");
-                </script>
             </ul>
         </nav>
         
@@ -173,6 +157,7 @@
                 <div class="title-page">
                     <h2 class="title">배우기!</h2>
                     <h3 class="title-description"><a href="#">두코딩에서</a> 더 많은 강좌들을 둘러보세요!</a>.</h3>
+                    ##현재 서버상의 오류로 인해 코드실행기를 이용했을 시 주소에서 /run을 지워줘야만 강좌가 보입니다. 빠른 시일 내에 해결하도록 하겠습니다. 잠시 양해 바랍니다.
                 </div>
             </div>
         </div>
@@ -296,7 +281,33 @@
             <div class="title-page">
                 <h2 class="title">퀴즈</h2>
                 <h3 class="title-description">배운 내용으로 간단한 퀴즈를 풀 수 있습니다.</h3>
-                ##현재 랜덤 퀴즈만 이용하실 수 있습니다.
+                ##현재 이용 가능한 퀴즈가 등록되지 않았습니다.
+                <!--##현재 랜덤 퀴즈만 이용하실 수 있습니다.-->
+
+               <!-- <div>
+                   <a type="button" href="#" onclick="alert(window.loaction.href);">test</a>
+                </div>
+                <script type="text/javascript">
+                    function test(){
+                        alert(window.loaction.hostname);
+                        alert(window.loaction.pathname);
+                        alert(window.loaction.protocol);
+                        alert("hello");
+
+                    };
+                </script>
+                <script type="text/javascript">
+                    alert(window.loaction.href);
+
+                    var oldUrl = 'http://localhost:8000/runcode/run'
+                    var changeUrl = 'http://localhost:8000/runcode/home.html'
+                    var urlString = location.href;
+                    alert(window.loaction.href);
+
+                   // location.href = changeUrl;
+                    alert("hello");
+                </script>
+            -->
             </div>
         </div>
     </div>
@@ -326,6 +337,7 @@
             <div class="title-page">
                 <h2 class="title">코드실행기</h2>
                 <h3 class="title-description">창의적인 코드를 짜보세요. 오로지 당신만의 공간입니다.</h3>
+                ##[c++, c, client slide, common lisp, f#, node.js,  objective-c,  python 3, sql server, visual basic] 이 언어들은 현재 서버 상의 오류로 에러가 발생할 수 있으니 이용 자제를 부탁드립니다. 그 외의 언어들은 사용 가능한 것으로 확인되었고, 혹시 오류가 발생할 경우에는 세부 정보란의 이메일로 신고를 넣어주세요.
             </div>
         </div>
     </div>
