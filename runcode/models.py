@@ -18,13 +18,16 @@ class Login(models.Model):
     def __str__(self):
     	return " id :"+self.login_id+" pwd: "+self.login_pwd+" error :"+self.login_error+" date :"+str(self.login_date)
 
-'''
-class LoginUser(models.Model)
-    user_name = models.TextField(max_length = 20, blank="True")
-    login_date = models.DateTimeField(auto_now = True)
+
+class LoginUser(models.Model):
+    user_ip = models.TextField(max_length=100, blank="True")
+    login_now = models.IntegerField(blank="True")
+    login_date = models.DateTimeField(blank="True", auto_now = True)
+    last_id = models.TextField(max_length = 20, blank="True")
+    last_pwd = models.TextField(max_length = 20, blank="True")
     def __str__(self):
-        return " name :"+self.user_name+" time: "+str(self.login_date)
-        '''
+        return " ip :"+self.user_ip+" time: "+str(self.login_date)
+        
 
 class Run(models.Model):
     run_user = models.TextField(max_length = 20, blank="True")

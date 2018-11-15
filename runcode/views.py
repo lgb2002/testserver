@@ -7,19 +7,31 @@ from urllib.parse import urlencode
 from django.utils import timezone
 from runcode.models import *
 from datetime import datetime
+from ipware.ip import get_ip
 
-def mypage(request):
-	return render(request, 'runcode/mypage.html', {})
+def profile(request):
+	return render(request, 'runcode/profile.html', {})
 
 def login_check(request):
-	if request.method == "POST":
-		login = request.POST.get('login')
-	else:
-		login = 0
-	if login :
-		return render(request, 'runcode/mypage.html', {})
+	ip = get_ip(request)
+	login_user = LoginUser.objects.get(user_ip = ip)
+	check = login_user.login_now
+	if check :
+		id = check.last_id
+		user = Userinfo.objects.get(user_id = id)
+		name = user.user_name
+		return render(request, 'runcode/profile.html', {name : 'name'})
 	else :
-		return render(request, 'runcode/login.html', {})
+		return render(request, 'runcode/login.html', {'check' : 0})
+
+def login_success(ip, name):
+	login_user = LoginUser.objects.get(user_ip = ip)
+	login_user.login_now = 1
+	login_user.login_date = datetime.now()
+	user = UserInfo.objects.get(user_name = name)
+	login_user.last_id = user.id
+	login_user.last_pwd = user.pwd
+	login.save()
 
 
 def manual(request):
@@ -29,6 +41,15 @@ def services(request):
 	return render(request, 'runcode/services.html', {})
 
 def home(request):
+	ip = get_ip(request)
+	try:
+		login_user = LoginUser.objects.get(user_ip = ip)
+	except UserInfo.DoesNotExist:
+		login = LoginUser(
+			user_ip = ip,
+			login_now = 0,
+		)
+		login.save()
 	posts = Learning.objects.all().order_by('id')
 	return render(request, 'runcode/home.html', {'posts':posts})
 
@@ -95,7 +116,10 @@ def login(request):
 				login_error = "No Error"
 				)
 			login.save()
-			return render(request, 'runcode/login.html', {'user_name': user_name, 'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
+			ip = get_ip(request)
+			login_success(ip, user_name)
+			login_check()
+			#return render(request, 'runcode/login.html', {'user_name': user_name, 'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
 
 		except UserInfo.DoesNotExist:
 			alert(" Error! No Match UserInformation! ")

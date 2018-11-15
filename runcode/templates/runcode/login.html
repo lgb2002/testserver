@@ -62,9 +62,17 @@
 
     <script language="javascript">
         var error = "{{ error }}"
+        var name = "{{ username }}"
+        var ip = "{{ ip }}"
+        if(ip == "null"){
+            alert("not found ip");
+        }
+        else{
+            alert("found ip :" + ip);
+        }
         if(error == "No Error"){
-            //location.href='mypage.html';/*opens the target page while Id & userpwd matches*/
-            alert("{{ user_id }}")
+            alert("{{ user_id }}");
+            location.href='./mypage/'+name;/*opens the target page while Id & userpwd matches*/
         }
         else if(error == "No Match") {
             alert("Error Password or Username");/*displays error message*/
@@ -165,21 +173,37 @@
                 <a href="register">register page</a>>
             </div>
         <a id="kakao-login-btn"></a>
-            <a href="http://developers.kakao.com/logout"></a>
+        <input type="button" name="kakao-logout-btn" value="카카오톡계정 로그아웃" onclick="ktout()">
             <script type='text/javascript'>
               //<![CDATA[
                 // 사용할 앱의 JavaScript 키를 설정해 주세요.
                 Kakao.init('6c1995dcbbaede093266606ab1e4c059');
                 // 카카오 로그인 버튼을 생성합니다.
                 Kakao.Auth.createLoginButton({
-                  container: '#kakao-login-btn',
-                  success: function(authObj) {
-                    alert(JSON.stringify(authObj));
-                  },
-                  fail: function(err) {
-                     alert(JSON.stringify(err));
-                  }
-                });
+                    container: '#kakao-login-btn',
+                    success: function(authObj) {
+                        Kakao.API.request({
+                            url: '/v1/user/me',
+                            success: function(res) {
+                                alert(res.properties.nickname+'님 환경합니다.');
+                                location.href="/runcode/login";
+                            },
+                            fail: function(error) {
+                                alert(JSON.stringify(error));
+                            }
+                        });
+                      },
+                      fail: function(err) {
+                         alert(JSON.stringify(err));
+                      }
+                    });
+                function ktout() {
+                    Kakao.Auth.logout(function() {
+                        setTimeout(function(){
+                            location.href="/runcode/login"
+                        },1000);
+                    });
+                }
               //]]>
             </script>
 
@@ -191,7 +215,7 @@
            -->
             <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
-            <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+            <!--<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>-->
 
 
     <!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
