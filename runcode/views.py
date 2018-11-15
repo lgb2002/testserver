@@ -8,6 +8,7 @@ from django.utils import timezone
 from runcode.models import *
 from datetime import datetime
 from ipware.ip import get_ip
+from django.core.exceptions import MultipleObjectsReturned
 
 def logout(request):
 	ip = get_ip(request)
@@ -60,10 +61,21 @@ def home(request):
 
 	try:
 		login_user = UserLogin.objects.get(user_ip = ip)
+	except UserLogin.MultipleObjectsReturned:
+		print("hi")
+		test = UserLogin.objects.filter(user_ip = ip).distinct('login_data')
+		test.delete()
+		login = UserLogin(
+			user_ip = ip,
+			login_now = False,
+			login_date = datetime.now()
+		)
+		login.save()
 	except UserLogin.DoesNotExist:
 		login = UserLogin(
 			user_ip = ip,
 			login_now = False,
+			login_date = datetime.now()
 		)
 		login.save()
 		
