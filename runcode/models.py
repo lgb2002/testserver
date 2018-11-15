@@ -4,9 +4,9 @@ import datetime
 
 class UserData(models.Model):
     user_name = models.TextField(max_length = 20, blank="True")
-    visit_lank = models.IntegerField(blank="True")
-    study_lank = models.TextField(max_length = 1000, blank="True")
-    coding_lank = models.TextField(max_length = 1000, blank="True")
+    visit_lank = models.IntegerField(blank="True", default=1)
+    study_lank = models.TextField(max_length = 1000, blank="True", default="1_1_1_1_1_1")
+    coding_lank = models.TextField(max_length = 1000, blank="True", default="1_1_1_1_1_1")
     def __str__(self):
         return " name :"+self.user_name+" how many visit? :"+str(self.visit_lank)
 
