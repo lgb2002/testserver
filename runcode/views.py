@@ -9,29 +9,42 @@ from runcode.models import *
 from datetime import datetime
 from ipware.ip import get_ip
 
+def logout(request):
+	ip = get_ip(request)
+	login_user = UserLogin.objects.get(user_ip = ip)
+	login_user.last_id = ""
+	login_user.last_pwd = ""
+	login_user.login_now = False
+	return render(request, 'runcode/login.html', {})
+
 def profile(request):
 	return render(request, 'runcode/profile.html', {})
 
 def login_check(request):
 	ip = get_ip(request)
-	login_user = LoginUser.objects.get(user_ip = ip)
+	
+	login_user = UserLogin.objects.get(user_ip = ip)
 	check = login_user.login_now
 	if check :
-		id = check.last_id
-		user = Userinfo.objects.get(user_id = id)
+		id = login_user.last_id
+		user = UserInfo.objects.get(user_id = id)
 		name = user.user_name
-		return render(request, 'runcode/profile.html', {name : 'name'})
+		data = UserData.objects.get(user_name = name)
+		visit_lank = data.visit_lank
+		return render(request, 'runcode/profile.html', {'name' : name, 'visit_lank' : str(visit_lank)})
 	else :
 		return render(request, 'runcode/login.html', {'check' : 0})
+		
+	return render(request, 'runcode/profile.html', {'name' : "error"})
 
 def login_success(ip, name):
-	login_user = LoginUser.objects.get(user_ip = ip)
-	login_user.login_now = 1
+	login_user = UserLogin.objects.get(user_ip = ip)
+	login_user.login_now = True
 	login_user.login_date = datetime.now()
 	user = UserInfo.objects.get(user_name = name)
-	login_user.last_id = user.id
-	login_user.last_pwd = user.pwd
-	login.save()
+	login_user.last_id = user.user_id
+	login_user.last_pwd = user.user_pwd
+	login_user.save()
 
 
 def manual(request):
@@ -41,15 +54,19 @@ def services(request):
 	return render(request, 'runcode/services.html', {})
 
 def home(request):
+	
 	ip = get_ip(request)
+	print(ip)
+
 	try:
-		login_user = LoginUser.objects.get(user_ip = ip)
-	except UserInfo.DoesNotExist:
-		login = LoginUser(
+		login_user = UserLogin.objects.get(user_ip = ip)
+	except UserLogin.DoesNotExist:
+		login = UserLogin(
 			user_ip = ip,
-			login_now = 0,
+			login_now = False,
 		)
 		login.save()
+		
 	posts = Learning.objects.all().order_by('id')
 	return render(request, 'runcode/home.html', {'posts':posts})
 
@@ -85,6 +102,15 @@ def register(request):
 				created_date = datetime.now()
 			)
 			register.save()
+
+			data = UserData(
+				user_name = register_name,
+			    visit_lank = 0,
+			    study_lank = "0_0_0_0_0_0_0",
+			    coding_lank = "0_0_0_0_0_0_0"
+			)
+			data.save()
+
 			return render(request, 'runcode/register.html', {
 				'user_id' : register_id,
 				'user_pwd' : register_pwd,
@@ -109,6 +135,10 @@ def login(request):
 			user_id = imsi_user.user_id
 			user_pwd = imsi_user.user_pwd
 			user_name = imsi_user.user_name
+			data = UserData.objects.get(user_name = user_name)
+			data.visit_lank += 1
+			data.save()
+
 			login = Login(
 				login_id = user_id,
 				login_pwd = user_pwd, 
@@ -118,8 +148,8 @@ def login(request):
 			login.save()
 			ip = get_ip(request)
 			login_success(ip, user_name)
-			login_check()
-			#return render(request, 'runcode/login.html', {'user_name': user_name, 'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
+			#login_check(request)
+			return render(request, 'runcode/login.html', {'user_name': user_name, 'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
 
 		except UserInfo.DoesNotExist:
 			alert(" Error! No Match UserInformation! ")

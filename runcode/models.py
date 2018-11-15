@@ -2,6 +2,14 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
+class UserData(models.Model):
+    user_name = models.TextField(max_length = 20, blank="True")
+    visit_lank = models.IntegerField(blank="True")
+    study_lank = models.TextField(max_length = 1000, blank="True")
+    coding_lank = models.TextField(max_length = 1000, blank="True")
+    def __str__(self):
+        return " name :"+self.user_name+" how many visit? :"+str(self.visit_lank)
+
 class UserInfo(models.Model):
     user_id = models.TextField(max_length = 20, blank="True")
     user_pwd = models.TextField(max_length = 20, blank="True")
@@ -18,7 +26,7 @@ class Login(models.Model):
     def __str__(self):
     	return " id :"+self.login_id+" pwd: "+self.login_pwd+" error :"+self.login_error+" date :"+str(self.login_date)
 
-
+'''
 class LoginUser(models.Model):
     user_ip = models.TextField(max_length=100, blank="True")
     login_now = models.IntegerField(blank="True")
@@ -27,7 +35,16 @@ class LoginUser(models.Model):
     last_pwd = models.TextField(max_length = 20, blank="True")
     def __str__(self):
         return " ip :"+self.user_ip+" time: "+str(self.login_date)
-        
+'''
+
+class UserLogin(models.Model):
+    user_ip = models.TextField(max_length=100)
+    login_now = models.BooleanField(default = True)
+    login_date = models.DateTimeField(blank="True", auto_now = True)
+    last_id = models.TextField(max_length = 20, blank="True")
+    last_pwd = models.TextField(max_length = 20, blank="True")
+    def __str__(self):
+        return " ip :"+self.user_ip+" time: "+str(self.login_date)
 
 class Run(models.Model):
     run_user = models.TextField(max_length = 20, blank="True")

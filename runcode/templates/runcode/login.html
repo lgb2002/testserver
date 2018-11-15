@@ -64,15 +64,17 @@
         var error = "{{ error }}"
         var name = "{{ username }}"
         var ip = "{{ ip }}"
+        /*
         if(ip == "null"){
             alert("not found ip");
         }
         else{
             alert("found ip :" + ip);
         }
+        */
         if(error == "No Error"){
             alert("{{ user_id }}");
-            location.href='./mypage/'+name;/*opens the target page while Id & userpwd matches*/
+            location.href='mypage.html' /*opens the target page while Id & userpwd matches*/
         }
         else if(error == "No Match") {
             alert("Error Password or Username");/*displays error message*/

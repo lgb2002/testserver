@@ -163,7 +163,7 @@ def answer(request) :
 			language = return_str
 			num = Lang.index(return_str)
 			#print("language_index : "+num)
-			url = "http://kakao.pythonanywhere.com/static/"+str(num)+"-"+language+".txt"
+			url = "http://kakao.pythonanywhere.com/assets/"+str(num)+"-"+language+".txt"
 			#print("url : "+url)
 			file = urlopen(url)
 			text = file.read().decode("utf-8")
