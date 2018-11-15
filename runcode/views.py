@@ -2,10 +2,25 @@ from django.shortcuts import render
 import requests, json, os, urllib
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from urllib.parse import urlencode
 from django.utils import timezone
 from runcode.models import *
 from datetime import datetime
+
+def mypage(request):
+	return render(request, 'runcode/mypage.html', {})
+
+def login_check(request):
+	if request.method == "POST":
+		login = request.POST.get('login')
+	else:
+		login = 0
+	if login :
+		return render(request, 'runcode/mypage.html', {})
+	else :
+		return render(request, 'runcode/login.html', {})
+
 
 def manual(request):
 	return render(request, 'runcode/manual.html', {})
@@ -13,27 +28,9 @@ def manual(request):
 def services(request):
 	return render(request, 'runcode/services.html', {})
 
-def quiz(request):
-	return render(request, 'runcode/quiz.html', {})
-
 def home(request):
 	posts = Learning.objects.all().order_by('id')
 	return render(request, 'runcode/home.html', {'posts':posts})
-
-def mypage(request):
-	return render(request, 'runcode/mypage.html', {})
-
-def index(request):
-	login = 0
-	if login:
-		print("login : " + login)
-		return render(request, 'runcode/index.html', {})
-	else:
-		return render(request, 'runcode/login.html', {
-			'error' : 'error'
-			})
-		'''return HttpResponse("Login Error")'''
-
 
 @csrf_exempt
 def register(request):
@@ -90,10 +87,18 @@ def login(request):
 			imsi_user = UserInfo.objects.get(user_id = get_id, user_pwd = get_pwd)
 			user_id = imsi_user.user_id
 			user_pwd = imsi_user.user_pwd
-			return render(request, 'runcode/login.html', {'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
+			user_name = imsi_user.user_name
+			login = Login(
+				login_id = user_id,
+				login_pwd = user_pwd, 
+				login_date = datetime.now(),
+				login_error = "No Error"
+				)
+			login.save()
+			return render(request, 'runcode/login.html', {'user_name': user_name, 'user_id' :user_id, 'user_pwd' : user_pwd, 'error' : 'No Error'})
 
 		except UserInfo.DoesNotExist:
-			print(" Error! No Match UserInformation! ")
+			alert(" Error! No Match UserInformation! ")
 			login = Login(
 				login_id = get_id,
 				login_pwd = get_pwd, 
@@ -105,7 +110,7 @@ def login(request):
 			error = imsi_login.login_error
 			return render(request, 'runcode/login.html', {'user_id' : "No id", 'user_pwd' : "No pwd", 'error' : error})
 	else:
-		return render(request, 'runcode/login.html',)
+		return render(request, 'runcode/login.html', {})
 
 
 
