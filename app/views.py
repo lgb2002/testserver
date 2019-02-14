@@ -33,7 +33,7 @@ def get_m(r) :
 
 def get_menu(day) :
 
-	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmean/calendar.htm"
+	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 	html2 = urlopen(imsi2)
 	soup2 = BeautifulSoup(html2.read(), "html.parser")
 	test2 = soup2.find(class_="Contents_schoolmeal_Date")
