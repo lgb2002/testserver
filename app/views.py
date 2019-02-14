@@ -32,7 +32,7 @@ def get_m(r) :
 
 
 def get_menu(day) :
-
+	'''
 	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 	html2 = urlopen(imsi2)
 	soup2 = BeautifulSoup(html2.read(), "html.parser")
@@ -41,18 +41,26 @@ def get_menu(day) :
 	print("second test : "+test2)
 	return "hello"
 	'''
-	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
-	html = urlopen(imsi)
-	soup = BeautifulSoup(html.read(), "html.parser")
-	test = soup.find(class_="Contents_Cont_Cont_Cont")
-	test = test.get_text()
-	print("test : "+test)
-	test = re.sub(" ?\d ?[.]*"," ",test)
-	print("test : "+test)
-	test = re.sub(" +","\n",test)
-	test = re.sub("a-zA-Z"," ",test)
-	print("test : "+test)
-	return test'''
+	
+	try:
+		imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+		html = urlopen(imsi)
+		soup = BeautifulSoup(html.read(), "html.parser")
+		test = soup.find(class_="Contents_Cont_Cont_Cont")
+		test = test.get_text()
+		print("test : "+test)
+		test = re.sub(" ?\d ?[.]*"," ",test)
+		print("test : "+test)
+		test = re.sub(" +","\n",test)
+		test = re.sub("a-zA-Z"," ",test)
+		print("test : "+test)
+		return test
+	except urllib.error.HTTPError:
+		test = "급식을 제공하지 않는 날입니다."
+		return test
+	else:
+		test = "알 수 없는 원인으로 에러괴물이 발생했습니다. 대피하세요!"
+		return test
 
 
 
