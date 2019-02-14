@@ -32,6 +32,14 @@ def get_m(r) :
 
 
 def get_menu(day) :
+
+	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmean/calendar.htm"
+	html2 = urlopen(imsi2)
+	soup2 = BeautifulSoup(html2.read(), "html.parser")
+	test2 = soup2.find(class_="Contents_schoolmeal_Date")
+	test2 = test2.get_text()
+	print("second test : "+test2)
+
 	imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 	html = urlopen(imsi)
 	soup = BeautifulSoup(html.read(), "html.parser")
@@ -44,12 +52,7 @@ def get_menu(day) :
 	test = re.sub("a-zA-Z"," ",test)
 	print("test : "+test)
 
-	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmean/calendar.htm"
-	html2 = urlopen(imsi2)
-	soup2 = BeautifulSoup(html2.read(), "html.parser")
-	test2 = soup2.find(class_="Contents_schoolmeal_Date")
-	test2 = test2.get_text()
-	print("second test : "+test2)
+
 
 	return test
 
