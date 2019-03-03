@@ -43,6 +43,7 @@ def get_menu(day) :
 	'''
 	
 	try:
+		'''
 		imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html.read(), "html.parser")
@@ -54,6 +55,8 @@ def get_menu(day) :
 		test = re.sub(" +","\n",test)
 		test = re.sub("a-zA-Z"," ",test)
 		print("test : "+test)
+		'''
+		test = "I will statrt the service tomorrow. Sorry;"
 		return test
 	except AttributeError:
 		test = "error"
