@@ -46,7 +46,7 @@ def get_menu(day) :
 		imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html.read(), "html.parser")
-		test = soup.find(class_="Contents_Cont_Cont_Cont")
+		test = soup.find(class_="Contents_schoolmeal_Txt")
 		test = test.get_text()
 		print("test : "+test)
 		test = re.sub(" ?\d ?[.]*"," ",test)
@@ -55,6 +55,9 @@ def get_menu(day) :
 		test = re.sub("a-zA-Z"," ",test)
 		print("test : "+test)
 		return test
+	except AttributeError:
+		test = "error"
+		return 
 	except urllib.error.HTTPError:
 		test = "급식을 제공하지 않는 날입니다."
 		return test
