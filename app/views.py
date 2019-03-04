@@ -144,9 +144,9 @@ def answer(request) :
 			})
 		elif return_str in schoolmeal_message :
 			r = datetime.today().weekday()
-			if return_str == chatbot_message[0] :
+			if return_str == schoolmeal_message[0] :
 				day = real_day
-			elif return_str == chatbot_message[1] :
+			elif return_str == schoolmeal_message[1] :
 				day = real_day + 1
 				if r == 6 :
 					r = 0
