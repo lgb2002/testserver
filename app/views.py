@@ -63,7 +63,7 @@ def get_menu(day) :
 			return test[0].get_text()
 		elif day == real_day :
 			return test[1].get_text()
-		else
+		else :
 			return "Error"
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
