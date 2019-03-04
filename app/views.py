@@ -59,18 +59,21 @@ def get_menu(day) :
 		soup = BeautifulSoup(html, "html.parser")
 		test = soup.find_all('li', 'menu_info')
 
+
+		if day == real_day :
+			test = test[0].get_text()
+		elif day == real_day+1 :
+			test = test[1].get_text()
+		else :
+			test = "Error"
+
+
 		test = re.sub(" ?\d ?[.]*"," ",test)
 		print("test : "+test)
 		test = re.sub(" +","\n",test)
 		test = re.sub("a-zA-Z"," ",test)
 		print("test : "+test)
-
-		if day == real_day :
-			return test[0].get_text()
-		elif day == real_day+1 :
-			return test[1].get_text()
-		else :
-			return "Error"
+		
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
 		#test2 = soup.head.get('content')
