@@ -199,7 +199,7 @@ def answer(request) :
 				}
 			})
 
-		else #type(return_str) == str: #last elif
+		else : #type(return_str) == str: #last elif
 			code = return_str
 			plus = 'LanguageChoiceWrapper='+str(num)+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
