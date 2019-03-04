@@ -56,7 +56,14 @@ def get_menu(day) :
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
 		test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
-		print(test)
+		test1 = soup.get('content')
+		test2 = soup.head
+		test3 = soup.body
+		print("test: "+test)
+		print("test1: "+test1)
+		print("test2: "+test2)
+		print("test3: "+test3)
+
 
 
 		'''
