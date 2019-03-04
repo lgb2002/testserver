@@ -59,10 +59,14 @@ def get_menu(day) :
 		test1 = soup.get('content')
 		test2 = soup.head
 		test3 = soup.body
-		print("test: "+test)
-		print("test1: "+test1)
-		print("test2: "+test2)
-		print("test3: "+test3)
+		if test is not None :
+			print("test: "+test)
+		if test1 is not None :
+			print("test1: "+test1)
+		if test2 is not None :
+			print("test2: "+test2)
+		if test3 is not None :
+			print("test3: "+test3)
 
 
 
