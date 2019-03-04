@@ -26,8 +26,9 @@ print("test(time) :"+str(real_year)+'/'+str(real_month)+'/'+str(real_day))
 #CodeRunner
 Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
 UsedLang = ['Assembly', 'Bash', 'C#', 'C++ ', 'C', 'Java', 'Javascript', 'Lua', 'MySql', 'Node.js', 'Oracle', 'Pascal', 'Php', 'Python', 'R', 'Ruby', 'Sql Server', 'Swift', 'Visual Basic']
-num = "0"
-language = ""
+
+#num = "0"
+#language = ""
 
 def get_m(r) :
 	if r == 5 or r == 6 :
