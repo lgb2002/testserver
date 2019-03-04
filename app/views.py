@@ -199,7 +199,7 @@ def answer(request) :
 				}
 			})
 
-		elif type(return_str) == str: #last elif
+		else #type(return_str) == str: #last elif
 			code = return_str
 			plus = 'LanguageChoiceWrapper='+str(num)+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
@@ -258,12 +258,13 @@ def answer(request) :
 				    'text' : result
 				}
 			})
+			'''
 		else:
 			return JsonResponse({
 				'message' : {
 				    'text' : '에러괴물이 나타났어요! 도망가요!'
 				}
-			})
+			})'''
 
 #choice = "000"
 
