@@ -73,7 +73,8 @@ def get_menu(day) :
 		test = re.sub(" +","\n",test)
 		test = re.sub("a-zA-Z"," ",test)
 		print("test : "+test)
-		
+		return test
+
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
 		#test2 = soup.head.get('content')
