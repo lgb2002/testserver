@@ -50,13 +50,14 @@ def get_menu(day) :
 	'''
 	
 	try:
+
 		#url = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 		#imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		imsi = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%B6%80%ED%9D%A5%EA%B3%A0+%EA%B8%89%EC%8B%9D"
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
-		print(soup.body.find("div", {"class" : "school_menu _page_pane1"}))
+		print(soup.head)
 		test = soup.get('content')
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
