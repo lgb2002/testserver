@@ -55,6 +55,11 @@ def get_menu(day) :
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(url)
 		soup = BeautifulSoup(html.read(), "html.parser")
+
+		print(soup)
+
+
+		'''
 		test = soup.find(date)
 		test = test.get_text()
 		print("test : "+test)
@@ -62,7 +67,7 @@ def get_menu(day) :
 		print("test : "+test)
 		test = re.sub(" +","\n",test)
 		test = re.sub("a-zA-Z"," ",test)
-		print("test : "+test)
+		print("test : "+test)'''
 		
 		#test = "I will statrt the service tomorrow. Sorry;"
 		return test
