@@ -70,7 +70,7 @@ def get_menu(day) :
 		print("test : "+test)'''
 		
 		#test = "I will statrt the service tomorrow. Sorry;"
-		return "hi"
+		return soup
 	except AttributeError:
 		test = "error"
 		return 
