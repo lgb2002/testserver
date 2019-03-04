@@ -53,7 +53,7 @@ def get_menu(day) :
 		url = "www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 		#imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
-		html = urlopen(imsi)
+		html = urlopen(url)
 		soup = BeautifulSoup(html.read(), "html.parser")
 		test = soup.find(date)
 		test = test.get_text()
