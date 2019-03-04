@@ -27,8 +27,8 @@ print("test(time) :"+str(real_year)+'/'+str(real_month)+'/'+str(real_day))
 Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
 UsedLang = ['Assembly', 'Bash', 'C#', 'C++ ', 'C', 'Java', 'Javascript', 'Lua', 'MySql', 'Node.js', 'Oracle', 'Pascal', 'Php', 'Python', 'R', 'Ruby', 'Sql Server', 'Swift', 'Visual Basic']
 
-#num = "0"
-#language = ""
+num = "0"
+language = ""
 
 def get_m(r) :
 	if r == 5 or r == 6 :
@@ -85,6 +85,8 @@ def keyboard(request) :
 
 @csrf_exempt
 def answer(request) :
+	global num
+	global language
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
