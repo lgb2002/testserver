@@ -56,6 +56,7 @@ def get_menu(day) :
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
+		print(soup)
 		test = soup.get('content')
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
