@@ -9,18 +9,24 @@ from runcode.models import *
 from datetime import datetime
 import json, re
 
+#Output Message Array
+default_message = ['급식알림','코드실행기','챗봇']
+schoolmeal_message = ['오늘','내일','뒤로가기']
+coderunner_message = ['']
+chatbot_message = ['뒤로가기']
+
 #Basic Settings on date
-
-
 datetime.today()
 real_year=datetime.today().year
 real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
-Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
 print("test(time) :"+str(real_year)+'/'+str(real_month)+'/'+str(real_day))
+
+#CodeRunner
+Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
+UsedLang = ['Assembly', 'Bash', 'C#', 'C++ ', 'C', 'Java', 'Javascript', 'Lua', 'MySql', 'Node.js', 'Oracle', 'Pascal', 'Php', 'Python', 'R', 'Ruby', 'Sql Server', 'Swift', 'Visual Basic']
 num = "0"
-choice = 0
 language = ""
 
 def get_m(r) :
@@ -43,7 +49,7 @@ def get_menu(day) :
 	'''
 	
 	try:
-		'''
+		
 		imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html.read(), "html.parser")
@@ -55,8 +61,8 @@ def get_menu(day) :
 		test = re.sub(" +","\n",test)
 		test = re.sub("a-zA-Z"," ",test)
 		print("test : "+test)
-		'''
-		test = "I will statrt the service tomorrow. Sorry;"
+		
+		#test = "I will statrt the service tomorrow. Sorry;"
 		return test
 	except AttributeError:
 		test = "error"
@@ -73,15 +79,14 @@ def get_menu(day) :
 def keyboard(request) :
 	return JsonResponse({
         'type' : 'buttons',
-        'buttons' : ['급식알림','코드실행기','챗봇']
-        })
+        'buttons' : default_message
+    })
 
 @csrf_exempt
 def answer(request) :
-	global language
-	global choice
-	global num
-	print("choice: "+str(choice))
+
+	
+	print("choice: "+choice)
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
@@ -96,60 +101,52 @@ def answer(request) :
 		    },
 		    'keyboard' : {
 			    'type': 'buttons',
-		        'buttons' : ['급식알림','코드실행기','챗봇']
+		        'buttons' : default_message
 	    	}
 	    })
-	elif return_str == '급식알림' :
-		choice = 1
-		print("choice: "+str(choice))
+	elif return_str == default_message[0] :
 		return JsonResponse({
 			'message' : {
-		    	'text' : 'test1'
+		    	'text' : '어느 요일의 급식이 궁금하세요?'
 		    },
 		    'keyboard' : {
 			    'type': 'buttons',
-		        'buttons' : ['오늘','내일','뒤로가기']
+		        'buttons' : schoolmeal_message
 	    	}
 	    })
-	elif return_str == '코드실행기' :
-		choice = 2
-		print("choice: "+str(choice))
+	elif return_str == default_message[2] :
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '--exit를 입력하면 언제든지 코드실행기를 중지시킬 수 있습니다.  사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요. code 실행을 원하시면 --lang을 입력하세요.'
 		    }
 	    })
-	elif return_str == '챗봇' :
-		choice = 3
-		print("choice: "+str(choice))
+	elif return_str == default_message[2] :
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
 			},
 			'keyboard' : {
 				'type' : 'buttons',
-				'buttons' : ['뒤로가기']
+				'buttons' : chatbot_message
 			}
 		})
 
 	else :
 		if return_str == '--home' or return_str == '뒤로가기' :
-			choice = 0
-			print("choice: "+str(choice))
 			return JsonResponse({
 				'message' : {
-				   	'text' : 'test2'
+				   	'text' : '안녕하세요! 부흥고 급식 알리미입니다. 무엇을 도와드릴까요?'
 			    },
 				'keyboard' : {
 					'type' : 'buttons',
-					'buttons' : ['급식알림','코드실행기','챗봇']
+					'buttons' : default_message
 				}
 			})
 		elif choice == 1:
 			r = datetime.today().weekday()
-			if return_str == '오늘' :
+			if return_str == chatbot_message[0] :
 				day = real_day
-			elif return_str == '내일' :
+			elif return_str == chatbot_message[1] :
 				day = real_day + 1
 				if r == 6 :
 					r = 0
@@ -169,7 +166,7 @@ def answer(request) :
 				},
 				'keyboard' : {
 				    'type': 'buttons',
-			        'buttons' : ['오늘','내일','뒤로가기']
+			        'buttons' : schoolmeal_message
 				}
 			})
 		elif return_str == '--lang' and choice == 2:
@@ -181,7 +178,7 @@ def answer(request) :
 				},
 				'keyboard' : {
 				    'type': 'buttons',
-			        'buttons' : ['Assembly', 'Bash', 'C#', 'C++ ', 'C', 'Java', 'Javascript', 'Lua', 'MySql', 'Node.js', 'Oracle', 'Pascal', 'Php', 'Python', 'R', 'Ruby', 'Sql Server', 'Swift', 'Visual Basic']
+			        'buttons' : UsedLang
 				} 
 			})
 		elif choice == 5 :
@@ -272,3 +269,20 @@ def answer(request) :
 				    'text' : '에러괴물이 나타났어요! 도망가요!'
 				}
 			})
+
+#choice = "000"
+
+'''
+variable 'choice' is function of array
+
+1 = '급식알림'
+	1 = '오늘'
+	2 = '내일'
+	3 = '뒤로가기'
+2 = '코드실행기'
+
+3 = '챗봇'
+	1 = '뒤로가기'
+
+3th array value is not defined yet
+'''
