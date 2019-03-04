@@ -57,8 +57,8 @@ def get_menu(day) :
 		soup = BeautifulSoup(html, "html.parser")
 		test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		test1 = soup.get('content')
-		test2 = soup.head
-		test3 = soup.body
+		test2 = soup.head.get('content')
+		test3 = soup.body.get('content')
 		if test is not None :
 			print("test: "+test)
 		if test1 is not None :
