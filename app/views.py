@@ -142,7 +142,7 @@ def answer(request) :
 					'buttons' : default_message
 				}
 			})
-		elif return_str in chatbot_message :
+		elif return_str in schoolmeal_message :
 			r = datetime.today().weekday()
 			if return_str == chatbot_message[0] :
 				day = real_day
