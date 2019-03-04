@@ -114,7 +114,7 @@ def answer(request) :
 		        'buttons' : schoolmeal_message
 	    	}
 	    })
-	elif return_str == default_message[2] :
+	elif return_str == default_message[1] :
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '--exit를 입력하면 언제든지 코드실행기를 중지시킬 수 있습니다.  사용 가능한 명령어의 리스트를 보고 싶으시면 --list를 입력하세요. 도움말을 보고 싶으시면 --help를 입력하세요. 홈으로 돌아가고 싶으시면 --home을 입력하세요. code 실행을 원하시면 --lang을 입력하세요.'
