@@ -51,22 +51,24 @@ def get_menu(day) :
 	
 	try:
 		#url = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
-		imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+		#imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+		imsi = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%B6%80%ED%9D%A5%EA%B3%A0+%EA%B8%89%EC%8B%9D"
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
-		test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
-		test1 = soup.get('content')
-		test2 = soup.head.get('content')
-		test3 = soup.body.get('content')
+		test = soup.get('content')
+		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
+		#test1 = soup.get('content')
+		#test2 = soup.head.get('content')
+		#test3 = soup.body.get('content')
 		if test is not None :
 			print("test: "+test)
-		if test1 is not None :
-			print("test1: "+test1)
-		if test2 is not None :
-			print("test2: "+test2)
-		if test3 is not None :
-			print("test3: "+test3)
+		#if test1 is not None :
+		#	print("test1: "+test1)
+		#if test2 is not None :
+		#	print("test2: "+test2)
+		#if test3 is not None :
+		#	print("test3: "+test3)
 
 
 
