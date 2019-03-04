@@ -61,7 +61,7 @@ def get_menu(day) :
 
 		if day == real_day :
 			return test[0].get_text()
-		elif day == real_day :
+		elif day == real_day+1 :
 			return test[1].get_text()
 		else :
 			return "Error"
