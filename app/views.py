@@ -57,13 +57,19 @@ def get_menu(day) :
 		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
-		print(soup.head)
-		test = soup.get('content')
+		test = soup.find_all('li', 'menu_info')
+
+		if day == real_day :
+			return test[0].get_text()
+		elif day == real_day :
+			return test[1].get_text()
+		else
+			return "Error"
 		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
 		#test1 = soup.get('content')
 		#test2 = soup.head.get('content')
 		#test3 = soup.body.get('content')
-		if test is not None :
+		'''if test is not None :
 			print("test: "+test)
 		#if test1 is not None :
 		#	print("test1: "+test1)
@@ -72,7 +78,7 @@ def get_menu(day) :
 		#if test3 is not None :
 		#	print("test3: "+test3)
 
-
+		'''
 
 		'''
 		test = soup.find(date)
@@ -85,7 +91,7 @@ def get_menu(day) :
 		print("test : "+test)'''
 		
 		#test = "I will statrt the service tomorrow. Sorry;"
-		return "hi"
+		#return test
 	except AttributeError:
 		test = "error"
 		return 
