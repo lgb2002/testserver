@@ -75,18 +75,15 @@ def get_menu(day) :
 		return test
 
 
-
 def keyboard(request) :
 	return JsonResponse({
         'type' : 'buttons',
         'buttons' : default_message
     })
 
+
 @csrf_exempt
 def answer(request) :
-
-	
-	print("choice: "+choice)
 	message = ((request.body).decode('utf-8'))
 	return_json_str = json.loads(message)
 	return_str = return_json_str['content']
@@ -142,7 +139,7 @@ def answer(request) :
 					'buttons' : default_message
 				}
 			})
-		elif choice == 1:
+		elif return_str in chatbot_message :
 			r = datetime.today().weekday()
 			if return_str == chatbot_message[0] :
 				day = real_day
@@ -169,9 +166,7 @@ def answer(request) :
 			        'buttons' : schoolmeal_message
 				}
 			})
-		elif return_str == '--lang' and choice == 2:
-			choice = 5
-			print("choice: "+str(choice))
+		elif return_str == '--lang':
 			return JsonResponse({
 				'message' : {
 				    'text' : '다음의 언어 중 사용하실 언어를 입력해주세요.',
@@ -181,8 +176,7 @@ def answer(request) :
 			        'buttons' : UsedLang
 				} 
 			})
-		elif choice == 5 :
-			choice = 6
+		elif return_str in UsedLang :
 			language = return_str
 			num = Lang.index(return_str)
 			#print("language_index : "+num)
@@ -197,14 +191,14 @@ def answer(request) :
 				}
 			})
 
-		elif choice == 6 and return_str == "--why":
+		elif return_str == "--why":
 			return JsonResponse({
 				'message' : {
 				    'text' : "주석과 시스템 관련 코드는 기본적으로 공식 약속입니다. 또한  hello world 는 모든 프로그래밍 언어의 전통입니다. 따라서 복사 붙여넣기를 하지 않고 코드만 전송하실 경우 error 가 발생합니다."
 				}
 			})
 
-		elif choice == 6 and type(return_str) == str:
+		elif type(return_str) == str: #last elif
 			code = return_str
 			plus = 'LanguageChoiceWrapper='+str(num)+'&'+urllib.parse.urlencode({'Program' : code})
 			print("plus: "+plus)
