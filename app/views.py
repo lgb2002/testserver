@@ -56,7 +56,7 @@ def get_menu(day) :
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
 
-		print(soup)
+		print(soup.head.title)
 
 
 		'''
