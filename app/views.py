@@ -67,7 +67,7 @@ def get_menu(day) :
 			test = test.get_text()
 			date_data = test[test.find('월')+2:test.find('일')]
 
-		if day in date_data:
+		if str(day) in date_data:
 			index = date.data.index(day)
 		else:
 			test = "급식을 제공하지 않는 날입니다."
