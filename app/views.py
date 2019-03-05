@@ -67,6 +67,8 @@ def get_menu(day) :
 			test = test.get_text()
 			date_data = test[test.find('월')+2:test.find('일')]
 
+		print("Day:"+str(day))
+
 		if str(day) in date_data:
 			index = date.data.index(day)
 		else:
