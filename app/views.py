@@ -60,6 +60,7 @@ def get_menu(day) :
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
 		test = soup.find_all('li', 'menu_info')
+		print("before test[0]:"+test[0])
 
 		#Date Data
 		date_data = []
@@ -82,6 +83,7 @@ def get_menu(day) :
 
 		#Menu Data
 		print("index:"+str(index))
+		print("after test[0]:"+test[0])
 		menu = test[index]
 		print("menu:"+menu)
 		menu = re.sub(" ?\d ?[.]*"," ",menu)
