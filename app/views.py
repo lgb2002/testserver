@@ -13,7 +13,7 @@ import json, re
 default_message = ['급식알림','코드실행기','챗봇']
 schoolmeal_message = ['오늘','내일','뒤로가기']
 coderunner_message = ['']
-chatbot_message = ['뒤로가기']
+chatbot_message = ['뒤로가기', '비밀버튼']
 
 #Basic Settings on date
 datetime.today()
@@ -149,6 +149,16 @@ def answer(request) :
 		return JsonResponse({
 		    'message' : {
 		    	'text' : '아직 지원하지 않는 기능입니다. 다음 업데이트를 기다려 주세요!'
+			},
+			'keyboard' : {
+				'type' : 'buttons',
+				'buttons' : chatbot_message
+			}
+		})
+	elif return_str == chatbot_message[1] :
+		return JsonResponse({
+		    'message' : {
+		    	'text' : '개발자는 후츠파 동아리에 거주합니다! 쀼'
 			},
 			'keyboard' : {
 				'type' : 'buttons',
