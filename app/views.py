@@ -75,7 +75,7 @@ def get_menu(day) :
 		print("date_data:"+text)
 
 		if str(day) in date_data:
-			index = date_data.index(day)
+			index = date_data.index(str(day))
 		else:
 			test = "급식을 제공하지 않는 날입니다."
 			return test
