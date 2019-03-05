@@ -68,12 +68,14 @@ def get_menu(day) :
 			date_data = test[test.find('월')+2:test.find('일')]
 
 		print("Day:"+str(day))
+		print("date_data"+date_data)
 
-		if str(day) in date_data:
-			index = date.data.index(day)
-		else:
-			test = "급식을 제공하지 않는 날입니다."
-			return test
+		for date in date_data:
+			if str(day) == date:
+				index = date.data.index(day)
+			else:
+				test = "급식을 제공하지 않는 날입니다."
+				return test
 
 		#Menu Data
 		menu = test[index]
