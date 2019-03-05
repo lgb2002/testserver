@@ -85,7 +85,7 @@ def get_menu(day) :
 		menu = re.sub(" ?\d ?[.]*"," ",menu)
 		menu = re.sub(" +","\n",menu)
 		menu = re.sub("a-zA-Z"," ",menu)
-		menu = test[5:len(menu)]
+		menu = menu[5:len(menu)]
 
 		#test = "I will start the service tomorrow. Sorry;"
 		return menu
