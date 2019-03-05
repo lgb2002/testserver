@@ -83,7 +83,7 @@ def get_menu(day) :
 
 		#Menu Data
 		print("index:"+str(index))
-		print("after test[0]:"+test[0])
+		print("after test[0]:"+test[0].get_text())
 		menu = test[index]
 		print("menu:"+menu)
 		menu = re.sub(" ?\d ?[.]*"," ",menu)
