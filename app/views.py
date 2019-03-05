@@ -64,6 +64,7 @@ def get_menu(day) :
 		#Date Data
 		date_data = []
 		for test in test:
+			test = test.get_text()
 			date_data = test[test.find('월')+2:test.find('일')]
 
 		if day in date_data:
