@@ -21,7 +21,9 @@ real_year=datetime.today().year
 real_month=datetime.today().month
 real_day=datetime.today().day
 t = ['월', '화', '수', '목', '금', '토', '일']
-print("test(time) :"+str(real_year)+'/'+str(real_month)+'/'+str(real_day))
+#date = [(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0),(8,0),(9,0),(10,0),(11,0),(12,0),(13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(19,0),(20,0),(21,0),(22,0),(23,0),(24,0),(25,0),(26,0),(27,0),(28,0),(29,0),(30,0),(31)]
+#print("test(time) :"+str(real_year)+'/'+str(real_month)+'/'+str(real_day))
+
 
 #CodeRunner
 Lang = [' ','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', ' ', 'Fortran']
@@ -42,7 +44,7 @@ def get_menu(day) :
 	'''
 	imsi2 = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 	html2 = urlopen(imsi2)
-	soup2 = BeautifulSoup(html2.read(), "html.parser")
+	soup2 = BeautifulSoup(html2.read(,0), "html.parser")
 	test2 = soup2.find(class_="Contents_schoolmeal_Date")
 	test2 = test2.get_text()
 	print("second test : "+test2)
@@ -50,61 +52,38 @@ def get_menu(day) :
 	'''
 	
 	try:
-
 		#url = "http://www.puhung.hs.kr/wah/main/schoolmeal/calendar.htm?menuCode=80"
 		#imsi = "http://www.puhung.hs.kr/wah/main/schoolmeal/view.htm?menuCode=80&moveType=&domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+		#date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
+
 		imsi = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%B6%80%ED%9D%A5%EA%B3%A0+%EA%B8%89%EC%8B%9D"
-		date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
 		test = soup.find_all('li', 'menu_info')
 
+		#Date Data
+		date_data = []
+		for test in test:
+			date_data = test[test.find('월')+2:test.find('일')]
 
-		if day == real_day :
-			test = test[0].get_text()
-		elif day == real_day+1 :
-			test = test[1].get_text()
-		else :
-			test = "Error"
+		if day in date_data:
+			index = date.data.index(day)
+		else:
+			test = "급식을 제공하지 않는 날입니다."
+			return test
 
+		#Menu Data
+		menu = test[index]
+		menu = test
+		menu = re.sub(" ?\d ?[.]*"," ",menu)
+		menu = re.sub(" +","\n",menu)
+		menu = re.sub("a-zA-Z"," ",menu)
+		menu = test[5:len(menu)]
 
-		test = re.sub(" ?\d ?[.]*"," ",test)
-		print("test : "+test)
-		test = re.sub(" +","\n",test)
-		test = re.sub("a-zA-Z"," ",test)
-		print("test : "+test)
-		test = test[5:len(test)]
-		return test
-
-		#test = soup.find("div", {"class":"Schoolmeal_Cont_Cont_Cont"}).get('content')
-		#test1 = soup.get('content')
-		#test2 = soup.head.get('content')
-		#test3 = soup.body.get('content')
-		'''if test is not None :
-			print("test: "+test)
-		#if test1 is not None :
-		#	print("test1: "+test1)
-		#if test2 is not None :
-		#	print("test2: "+test2)
-		#if test3 is not None :
-		#	print("test3: "+test3)
-
-		'''
-
-		'''
-		test = soup.find(date)
-		test = test.get_text()
-		print("test : "+test)
-		'''
-		
-		
-		#test = "I will statrt the service tomorrow. Sorry;"
-		#return test
-	except AttributeError:
-		test = "error"
-		return 
+		#test = "I will start the service tomorrow. Sorry;"
+		return menu
 	except urllib.error.HTTPError:
-		test = "급식을 제공하지 않는 날입니다."
+		test = "식단을 찾다가 길을 잃었습니다. 한 번만 다시 급식을 확인해보세요."
 		return test
 	else:
 		test = "알 수 없는 원인으로 에러괴물이 발생했습니다. 대피하세요!"
