@@ -1,0 +1,8 @@
+%Erlang 7.3
+%dont change first 3 lines
+
+-module(source).
+	-export([entry_point/0]).
+
+	entry_point() ->
+		io:fwrite("Hello, world\n").

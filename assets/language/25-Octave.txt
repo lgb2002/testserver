@@ -1,0 +1,7 @@
+%To view plots after 'plot' (and other plot-producing commands) this command must follow: 'print -dpng some_unique_plot_name.png;'
+%It exports current plot to png image which then is sent to your browser
+%GNU Octave 4.0.0
+
+x=1:0.1:10;
+plot(x, sin(x));
+print -dpng some_name.png;

@@ -1,0 +1,5 @@
+!gfortran, gcc version 5.4.0 20160609
+
+program hello
+    print *, "Hello World!"
+end program hello

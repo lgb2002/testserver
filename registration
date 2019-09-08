@@ -1,0 +1,196 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+
+<!-- Meta Tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Do Coding! | Login page</title>
+
+<meta name="description" content="Insert Your Site Description" /> 
+
+<!-- Mobile Specifics -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>   
+
+<!-- Mobile Internet Explorer ClearType Technology -->
+<!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
+
+<!-- Bootstrap -->
+<link href='{% static "_include/css/bootstrap.min.css" %}' rel="stylesheet">
+
+<!-- Main Style -->
+<link href='{% static "_include/css/main.css" %}' rel="stylesheet">
+
+<!-- Supersized -->
+<link href='{% static "_include/css/supersized.css" %}' rel="stylesheet">
+<link href='{% static "_include/css/supersized.shutter.css" %}' rel="stylesheet">
+
+<!-- FancyBox -->
+<link href='{% static "_include/css/fancybox/jquery.fancybox.css" %}' rel="stylesheet">
+
+<!-- Font Icons -->
+<link href='{% static "_include/css/fonts.css" %}' rel="stylesheet">
+
+<!-- Shortcodes -->
+<link href='{% static "_include/css/shortcodes.css" %}' rel="stylesheet">
+
+<!-- Responsive -->
+<link href='{% static "_include/css/bootstrap-responsive.min.css" %}' rel="stylesheet">
+<link href='{% static "_include/css/responsive.css" %}' rel="stylesheet">
+
+<!-- Google Font -->
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+
+<!-- Fav Icon -->
+<link rel="shortcut icon" href="#">
+
+<link rel="apple-touch-icon" href="#">
+<link rel="apple-touch-icon" sizes="114x114" href="#">
+<link rel="apple-touch-icon" sizes="72x72" href="#">
+<link rel="apple-touch-icon" sizes="144x144" href="#">
+
+<!-- Modernizr -->
+<script src='{% static "_include/js/modernizr.js" %}'></script>
+
+    <script type="text/javascript">
+        var result = "{{ result }}"
+        if(result == "success"){
+            alert("Register Success! You need to login now.");
+            location.href='/index';
+        }
+        else if(result == "id exist"){
+            alert("Id Already Exist");
+        }
+        else if(result == "name exist"){
+            alert("Name Already Exist");
+        }
+    </script>
+
+<!-- Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'Insert Your Code']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- End Analytics -->
+
+</head>
+
+
+<body>
+
+<!-- This section is for Splash Screen -->
+<section id="jSplash">
+    <div id="circle"></div>
+</section>
+<!-- End of Splash Screen -->
+
+<!-- Homepage Slider -->
+<div id="home-slider">  
+    <div class="overlay"></div>
+    
+    <div class="slider-text">
+        <div id="slidecaption"></div>
+    </div>   
+    
+    <div class="control-nav">
+        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+        <ul id="slide-list"></ul>
+        
+        <a id="nextsection" href="#shortcodes"><i class="font-icon-arrow-simple-down"></i></a>
+    </div>
+</div>
+<!-- End Homepage Slider -->
+
+<!-- Header -->
+<header>
+    <div class="sticky-nav">
+        <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        
+        <div id="logo">
+            <a id="goUp" href="#home-slider">Do Coding</a>
+        </div>
+
+        <nav id="menu">
+            <ul id="menu-nav">
+                <li><a href="manual.html" class="external"><span class="font-icon-gift"></span></a></li>
+                <li><a href="home.html#home-slider" class="external">홈</a></li>
+                <li><a href="home.html#learn" class="external">배우기</a></li>
+                <li><a href="home.html#coderun" class="external">코드실행기</a></li>
+                <li><a href="home.html#quiz" class="external">퀴즈</a></li>
+                <li><a href="home.html#my" class="external">MY</a></li>
+                <li class="current"><a href="#">서비스</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+<!-- End Header -->
+        
+<div id="login" class="page">
+    <div class="container" style="clear: both;">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <h1 style="font-family:Comic Sans Ms;text-align="center";font-size:20pt;color:#00FF00;>
+                        Simple Register Page
+                        <li>id : {{ user_id }}</li>
+                        <li>pwd : {{ user_pwd }}</li>
+                    </h1>
+
+                    <form name="register" action="register" method="post">
+                        {{ crsf_token }}
+                        
+                        <li>Name<input type="text" name="username" maxlength="20" required/></li>
+                        <li>Id<input type="text" name="userid" maxlength="20" required/></li>
+                        <li>Password<input type="password" name="userpwd" maxlength="20" required"/></li>
+
+                        <input type="submit" name="submit" value="Register"/>
+                    </form>
+                    <a href="login">login page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p class="credits">&copy;2018 두코딩 <a href="http://kakao.pythonanywhere.com/runcode" title="두코딩 by href="http://kakao.pythonanywhere.com/runcode" title="lgb">Team WE 이기백</a></p>
+</footer>
+<!-- End Footer -->
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+    <i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->
+
+<!-- Js -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
+<script src='{% static "_include/js/bootstrap.min.js" %}'></script> <!-- Bootstrap -->
+<script src='{% static "_include/js/supersized.3.2.7.min.js" %}'></script> <!-- Slider -->
+<script src='{% static "_include/js/waypoints.js" %}'></script> <!-- WayPoints -->
+<script src='{% static "_include/js/waypoints-sticky.js" %}'></script> <!-- Waypoints for Header -->
+<script src='{% static "_include/js/jquery.isotope.js" %}'></script> <!-- Isotope Filter -->
+<script src='{% static "_include/js/jquery.fancybox.pack.js" %}'></script> <!-- Fancybox -->
+<script src='{% static "_include/js/jquery.fancybox-media.js" %}'></script> <!-- Fancybox for Media -->
+<script src='{% static "_include/js/jquery.tweet.js" %}'></script> <!-- Tweet -->
+<script src='{% static "_include/js/plugins.js" %}'></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<script src='{% static "_include/js/main.js" %}'></script> <!-- Default JS -->
+<!-- End Js -->
+
+</body>
+</html>

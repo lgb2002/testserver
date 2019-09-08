@@ -1,0 +1,6 @@
+#MySQL 5.7.12
+#please drop objects you've created at the end of the script 
+#or check for their existance before creating
+#'\\' is a delimiter
+
+select version() as 'mysql version'

@@ -1,0 +1,9 @@
+//Microsoft (R) C/C++ Optimizing Compiler Version 19.00.23506 for x64
+
+#include  <stdio.h>
+
+int main(void)
+{
+    printf("Hello, world!\n");
+    return 0;
+}
