@@ -182,7 +182,7 @@ def login(request):
 
 
 
-'''
+
 
 @csrf_exempt
 def run(request):
@@ -219,4 +219,29 @@ def run(request):
 	errors = str(dict['Errors']) 
 	result = str(dict['Result'])
 	stats = str(dict['Stats'])
+
 	'''
+	print("text : "+res.text)
+	print("headers : "+str(res.headers))
+	print("raise_for_status : "+str(res.raise_for_status))
+	print("url : "+res.url)
+	'''
+
+	if errors == "None" and warnings == "None":
+		return render(request, 'runcode/home.html', {
+	    	'warnings' : warnings,
+	    	'errors' : errors,
+	    	'result' : result,
+	    	'stats' : stats ,
+	    	'alert' : 'success'
+	    	})
+
+
+
+
+	return render(request, 'runcode/home.html', {
+		'warnings' : warnings,
+		'errors' : errors,
+		'result' : result,
+		'stats' : stats
+		})
