@@ -57,9 +57,9 @@ def get_menu(day) :
 		#date = "domain.year="+str(real_year)+"&domain.month="+str(real_month)+"&domain.day="+str(day)
 
 		#imsi = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%B6%80%ED%9D%A5%EA%B3%A0+%EA%B8%89%EC%8B%9D"
+
 		
 		# by here
-
 		imsi = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EB%B6%80%ED%9D%A5%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EC%8B%9D%EB%8B%A8&oquery=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EB%B6%80%ED%9D%A5%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EA%B8%89%EC%8B%9D&tqi=U68xesp0JXossNPaW8NsssssskN-346871"
 		html = urlopen(imsi)
 		soup = BeautifulSoup(html, "html.parser")
@@ -128,6 +128,9 @@ def answer(request) :
 	})
 
 '''#here
+=======
+
+>>>>>>> e9abf5009cb783bca8e441d3aac54d473f83f9f9
 	if return_str == '--exit' :
 		print("escape from coderunner")
 		return JsonResponse({
