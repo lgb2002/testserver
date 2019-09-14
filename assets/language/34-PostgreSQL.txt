@@ -1,0 +1,4 @@
+--PostgreSQL 9.6
+--'\\' is a delimiter
+
+select version() as postgresql_version

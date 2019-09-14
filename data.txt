@@ -1,0 +1,1 @@
+LanguageChoiceWrapper=38&EditorChoiceWrapper=1&LayoutChoiceWrapper=1&Input=&Privacy=&PrivacyUsers=&Title=&SavedOutput=&WholeError=&WholeWarning=&StatsToSave=&CodeGuid=&IsInEditMode=False&IsLive=False&Program=%23%21%2Fbin%2Fbash%0D%0A%23+GNU+bash%2C+version+4.3.46%0D%0A%0D%0Aecho+%22Hello%2C+world%21%22%3B%0D%0A%09%09%09%09

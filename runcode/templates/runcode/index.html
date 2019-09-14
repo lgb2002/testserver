@@ -1,0 +1,200 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Code_Runner</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href='{% static "vendor/bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href='{% static "css/simple-sidebar.css" %}' rel="stylesheet">
+
+</head>
+<script type="text/javascript">
+	function langDisplay(frm){
+		var lang = ['None','C#', 'Visual Basic', 'F#', 'Java', 'Python', 'C (gcc)', 'C++ (gcc)', 'Php', 'Pascal', 'Objective-C', 'Haskell', 'Ruby', 'Perl', 'Lua', 'Assembly', 'Sql Server', 'Javascript', 'Common Lisp', 'Prolog', 'Go', 'Scala', 'Scheme', 'Node.js', 'Python 3', 'Octave', 'C (clang)', 'C++ (clang)', 'C++ (vc++)', 'C (vc)', 'D', 'R', 'Tcl', 'MySql', 'PstgreSQL', 'Oracle', 'Client Side', 'Swift', 'Bash', 'Ada', 'Erlang', 'Elixir', 'Ocaml', 'Kotlin', 'None', 'Fortran']
+		var imsi = frm.LanguageChoiceWrapper
+		//frm.LanguageChoiceWrapper.selectedIndex;
+		var langNum = imsi.options[imsi.selectedIndex].value
+
+		switch(langNum){
+			case 0:
+				frm.Program.value = 'write your code';
+				break;
+			default:
+				url = "http://kakao.pythonanywhere.com/static/"+String(langNum)+"-"+lang[langNum]+".txt"
+				url = url.replace('#','%23')
+				var xhr=new XMLHttpRequest();
+				xhr.open("GET",url);
+				xhr.send();
+				xhr.onload=function(){
+					frm.Program.value = xhr.responseText;
+				}
+				break;
+		}
+		return true;
+	}
+	//select option click change textarea value
+</script>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Coding
+                    </a>
+                </li>
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a href="home.html">Learning</a>
+                </li>
+                <li>
+                    <a href="quiz.html">Quiz</a>
+                </li>
+                <li>
+                    <a href="run">CodeRunner</a>
+                </li>
+                <li>
+                    <a href="mypage.html">MyPage</a>
+                </li>
+                <li>
+                    <a href="services.html">Services</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <h1>Simple Sidebar</h1>
+                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>
+	<form action="run" method="post">
+		{{ crsf_token }}
+		<div class="wrap">
+			<select name="LanguageChoiceWrapper" onchange="langDisplay(this.form)">
+				<option value="0" selected>select language</option>
+				<option value="39">Ada</option>
+				<option value="15">Assembly</option>
+				<option value="38">Bash</option>
+				<option value="1">C#</option>
+				<option value="7">C++ (gcc)</option>
+				<option value="27">C++ (clang)</option>
+				<option value="28">C++ (vc++)</option>
+				<option value="6">C (gcc)</option>
+				<option value="26">C (clang)</option>
+				<option value="29">C (vc)</option>
+				<option value="36">Client Side</option>
+				<option value="18">Common Lisp</option>
+				<option value="30">D</option>
+				<option value="41">Elixir</option>
+				<option value="40">Erlang</option>
+				<option value="3">F#</option>
+				<option value="45">Fortran</option>
+				<option value="20">Go</option>
+				<option value="11">Haskell</option>
+				<option value="4">Java</option>
+				<option value="17">Javascript</option>
+				<option value="43">Kotlin</option>
+				<option value="14">Lua</option>
+				<option value="33">MySql</option>
+				<option value="23">Node.js</option>
+				<option value="42">Ocaml</option>
+				<option value="25">Octave</option>
+				<option value="10">Objective-C</option>
+				<option value="35">Oracle</option>
+				<option value="9">Pascal</option>
+				<option value="13">Perl</option>
+				<option value="8">Php</option>
+				<option value="34">PostgreSQL</option>
+				<option value="19">Prolog</option>
+				<option value="5">Python</option>
+				<option value="24">Python 3</option>
+				<option value="31">R</option>
+				<option value="12">Ruby</option>
+				<option value="21">Scala</option>
+				<option value="22">Scheme</option>
+				<option value="16">Sql Server</option>
+				<option value="37">Swift</option>
+				<option value="32">Tcl</option>
+				<option value="2">Visual Basic</option>
+			</select>
+
+			<input type="hidden" name="EditorChoiceWrapper" value="1">
+			<input type="hidden" name="LayoutChoiceWrapper" value="1">
+			<input type="hidden" name="Input" value="">
+			<input type="hidden" name="Privacy" value="">
+			<input type="hidden" name="PrivacyUsers" value="">
+			<input type="hidden" name="Title" value="">
+			<input type="hidden" name="SavedOutput" value="">
+			<input type="hidden" name="WholeError" value="">
+			<input type="hidden" name="WholeWarning" value="">
+			<input type="hidden" name="StatsToSave" value="">
+			<input type="hidden" name="CodeGuid" value="">
+			<input type="hidden" name="IsInEditMode" value="False">
+			<input type="hidden" name="IsLive" value="False">
+
+			<label for="Program">code:</label>
+			<textarea id="Program" name="Program"> </textarea> 
+		</div>
+
+
+		<div class="button">
+			<button type="submit">Run</button>
+		</div>
+	</form>
+	
+	<div class="reuslt">
+		<li>
+		result :
+		{{ result }}
+		</li>
+		<li>
+		stats :
+		{{ stats }}
+		</li>
+		<li>
+		warnings :
+		{{ warnings }}
+		</li>
+		<li>
+		errors :
+		{{ errors }}
+		</li>
+	</div>
+	</code>.</p>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src='{% static "vendor/jquery/jquery.min.js" %}'></script>
+    <script src='{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}'></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>
+</html>
