@@ -25,7 +25,11 @@ SECRET_KEY = '&(-tsj+=7%4^a^_25j0(%+5da8l$wtd$un52*u7vp79%a$8l3a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'www.puhungclub.kr']
+=======
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'lgb2002.pythonanywhere.com']
+>>>>>>> 007cb6645a78906fa6d6bb238c72a461abe2a8d5
 
 
 # Application definition

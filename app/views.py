@@ -121,6 +121,19 @@ def answer(request) :
 	return_str = return_json_str['content']
 	user_key = return_json_str['user_key']
 	message_type = return_json_str['type']
+<<<<<<< HEAD
+=======
+	return JsonResponse({
+		'message' : {
+		    'text' : '추석 전까지 부흥고급식알리미는 쉽니다.'
+		}
+	})
+
+'''#here
+=======
+
+>>>>>>> e9abf5009cb783bca8e441d3aac54d473f83f9f9
+>>>>>>> 007cb6645a78906fa6d6bb238c72a461abe2a8d5
 	if return_str == '--exit' :
 		print("escape from coderunner")
 		return JsonResponse({
@@ -283,4 +296,26 @@ def answer(request) :
 				'message' : {
 				    'text' : result
 				}
+<<<<<<< HEAD
 			})
+=======
+			})
+			'''#here
+
+#choice = "000"
+
+'''
+variable 'choice' is function of array
+
+1 = '급식알림'
+	1 = '오늘'
+	2 = '내일'
+	3 = '뒤로가기'
+2 = '코드실행기'
+
+3 = '챗봇'
+	1 = '뒤로가기'
+
+3th array value is not defined yet
+'''
+>>>>>>> 007cb6645a78906fa6d6bb238c72a461abe2a8d5
